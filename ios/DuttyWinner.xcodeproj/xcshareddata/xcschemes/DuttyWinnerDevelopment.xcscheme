@@ -24,7 +24,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6D6921382769D4EA00713089"
-               BuildableName = "DuttyWinner copy.app"
+               BuildableName = "DuttyWinnerDevelopment.app"
                BlueprintName = "DuttyWinnerDevelopment"
                ReferencedContainer = "container:DuttyWinner.xcodeproj">
             </BuildableReference>
@@ -68,7 +68,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6D6921382769D4EA00713089"
-            BuildableName = "DuttyWinner copy.app"
+            BuildableName = "DuttyWinnerDevelopment.app"
             BlueprintName = "DuttyWinnerDevelopment"
             ReferencedContainer = "container:DuttyWinner.xcodeproj">
          </BuildableReference>
@@ -85,7 +85,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6D6921382769D4EA00713089"
-            BuildableName = "DuttyWinner copy.app"
+            BuildableName = "DuttyWinnerDevelopment.app"
             BlueprintName = "DuttyWinnerDevelopment"
             ReferencedContainer = "container:DuttyWinner.xcodeproj">
          </BuildableReference>
