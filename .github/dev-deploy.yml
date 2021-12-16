@@ -1,0 +1,132 @@
+name: Publish iOS & Android App to App Center
+on:
+  push:
+    branches: [dev]
+
+jobs:
+  release-ios:
+    name: Deploying iOS to App Center
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup node js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+
+      - name: Cache NPM dependencies
+        id: cache-npm
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-npm-cache-
+
+      - name: Install packages
+        run: npm i
+
+      - name: Setup Pods Cache
+        id: cache-pod
+        uses: actions/cache@v2
+        with:
+          path: Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('ios/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
+
+      - name: Install pods
+        run: npm run ios:pod
+
+      - name: Setup ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.x'
+
+      - name: Deploy iOS to App Center via Fastlane
+        run: cd ios && fastlane app_center
+        env:
+          APP_SCHEME: 'diamond_development'
+          APP_EXPORT_METHOD: 'ad-hoc'
+          MATCH_TYPE: 'adhoc'
+          APP_STORE_CONNECT_TEAM_ID: '${{ secrets.APP_STORE_CONNECT_TEAM_ID }}'
+          DEVELOPER_APP_ID: '${{ secrets.DEVELOPER_APP_ID }}'
+          DEVELOPER_APP_IDENTIFIER: '${{ secrets.DEVELOPER_APP_IDENTIFIER }}'
+          DEVELOPER_PORTAL_TEAM_ID: '${{ secrets.DEVELOPER_PORTAL_TEAM_ID }}'
+          FASTLANE_APPLE_ID: '${{ secrets.FASTLANE_APPLE_ID }}'
+          MATCH_PASSWORD: '${{ secrets.MATCH_PASSWORD }}'
+          GIT_AUTHORIZATION: '${{ secrets.GIT_AUTHORIZATION_AGUNG }}'
+          PROVISIONING_PROFILE_SPECIFIER: '${{ secrets.PROVISIONING_PROFILE_SPECIFIER_AD_HOC }}'
+          TEMP_KEYCHAIN_PASSWORD: '${{ secrets.TEMP_KEYCHAIN_PASSWORD }}'
+          TEMP_KEYCHAIN_USER: '${{ secrets.TEMP_KEYCHAIN_USER }}'
+          APPLE_KEY_ID: '${{ secrets.APPLE_KEY_ID }}'
+          APPLE_ISSUER_ID: '${{ secrets.APPLE_ISSUER_ID }}'
+          APPLE_KEY_CONTENT: '${{ secrets.APPLE_KEY_CONTENT }}'
+          APPCENTER_API_TOKEN: '${{ secrets.APPCENTER_API_TOKEN }}'
+          APPCENTER_APP_NAME: '${{ secrets.APPCENTER_APP_NAME }}'
+          APPCENTER_OWNER_NAME: '${{ secrets.APPCENTER_OWNER_NAME }}'
+          TG_BOT_TOKEN: '${{ secrets.TELEGRAM_TOKEN }}'
+          TG_CHAT_ID: '${{ secrets.TELEGRAM_ID }}'
+
+  release-android:
+    name: Deploying Android to App Center
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup node js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+
+      - name: Cache NPM dependencies
+        id: cache-npm
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-npm-cache-
+
+      - name: Install packages
+        run: npm i
+
+      - name: Setup ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.x'
+
+      - name: Give permission to gems folder
+        run: cd android && fastlane -v && cd /var/lib && sudo chmod -R a+w gems/
+
+      - name: Deploy Android to App Center via Fastlane
+        run: cd android && fastlane app_center_dev
+        env:
+          APPCENTER_API_TOKEN: '${{ secrets.APPCENTER_API_TOKEN_ANDROID }}'
+          APPCENTER_APP_NAME: '${{ secrets.APPCENTER_APP_NAME_ANDROID }}'
+          APPCENTER_OWNER_NAME: '${{ secrets.APPCENTER_OWNER_NAME }}'
+          TG_BOT_TOKEN: '${{ secrets.TELEGRAM_TOKEN }}'
+          TG_CHAT_ID: '${{ secrets.TELEGRAM_ID }}'
+
+  send-message-telegram:
+    name: Sending message to telegram
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: send telegram message on push
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ${{ github.actor }} created commit:
+            Commit message: ${{ github.event.commits[0].message }}
+
+            Repository: ${{ github.repository }}
+
+            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}

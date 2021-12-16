@@ -14,11 +14,11 @@
 		5C9CE63F97F558AC5A08CD94 /* libPods-App-DuttyWinner-DuttyWinnerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F1008BF148C29CA0B009356 /* libPods-App-DuttyWinner-DuttyWinnerTests.a */; };
 		6D69213C2769D4EA00713089 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		6D69213D2769D4EA00713089 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		6D69213F2769D4EA00713089 /* libPods-App-DuttyWinner.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12FA977123ED3590CC727422 /* libPods-App-DuttyWinner.a */; };
 		6D6921412769D4EA00713089 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		6D6921422769D4EA00713089 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		F9135CCC46BFFA640DE57639 /* libPods-App-DuttyWinner.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12FA977123ED3590CC727422 /* libPods-App-DuttyWinner.a */; };
+		B9B9F3991342B53EA41319A3 /* libPods-App-DuttyWinnerDevelopment.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF27313A3BFF9FB5048116AE /* libPods-App-DuttyWinnerDevelopment.a */; };
+		F9135CCC46BFFA640DE57639 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +35,6 @@
 		00E356EE1AD99517003FC87E /* DuttyWinnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DuttyWinnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* DuttyWinnerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DuttyWinnerTests.m; sourceTree = "<group>"; };
-		12FA977123ED3590CC727422 /* libPods-App-DuttyWinner.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-App-DuttyWinner.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* DuttyWinner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DuttyWinner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = DuttyWinner/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = DuttyWinner/AppDelegate.m; sourceTree = "<group>"; };
@@ -73,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9135CCC46BFFA640DE57639 /* libPods-App-DuttyWinner.a in Frameworks */,
+				F9135CCC46BFFA640DE57639 /* (null) in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,7 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D69213F2769D4EA00713089 /* libPods-App-DuttyWinner.a in Frameworks */,
+				B9B9F3991342B53EA41319A3 /* libPods-App-DuttyWinnerDevelopment.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				12FA977123ED3590CC727422 /* libPods-App-DuttyWinner.a */,
 				2F1008BF148C29CA0B009356 /* libPods-App-DuttyWinner-DuttyWinnerTests.a */,
 				FF27313A3BFF9FB5048116AE /* libPods-App-DuttyWinnerDevelopment.a */,
 			);
@@ -445,7 +443,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-App-DuttyWinner-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-App-DuttyWinnerDevelopment-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -491,15 +489,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-App-DuttyWinner/Pods-App-DuttyWinner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-App-DuttyWinnerDevelopment/Pods-App-DuttyWinnerDevelopment-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-App-DuttyWinner/Pods-App-DuttyWinner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-App-DuttyWinnerDevelopment/Pods-App-DuttyWinnerDevelopment-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-App-DuttyWinner/Pods-App-DuttyWinner-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-App-DuttyWinnerDevelopment/Pods-App-DuttyWinnerDevelopment-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6D6921452769D4EA00713089 /* [CP] Copy Pods Resources */ = {
@@ -508,15 +506,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-App-DuttyWinner/Pods-App-DuttyWinner-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-App-DuttyWinnerDevelopment/Pods-App-DuttyWinnerDevelopment-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-App-DuttyWinner/Pods-App-DuttyWinner-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-App-DuttyWinnerDevelopment/Pods-App-DuttyWinnerDevelopment-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-App-DuttyWinner/Pods-App-DuttyWinner-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-App-DuttyWinnerDevelopment/Pods-App-DuttyWinnerDevelopment-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F2AE16C3B16F9CF0AE02B7B2 /* [CP] Copy Pods Resources */ = {
@@ -652,6 +650,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6P4G4GAAHH;
 				ENABLE_BITCODE = NO;
@@ -667,6 +668,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.id.mdc.DuttyWinner;
 				PRODUCT_NAME = DuttyWinner;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -679,6 +681,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6P4G4GAAHH;
 				INFOPLIST_FILE = DuttyWinner/Info.plist;
@@ -693,6 +697,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.id.mdc.DuttyWinner;
 				PRODUCT_NAME = DuttyWinner;
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore co.id.mdc.DuttyWinner";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -700,10 +705,13 @@
 		};
 		6D6921472769D4EA00713089 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B97EF47C9771B1D065F10D67 /* Pods-App-DuttyWinner.debug.xcconfig */;
+			baseConfigurationReference = 3AAE904AEBC32977B5C6BB79 /* Pods-App-DuttyWinnerDevelopment.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6P4G4GAAHH;
 				ENABLE_BITCODE = NO;
@@ -719,6 +727,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.id.mdc.DuttyWinner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -727,10 +736,12 @@
 		};
 		6D6921482769D4EA00713089 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4D3C3DC6EBD9CC3D0C0115CE /* Pods-App-DuttyWinner.release.xcconfig */;
+			baseConfigurationReference = B5A37A1A6195D1B06F0BA854 /* Pods-App-DuttyWinnerDevelopment.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Distribution: MEDIA DATA COMMUNICATION, PT (6P4G4GAAHH)";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6P4G4GAAHH;
 				INFOPLIST_FILE = DuttyWinnerDevelopment/Info.plist;
@@ -745,6 +756,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.id.mdc.DuttyWinner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc co.id.mdc.DuttyWinner";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

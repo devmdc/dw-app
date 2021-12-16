@@ -8,6 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
+    "images": "node scripts/images.js",
     "ios:pod": "cd ios && pod install && cd ..",
     "ios:clear": "rm -rf ios/build",
     "android:run": "react-native run-android",
@@ -20,7 +21,8 @@
   "dependencies": {
     "react": "17.0.2",
     "react-native": "0.66.4",
-    "react-native-config": "^1.4.5"
+    "react-native-config": "^1.4.5",
+    "react-native-fs": "^2.18.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
