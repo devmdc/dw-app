@@ -1,38 +1,183 @@
-# This file contains the fastlane.tools configuration
-# You can find the documentation at https://docs.fastlane.tools
-#
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
-#
-
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
-
 default_platform(:android)
 
+APPCENTER_API_TOKEN = ENV["APPCENTER_API_TOKEN"]
+APPCENTER_OWNER_NAME = ENV["APPCENTER_OWNER_NAME"]
+APPCENTER_APP_NAME = ENV["APPCENTER_APP_NAME"]
+TG_BOT_TOKEN = ENV["TG_BOT_TOKEN"]
+TG_CHAT_ID = ENV["TG_CHAT_ID"]
+
 platform :android do
-  desc "Runs all the tests"
-  lane :test do
-    gradle(task: "test")
+  def increment_version_code()
+    path = '../app/build.gradle'
+    re = /versionCode\s+(\d+)/
+
+    s = File.read(path)
+    versionCode = s[re, 1].to_i
+    s[re, 1] = (versionCode + 1).to_s
+
+    f = File.new(path, 'w')
+    f.write(s)
+    f.close
   end
 
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
-    gradle(task: "clean assembleRelease")
-    crashlytics
-  
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
+  def increment_version_number(bump_type: nil, version_number: nil)
+    path = '../app/build.gradle'
+    re = /versionName\s+("\d+.\d+.\d+")/
+    s = File.read(path)
+    versionName = s[re, 1].gsub!('"','').split('.')
+
+    major = versionName[0].to_i
+    minor = versionName[1].to_i
+    patch = versionName[2].to_i
+
+    if (bump_type == 'major')
+        major += 1
+        minor = 0
+        patch = 0
+    elsif (bump_type == 'minor')
+        minor += 1
+        patch = 0
+    elsif (bump_type == 'patch')
+        patch += 1
+    end
+
+    if(version_number)
+      s[re, 1] = "\"#{version_number}\""
+    else
+      s[re, 1] = "\"#{major}.#{minor}.#{patch}\""
+    end
+
+    f = File.new(path, 'w')
+    f.write(s)
+    f.close
+    increment_version_code()
+  end
+
+  def updateVersion(options)
+    if options[:version]
+      version = options[:version]
+    else
+      version = prompt(text: "Enter the version type or specific version\n(major, minor, patch or 1.0.0): ")
+    end
+
+    re = /\d+.\d+.\d+/
+    versionNum = version[re, 0]
+
+    if (versionNum)
+      increment_version_number(
+        version_number: versionNum
+      )
+    elsif (version == 'major' || version == 'minor' || version == 'patch')
+      increment_version_number(
+        bump_type: version
+      )
+    else
+      UI.user_error!("[ERROR] Wrong version!!!!!!")
+    end
+  end
+
+  desc "Update version"
+  lane :version do |options|
+    updateVersion(options)
+  end
+
+  desc "Clean gradle"
+  lane :gradle_clean do |options|
+    gradle( task: 'clean')
+  end
+
+  desc "Copy artifacts apk"
+  lane :cpy_artifacts_apk do |options|
+    copy_artifacts(
+      artifacts: ['*/build/outputs/apk/**/*.apk'],
+      target_path: './'
+    )
+  end
+
+  desc "Copy artifacts aab"
+  lane :cpy_artifacts_aab do |options|
+    copy_artifacts(
+      artifacts: ['*/build/outputs/bundle/**/*.aab'],
+      target_path: './'
+    )
+  end
+
+  desc "Deploy a dev version to appcenter"
+  lane :app_center_dev do
+    gradle_clean
+    gradle(
+      task: "assemble",
+      build_type: "Release",
+      system_properties: {
+        "ENVFILE": ".env.development"
+      }
+    )
+    cpy_artifacts_apk
+    appcenter_upload(
+      api_token: APPCENTER_API_TOKEN,
+      owner_name: APPCENTER_OWNER_NAME,
+      app_name: APPCENTER_APP_NAME,
+      release_notes: 'Development release',
+      apk: "./app-release.apk",
+      notify_testers: true,
+      destinations: 'Production Release'
+    )
+    telegram(
+      token: TG_BOT_TOKEN,
+      chat_id: TG_CHAT_ID,
+      text: "New android development release is comming, please download at\n\n#{lane_context[SharedValues::APPCENTER_DOWNLOAD_LINK]}"
+    )
+  end
+
+  desc "Deploy a prod version to appcenter"
+  lane :app_center_prod do
+    gradle_clean
+    gradle(
+      task: "assemble",
+      build_type: "Release",
+      system_properties: {
+        "ENVFILE": ".env.production"
+      }
+    )
+    cpy_artifacts_apk
+    appcenter_upload(
+      api_token: APPCENTER_API_TOKEN,
+      owner_name: APPCENTER_OWNER_NAME,
+      app_name: APPCENTER_APP_NAME,
+      release_notes: 'Production release',
+      apk: "./app-release.apk",
+      notify_testers: true,
+      destinations: 'Production Release'
+    )
+    telegram(
+      token: TG_BOT_TOKEN,
+      chat_id: TG_CHAT_ID,
+      text: "New android production release is comming, please download at\n\n#{lane_context[SharedValues::APPCENTER_DOWNLOAD_LINK]}"
+    )
   end
 
   desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
+  lane :deploy_playstore do
+    gradle_clean
+    gradle(
+      task: "bundle",
+      build_type: "Release",
+      system_properties: {
+        "ENVFILE": ".env.production"
+      }
+    )
+    cpy_artifacts_aab
+    upload_to_play_store(
+      skip_upload_metadata: true,
+      skip_upload_changelogs: true,
+      skip_upload_screenshots: true,
+      skip_upload_images: true,
+      skip_upload_apk: true
+    )
+    telegram(
+      token: TG_BOT_TOKEN,
+      chat_id: TG_CHAT_ID,
+      text: "New android version is uploaded on playstore"
+    )
   end
 end
