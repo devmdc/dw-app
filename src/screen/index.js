@@ -22,7 +22,11 @@ const WelcomeScreen = ({navigation}) => {
         <Button style={styles.button} color={colors.dwLightBlue}>
           Register
         </Button>
-        <Button style={styles.button}>Login</Button>
+        <Button
+          style={styles.button}
+          onPress={() => navigation.navigate('Login')}>
+          Login
+        </Button>
       </View>
     </View>
   );

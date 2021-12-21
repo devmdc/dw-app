@@ -7,7 +7,7 @@ const Text = ({
   style,
   maxLine,
   fontSize = 14,
-  color = colors.text,
+  color = colors.dwDarkGrey,
   regular = true,
   medium = false,
   bold = false,
