@@ -48,4 +48,9 @@ export default StyleSheet.create({
     width: 60,
     height: 60,
   },
+  inputWrapper: {
+    marginTop: 50,
+    marginBottom: 10,
+    width: '100%',
+  },
 });

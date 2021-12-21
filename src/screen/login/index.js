@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, Image, TouchableOpacity} from 'react-native';
-import {Button, Text} from 'component';
+import {View, Image, TouchableOpacity, ScrollView} from 'react-native';
+import {Button, Text, Input} from 'component';
 import {colors, images} from 'assets';
 
 import styles, {setMarginTop, setMarginHorizontal} from './styles';
@@ -13,6 +13,10 @@ const LoginScreen = ({navigation}) => {
         style={styles.logoTitle}
         resizeMode={'contain'}
       />
+      <View style={styles.inputWrapper}>
+        <Input placeholder={'Type your email'} />
+        <Input placeholder={'Type password'} style={setMarginTop(15)} />
+      </View>
       <Button style={styles.button}>Login</Button>
       <View style={[styles.middleWrpaper, setMarginTop(50)]}>
         <Text fontSize={13}>Belum punya akun? </Text>
