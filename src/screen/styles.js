@@ -7,7 +7,7 @@ export default StyleSheet.create({
   },
   logoTitle: {
     width: 225,
-    height: 128,
+    height: 225 * (128 / 225),
     position: 'absolute',
     left: Dimensions.get('window').width / 2 - 225 / 2,
     top: 136 - 0,
@@ -15,7 +15,8 @@ export default StyleSheet.create({
   },
   imageMonas: {
     width: Dimensions.get('window').width,
-    height: 433,
+    height:
+      Dimensions.get('window').width * (433 / Dimensions.get('window').width),
     position: 'absolute',
     top: 279 - 0,
     left: 0,

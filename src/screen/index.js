@@ -15,7 +15,7 @@ const WelcomeScreen = ({navigation}) => {
       <Image
         source={images.monas}
         style={styles.imageMonas}
-        resizeMode={'cover'}
+        resizeMode={'contain'}
       />
     </View>
   );
