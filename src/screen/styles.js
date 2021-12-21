@@ -2,8 +2,7 @@ import {StyleSheet, Dimensions} from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    // padding: 25,
-    // flex: 1,
+    flex: 1,
   },
   logoTitle: {
     width: 225,
@@ -21,5 +20,17 @@ export default StyleSheet.create({
     top: 279 - 0,
     left: 0,
     zIndex: 0,
+  },
+  buttonWrapper: {
+    position: 'absolute',
+    bottom: 50,
+    left: 25,
+    right: 25,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+  },
+  button: {
+    width: 154,
+    height: 48,
   },
 });
