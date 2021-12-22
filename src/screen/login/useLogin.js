@@ -1,13 +1,12 @@
-import React from 'react';
 import {useHttp, endpoint} from 'api';
 
 const useLogin = () => {
   const {data, loading, postData} = useHttp();
 
-  const submit = () => {
+  const submit = (email, password) => {
     const param = {
-      email: 'dewanto.hr@gmail.com',
-      password: 'admin123',
+      email: email,
+      password: password,
       fcm_token: 'fcm_token',
     };
 

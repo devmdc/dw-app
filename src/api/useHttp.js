@@ -1,11 +1,7 @@
 import {useState} from 'react';
-import FlashMessage, {
-  showMessage,
-  hideMessage,
-} from 'react-native-flash-message';
+import {showMessage, hideMessage} from 'react-native-flash-message';
 import {api} from 'api';
 import {isEmpty} from 'utils';
-import {colors} from 'assets';
 import {store} from '../store';
 
 const useHttp = (initialData = []) => {
@@ -32,7 +28,7 @@ const useHttp = (initialData = []) => {
       })
       .catch(err => {
         setLoading(false);
-        showMessage(err.response.data.message);
+        showMsgError(err.response.data.message);
         onError(err.response.data.message);
       });
   };
@@ -46,13 +42,12 @@ const useHttp = (initialData = []) => {
         },
       })
       .then(res => {
-        showMsg();
         setLoading(false);
         onSuccess(res.data.data);
       })
       .catch(err => {
-        showMsg();
         setLoading(false);
+        showMsgError(err.response.data.message);
         onError(err.response.data.message);
       });
   };
@@ -71,13 +66,20 @@ const getAuthHeader = () => ({
   },
 });
 
-const showMsg = () => {
-  FlashMessage.showMessage({
+const showMsgError = msg => {
+  showMessage({
+    message: 'Error',
+    description: msg,
+    type: 'warning',
+    onPress: () => hideMessage(),
+  });
+};
+
+const showMsgSuccess = msg => {
+  showMessage({
     message: 'Success',
-    description: 'Login success, please wait...',
+    description: msg,
     type: 'success',
-    backgroundColor: colors.dwWhatsapp,
-    color: colors.dwWhite,
     onPress: () => hideMessage(),
   });
 };
@@ -86,4 +88,4 @@ const isSignin = () => {
   return !isEmpty(store.getState().user.data);
 };
 
-export {useHttp, getAuthHeader, isSignin};
+export {useHttp, getAuthHeader, isSignin, showMsgError, showMsgSuccess};

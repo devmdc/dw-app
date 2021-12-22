@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Image, TouchableOpacity} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Container, Button, Text, Input} from 'component';
@@ -11,6 +11,9 @@ import useLogin from './useLogin';
 const LoginScreen = ({navigation}) => {
   const {loading, submit} = useLogin();
 
+  const {email, setEmail} = useState('');
+  const {password, setPassword} = useState('');
+
   return (
     <Container>
       <KeyboardAwareScrollView>
@@ -21,12 +24,20 @@ const LoginScreen = ({navigation}) => {
             resizeMode={'contain'}
           />
           <View style={styles.inputWrapper}>
-            <Input placeholder={'Type your email'} />
-            <Input placeholder={'Type password'} style={setMarginTop(15)} />
+            <Input
+              placeholder={'Type your email'}
+              onChangeText={text => setEmail(text)}
+            />
+            <Input
+              password={true}
+              placeholder={'Type password'}
+              style={setMarginTop(15)}
+              onChangeText={text => setPassword(text)}
+            />
           </View>
           <Button
             style={styles.button}
-            onPress={() => submit()}
+            onPress={() => submit(email, password)}
             loading={loading}>
             Login
           </Button>
