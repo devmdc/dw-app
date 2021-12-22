@@ -9,7 +9,7 @@ const useLogin = () => {
       password: password,
       fcm_token: 'fcm_token',
     };
-
+    console.log(email, password);
     postData({
       url: endpoint.POST_LOGIN,
       params: param,

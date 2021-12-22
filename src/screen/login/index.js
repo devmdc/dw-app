@@ -11,8 +11,8 @@ import useLogin from './useLogin';
 const LoginScreen = ({navigation}) => {
   const {loading, submit} = useLogin();
 
-  const {email, setEmail} = useState('');
-  const {password, setPassword} = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   return (
     <Container>
@@ -26,13 +26,13 @@ const LoginScreen = ({navigation}) => {
           <View style={styles.inputWrapper}>
             <Input
               placeholder={'Type your email'}
-              onChangeText={text => setEmail(text)}
+              onChangeTextValue={text => setEmail(text)}
             />
             <Input
               password={true}
               placeholder={'Type password'}
               style={setMarginTop(15)}
-              onChangeText={text => setPassword(text)}
+              onChangeTextValue={text => setPassword(text)}
             />
           </View>
           <Button
