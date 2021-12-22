@@ -11,6 +11,7 @@ const colors = {
   dwLightBlue: '#38A9DC',
   dwFreshOrange: '#F79256',
   dwBrightYellow: '#FDD015',
+  dwWhatsapp: '#25D366',
 };
 
 export {colors};

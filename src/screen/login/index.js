@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Image, TouchableOpacity, ScrollView} from 'react-native';
+import {showMessage, hideMessage} from 'react-native-flash-message';
 import {Button, Text, Input} from 'component';
 import {colors, images} from 'assets';
 
@@ -17,7 +18,20 @@ const LoginScreen = ({navigation}) => {
         <Input placeholder={'Type your email'} />
         <Input placeholder={'Type password'} style={setMarginTop(15)} />
       </View>
-      <Button style={styles.button}>Login</Button>
+      <Button
+        style={styles.button}
+        onPress={() =>
+          showMessage({
+            message: 'Success',
+            description: 'Login success, please wait...',
+            type: 'success',
+            backgroundColor: colors.dwWhatsapp,
+            color: colors.dwWhite,
+            onPress: () => hideMessage(),
+          })
+        }>
+        Login
+      </Button>
       <View style={[styles.middleWrpaper, setMarginTop(50)]}>
         <Text fontSize={13}>Belum punya akun? </Text>
         <TouchableOpacity>
