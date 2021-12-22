@@ -70,7 +70,7 @@ const showMsgError = msg => {
   showMessage({
     message: 'Error',
     description: msg,
-    type: 'warning',
+    type: 'danger',
     onPress: () => hideMessage(),
   });
 };

@@ -96,9 +96,20 @@ const LoginScreen = ({navigation}) => {
               <Image
                 style={[
                   styles.imageSocmed,
-                  setMarginHorizontal('marginLeft', 10),
+                  setMarginHorizontal('marginRight', 10),
                 ]}
                 source={images.loginFB}
+                resizeMode={'cover'}
+              />
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+              <Image
+                style={[
+                  styles.imageSocmed,
+                  setMarginHorizontal('marginLeft', 10),
+                ]}
+                source={images.loginApple}
                 resizeMode={'cover'}
               />
             </TouchableOpacity>
