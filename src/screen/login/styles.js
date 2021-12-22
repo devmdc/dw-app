@@ -1,3 +1,4 @@
+import {colors} from 'assets';
 import {Dimensions, StyleSheet} from 'react-native';
 
 export function setMarginTop(number) {
@@ -11,8 +12,14 @@ export function setMarginHorizontal(margin, number) {
 export default StyleSheet.create({
   container: {
     flex: 1,
-    padding: 25,
+  },
+  scroll: {
+    width: '100%',
+  },
+  wrapper: {
+    flex: 1,
     alignItems: 'center',
+    padding: 25,
   },
   logoTitle: {
     width: 190,
