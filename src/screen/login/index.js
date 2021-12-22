@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, Image, TouchableOpacity, ScrollView} from 'react-native';
+import {View, Image, TouchableOpacity} from 'react-native';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Container, Button, Text, Input} from 'component';
 import {colors, images} from 'assets';
 
@@ -12,7 +13,7 @@ const LoginScreen = ({navigation}) => {
 
   return (
     <Container>
-      <ScrollView style={styles.scroll}>
+      <KeyboardAwareScrollView>
         <View style={styles.wrapper}>
           <Image
             source={images.logoTitle}
@@ -92,7 +93,7 @@ const LoginScreen = ({navigation}) => {
             </TouchableOpacity>
           </View>
         </View>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     </Container>
   );
 };
