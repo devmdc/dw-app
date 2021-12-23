@@ -36,7 +36,11 @@ const VerifyScreen = ({navigation}) => {
               inputStyles={styles.inputStyles}
             />
           </View>
-          <Button style={styles.button}>Verifikasi</Button>
+          <Button
+            style={styles.button}
+            onPress={() => navigation.navigate('RegisterData')}>
+            Verifikasi
+          </Button>
           <View style={[styles.middleWrpaper, setMarginTop(25)]}>
             <Text fontSize={13}>Tidak menerima kode? </Text>
             <TouchableOpacity onPress={() => console.log('coba lagi')}>
