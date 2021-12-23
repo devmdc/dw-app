@@ -19,7 +19,10 @@ const WelcomeScreen = ({navigation}) => {
         resizeMode={'contain'}
       />
       <View style={styles.buttonWrapper}>
-        <Button style={styles.button} color={colors.dwLightBlue}>
+        <Button
+          style={styles.button}
+          color={colors.dwLightBlue}
+          onPress={() => navigation.navigate('Register')}>
           Register
         </Button>
         <Button

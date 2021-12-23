@@ -42,8 +42,8 @@ const LoginScreen = ({navigation}) => {
             Login
           </Button>
           <View style={[styles.middleWrpaper, setMarginTop(50)]}>
-            <Text fontSize={13}>Belum punya akun? </Text>
-            <TouchableOpacity>
+            <Text fontSize={13}>Belum jadi member? </Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Register')}>
               <Text fontSize={13} semibold>
                 Register di sini
               </Text>
