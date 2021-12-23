@@ -14,6 +14,7 @@ const Input = ({
   leftIcon,
   value,
   multiline,
+  isError = false,
   isRightLoading,
   pointerEvents = 'auto',
   numberOfLines = 1,
@@ -24,7 +25,9 @@ const Input = ({
   onSubmitEditing = () => {},
   ...props
 }) => (
-  <View style={[styles.container, style]} {...props}>
+  <View
+    style={[styles.container, isError ? styles.borderError : {}, style]}
+    {...props}>
     {leftIcon && leftIcon}
 
     <TextInput
@@ -61,6 +64,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 26,
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  borderError: {
+    borderColor: colors.dwRed,
   },
   input: {
     fontFamily: fonts.regular,

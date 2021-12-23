@@ -1,18 +1,23 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Image, TouchableOpacity} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Container, Button, Text, Input} from 'component';
 import {colors, images} from 'assets';
+import {validate} from 'utils';
 
 import styles, {setMarginTop, setMarginHorizontal} from './styles';
 
 import useLogin from './useLogin';
 
 const LoginScreen = ({navigation}) => {
+  const [initial, setInitial] = useState(true);
   const {loading, submit} = useLogin();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const emailError = validate('email', email);
+  const passError = validate('password', password);
 
   return (
     <Container>
@@ -26,18 +31,31 @@ const LoginScreen = ({navigation}) => {
           <View style={styles.inputWrapper}>
             <Input
               placeholder={'Type your email'}
-              onChangeTextValue={text => setEmail(text)}
+              onChangeTextValue={text => {
+                setInitial(false);
+                setEmail(text);
+              }}
+              isError={emailError !== null && !initial}
             />
             <Input
               password={true}
               placeholder={'Type password'}
               style={setMarginTop(15)}
-              onChangeTextValue={text => setPassword(text)}
+              onChangeTextValue={text => {
+                setInitial(false);
+                setPassword(text);
+              }}
+              isError={passError !== null && !initial}
             />
           </View>
           <Button
             style={styles.button}
-            onPress={() => submit(email, password)}
+            onPress={() => {
+              setInitial(false);
+              if (emailError === null && passError === null) {
+                submit(email, password);
+              }
+            }}
             loading={loading}>
             Login
           </Button>
