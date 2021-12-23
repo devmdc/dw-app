@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import WelcomeScreen from '../screen/';
 import LoginScreen from '../screen/login';
 import RegisterScreen from '../screen/register';
+import VerifyScreen from '../screen/register/verify';
 
 const Stack = createStackNavigator();
 
@@ -14,6 +15,7 @@ function AuthStackScreen() {
       <AuthStack.Screen name={'Welcome'} component={WelcomeScreen} />
       <AuthStack.Screen name={'Login'} component={LoginScreen} />
       <AuthStack.Screen name={'Register'} component={RegisterScreen} />
+      <AuthStack.Screen name={'Verify'} component={VerifyScreen} />
     </AuthStack.Navigator>
   );
 }
