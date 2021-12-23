@@ -17,6 +17,16 @@ export const validation_message = {
     },
   },
 
+  name: {
+    presence: {
+      message: '^Please enter your name',
+    },
+    length: {
+      minimum: 1,
+      message: '^Please enter your name',
+    },
+  },
+
   password: {
     presence: {
       message: '^Please enter a password',

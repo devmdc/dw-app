@@ -8,7 +8,7 @@ import {images} from 'assets';
 import styles, {setMarginTop} from './styles';
 
 const VerifyScreen = ({navigation}) => {
-  const [email, setEmail] = useState('');
+  const [code, setCode] = useState('');
 
   return (
     <Container>
@@ -28,7 +28,7 @@ const VerifyScreen = ({navigation}) => {
           </Text>
           <View style={styles.inputWrapper}>
             <OtpInputs
-              handleChange={text => console.log(text)}
+              handleChange={text => setCode(text)}
               style={styles.otp}
               autofillFromClipboard={false}
               numberOfInputs={5}
@@ -38,7 +38,11 @@ const VerifyScreen = ({navigation}) => {
           </View>
           <Button
             style={styles.button}
-            onPress={() => navigation.navigate('RegisterData')}>
+            onPress={() => {
+              if (code.length > 4) {
+                navigation.navigate('RegisterData');
+              }
+            }}>
             Verifikasi
           </Button>
           <View style={[styles.middleWrpaper, setMarginTop(25)]}>

@@ -3,11 +3,15 @@ import {View, Image, TouchableOpacity} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Container, Button, Text, Input} from 'component';
 import {images} from 'assets';
+import {validate} from 'utils';
 
 import styles, {setMarginTop} from './styles';
 
 const RegisterScreen = ({navigation}) => {
+  const [initial, setInitial] = useState(true);
   const [email, setEmail] = useState('');
+
+  const emailError = validate('email', email);
 
   return (
     <Container>
@@ -24,12 +28,21 @@ const RegisterScreen = ({navigation}) => {
           <View style={styles.inputWrapper}>
             <Input
               placeholder={'Type your email'}
-              onChangeTextValue={text => setEmail(text)}
+              onChangeTextValue={text => {
+                setInitial(false);
+                setEmail(text);
+              }}
+              isError={emailError !== null && !initial}
             />
           </View>
           <Button
             style={styles.button}
-            onPress={() => navigation.navigate('Verify')}>
+            onPress={() => {
+              setInitial(false);
+              if (emailError === null) {
+                navigation.navigate('Verify');
+              }
+            }}>
             Submit
           </Button>
           <View style={[styles.middleWrpaper, setMarginTop(25)]}>

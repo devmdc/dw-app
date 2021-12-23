@@ -3,13 +3,19 @@ import {View, Image, TouchableOpacity} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Container, Button, Text, Input} from 'component';
 import {images} from 'assets';
+import {validate} from 'utils';
 
 import styles, {setMarginTop} from './styles';
 
 const RegisterDataScreen = ({navigation}) => {
-  const [email, setEmail] = useState('');
+  const [initial, setInitial] = useState(true);
+  const [name, setName] = useState('');
   const [password, setPassword] = useState({value: '', isShow: true});
   const [rePassword, setRePassword] = useState({value: '', isShow: true});
+
+  const nameError = validate('name', name);
+  const passError = validate('password', password.value);
+  const rePassError = validate('password', rePassword.value);
 
   return (
     <Container>
@@ -26,7 +32,11 @@ const RegisterDataScreen = ({navigation}) => {
           <View style={styles.inputWrapper}>
             <Input
               placeholder={'Type your name'}
-              onChangeTextValue={text => setEmail(text)}
+              onChangeTextValue={text => {
+                setInitial(false);
+                setName(text);
+              }}
+              isError={nameError !== null && !initial}
             />
             <Input
               password={password.isShow}
@@ -44,9 +54,11 @@ const RegisterDataScreen = ({navigation}) => {
                   />
                 </TouchableOpacity>
               }
-              onChangeTextValue={text =>
-                setPassword({...password, value: text})
-              }
+              onChangeTextValue={text => {
+                setInitial(false);
+                setPassword({...password, value: text});
+              }}
+              isError={passError !== null && !initial}
             />
             <Input
               password={rePassword.isShow}
@@ -64,14 +76,25 @@ const RegisterDataScreen = ({navigation}) => {
                   />
                 </TouchableOpacity>
               }
-              onChangeTextValue={text =>
-                setRePassword({...password, value: text})
-              }
+              onChangeTextValue={text => {
+                setInitial(false);
+                setRePassword({...password, value: text});
+              }}
+              isError={rePassError !== null && !initial}
             />
           </View>
           <Button
             style={styles.button}
-            onPress={() => navigation.navigate('Register')}>
+            onPress={() => {
+              setInitial(false);
+              if (
+                nameError === null &&
+                passError === null &&
+                rePassError === null
+              ) {
+                navigation.navigate('Register');
+              }
+            }}>
             Register
           </Button>
           <View style={[styles.middleWrpaper, setMarginTop(25)]}>
