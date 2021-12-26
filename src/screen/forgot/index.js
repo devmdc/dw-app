@@ -41,7 +41,7 @@ const ForgotScreen = ({navigation}) => {
             onPress={() => {
               setInitial(false);
               if (emailError === null) {
-                navigation.navigate('Verify');
+                navigation.navigate('VerifyForgot');
               }
             }}>
             Submit

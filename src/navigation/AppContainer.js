@@ -8,6 +8,7 @@ import VerifyScreen from '../screen/register/verify';
 import RegisterDataScreen from '../screen/register/submit';
 import ForgotScreen from '../screen/forgot';
 import VerifyForgotScreen from '../screen/forgot/verify';
+import ForgotDataScreen from '../screen/forgot/submit';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,7 @@ function AuthStackScreen() {
       <AuthStack.Screen name={'RegisterData'} component={RegisterDataScreen} />
       <AuthStack.Screen name={'Forgot'} component={ForgotScreen} />
       <AuthStack.Screen name={'VerifyForgot'} component={VerifyForgotScreen} />
+      <AuthStack.Screen name={'ForgotData'} component={ForgotDataScreen} />
     </AuthStack.Navigator>
   );
 }

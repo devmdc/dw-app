@@ -40,7 +40,7 @@ const VerifyForgotScreen = ({navigation}) => {
             style={styles.button}
             onPress={() => {
               if (code.length > 4) {
-                navigation.navigate('RegisterData');
+                navigation.navigate('ForgotData');
               }
             }}>
             Verifikasi
