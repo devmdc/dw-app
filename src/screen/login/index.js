@@ -69,7 +69,7 @@ const LoginScreen = ({navigation}) => {
           </View>
           <View style={[styles.middleWrpaper, setMarginTop(20)]}>
             <Text fontSize={13}>Lupa password kamu? </Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Forgot')}>
               <Text fontSize={13} semibold>
                 Klik di sini
               </Text>
