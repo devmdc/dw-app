@@ -1,17 +1,14 @@
 import React, {useState} from 'react';
 import {View, Image, TouchableOpacity} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import OtpInputs from 'react-native-otp-inputs';
 import {Container, Button, Text, Input} from 'component';
 import {images} from 'assets';
-import {validate} from 'utils';
 
 import styles, {setMarginTop} from './styles';
 
-const RegisterScreen = ({navigation}) => {
-  const [initial, setInitial] = useState(true);
-  const [email, setEmail] = useState('');
-
-  const emailError = validate('email', email);
+const VerifyForgotScreen = ({navigation}) => {
+  const [code, setCode] = useState('');
 
   return (
     <Container>
@@ -22,34 +19,37 @@ const RegisterScreen = ({navigation}) => {
             style={styles.logoTitle}
             resizeMode={'contain'}
           />
-          <Text style={setMarginTop(50)} fontSize={13}>
-            Daftar dengan alamat email kamu
+          <Text style={[setMarginTop(50), styles.infoText]} fontSize={13}>
+            Kami sudah mengirimkan email verifikasi{'\n'}berupa 5 digit angka.
+            Silakan cek email{'\n'}
+            <Text fontSize={13} semibold>
+              andy@gmail.com
+            </Text>
           </Text>
           <View style={styles.inputWrapper}>
-            <Input
-              placeholder={'Type your email'}
-              onChangeTextValue={text => {
-                setInitial(false);
-                setEmail(text);
-              }}
-              isError={emailError !== null && !initial}
+            <OtpInputs
+              handleChange={text => setCode(text)}
+              style={styles.otp}
+              autofillFromClipboard={false}
+              numberOfInputs={5}
+              inputContainerStyles={styles.inputContainerStyles}
+              inputStyles={styles.inputStyles}
             />
           </View>
           <Button
             style={styles.button}
             onPress={() => {
-              setInitial(false);
-              if (emailError === null) {
-                navigation.navigate('VerifyForgot');
+              if (code.length > 4) {
+                navigation.navigate('RegisterData');
               }
             }}>
-            Submit
+            Verifikasi
           </Button>
           <View style={[styles.middleWrpaper, setMarginTop(25)]}>
-            <Text fontSize={13}>Sudah punya akun? </Text>
-            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <Text fontSize={13}>Tidak menerima kode? </Text>
+            <TouchableOpacity onPress={() => console.log('coba lagi')}>
               <Text fontSize={13} semibold>
-                Login di sini
+                Coba lagi
               </Text>
             </TouchableOpacity>
           </View>
@@ -59,4 +59,4 @@ const RegisterScreen = ({navigation}) => {
   );
 };
 
-export default RegisterScreen;
+export default VerifyForgotScreen;
