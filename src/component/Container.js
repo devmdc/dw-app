@@ -17,7 +17,7 @@ const Container = ({
   children,
   style,
   color = colors.dwWhite,
-  statusBarColor = colors.dwDarkBlue,
+  statusBarColor = colors.dwWhite,
   padding = 0,
   needTouchOutside = false,
 }) => {

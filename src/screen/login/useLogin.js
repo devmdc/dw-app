@@ -1,4 +1,5 @@
 import {useHttp, endpoint} from 'api';
+import {RootNav} from 'utils';
 
 const useLogin = () => {
   const {loading, postData} = useHttp();
@@ -16,7 +17,7 @@ const useLogin = () => {
       onSuccess: res => {
         const {status} = res;
         if (status === 200) {
-          console.log(res);
+          RootNav.navigateToVacancies();
         }
       },
       onError: error => {

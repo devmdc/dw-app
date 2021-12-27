@@ -77,3 +77,7 @@ export function isEmpty(obj) {
   }
   return true;
 }
+
+import * as RootNav from './RootNavigation';
+
+export {RootNav};

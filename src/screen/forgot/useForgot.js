@@ -1,5 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import {useHttp, endpoint} from 'api';
+import {RootNav} from 'utils';
 
 const useForgot = () => {
   const {loading, postData} = useHttp();
@@ -60,7 +61,7 @@ const useForgot = () => {
       onSuccess: res => {
         const {status} = res;
         if (status === 200) {
-          console.log(res);
+          RootNav.navigateToVacancies();
         }
       },
       onError: error => {
