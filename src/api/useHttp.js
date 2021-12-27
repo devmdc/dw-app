@@ -6,7 +6,6 @@ import {store} from '../store';
 
 const useHttp = (initialData = []) => {
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState(initialData);
 
   const postData = ({
     url,
@@ -23,8 +22,7 @@ const useHttp = (initialData = []) => {
       })
       .then(res => {
         setLoading(false);
-        setData(res.data.data);
-        onSuccess(res.data.data);
+        onSuccess(res.data);
       })
       .catch(err => {
         setLoading(false);
@@ -43,7 +41,7 @@ const useHttp = (initialData = []) => {
       })
       .then(res => {
         setLoading(false);
-        onSuccess(res.data.data);
+        onSuccess(res.data);
       })
       .catch(err => {
         setLoading(false);
@@ -52,7 +50,7 @@ const useHttp = (initialData = []) => {
       });
   };
 
-  return {data, loading, postData, getData};
+  return {loading, postData, getData};
 };
 
 const DEFAULT_PARAMS = {

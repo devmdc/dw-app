@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, Image, TouchableOpacity} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import OtpInputs from 'react-native-otp-inputs';
-import {Container, Button, Text, Input} from 'component';
+import {Container, Button, Text} from 'component';
 import {images} from 'assets';
 
 import styles, {setMarginTop} from './styles';

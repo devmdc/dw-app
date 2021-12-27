@@ -6,8 +6,11 @@ import {images} from 'assets';
 import {validate} from 'utils';
 
 import styles, {setMarginTop} from './styles';
+import useRegister from './useRegister';
 
 const RegisterScreen = ({navigation}) => {
+  const {loading, submit} = useRegister();
+
   const [initial, setInitial] = useState(true);
   const [email, setEmail] = useState('');
 
@@ -36,11 +39,12 @@ const RegisterScreen = ({navigation}) => {
             />
           </View>
           <Button
+            loading={loading}
             style={styles.button}
             onPress={() => {
               setInitial(false);
               if (emailError === null) {
-                navigation.navigate('VerifyForgot');
+                submit(email);
               }
             }}>
             Submit

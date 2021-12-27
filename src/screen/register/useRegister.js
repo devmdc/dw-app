@@ -1,22 +1,23 @@
+import {useNavigation} from '@react-navigation/native';
 import {useHttp, endpoint} from 'api';
 
-const useLogin = () => {
+const useRegister = () => {
   const {loading, postData} = useHttp();
 
-  const submit = (email, password) => {
+  const navigation = useNavigation();
+
+  const submit = email => {
     const param = {
       email: email,
-      password: password,
-      fcm_token: 'fcm_token',
     };
 
     postData({
-      url: endpoint.POST_LOGIN,
+      url: endpoint.POST_REGISTER_EMAIL,
       params: param,
       onSuccess: res => {
         const {status} = res;
         if (status === 200) {
-          console.log(res);
+          navigation.navigate('Verify');
         }
       },
       onError: error => {
@@ -28,4 +29,4 @@ const useLogin = () => {
   return {loading, submit};
 };
 
-export default useLogin;
+export default useRegister;
