@@ -6,8 +6,13 @@ import {Container, Button, Text} from 'component';
 import {images} from 'assets';
 
 import styles, {setMarginTop} from './styles';
+import useForgot from '../useForgot';
 
-const VerifyForgotScreen = ({navigation}) => {
+const VerifyForgotScreen = ({route, navigation}) => {
+  const {email} = route.params;
+
+  const {loading, verify} = useForgot();
+
   const [code, setCode] = useState('');
 
   return (
@@ -37,10 +42,11 @@ const VerifyForgotScreen = ({navigation}) => {
             />
           </View>
           <Button
+            loading={loading}
             style={styles.button}
             onPress={() => {
               if (code.length > 4) {
-                navigation.navigate('ForgotData');
+                verify(email, code);
               }
             }}>
             Verifikasi
