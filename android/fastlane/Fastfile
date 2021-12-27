@@ -120,7 +120,7 @@ platform :android do
       release_notes: 'Development release',
       apk: "./app-release.apk",
       notify_testers: true,
-      destinations: 'Production Release'
+      destinations: 'Development Release'
     )
     telegram(
       token: TG_BOT_TOKEN,

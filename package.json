@@ -16,7 +16,11 @@
     "android:clean": "cd android && ./gradlew clean && cd ..",
     "android:releaseDebug": "cd android && ENVFILE=.env.development && ./gradlew assembleDebug && cd ..",
     "android:releaseDev": "cd android && ENVFILE=.env.development && ./gradlew assembleRelease && cd ..",
-    "android:releaseProd": "cd android && ENVFILE=.env.production && ./gradlew assembleRelease && cd .."
+    "android:releaseProd": "cd android && ENVFILE=.env.production && ./gradlew assembleRelease && cd ..",
+    "android:fastlaneACProd": "cd android && fastlane app_center_prod --env prod && cd ..",
+    "android:fastlaneACDev": "cd android && fastlane app_center_dev && cd ..",
+    "ios:fastlaneTF": "cd ios && fastlane tflight --env prod && cd ..",
+    "ios:fastlaneACDev": "cd ios && fastlane app_center && cd .."
   },
   "dependencies": {
     "@react-native-clipboard/clipboard": "^1.9.0",
