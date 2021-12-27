@@ -17,7 +17,7 @@ const useRegister = () => {
       onSuccess: res => {
         const {status} = res;
         if (status === 200) {
-          navigation.navigate('Verify');
+          navigation.navigate('Verify', {email: email});
         }
       },
       onError: error => {
@@ -26,7 +26,28 @@ const useRegister = () => {
     });
   };
 
-  return {loading, submit};
+  const verify = (email, code) => {
+    const param = {
+      email: email,
+      code: code,
+    };
+
+    postData({
+      url: endpoint.POST_REGISTER_VERIFY,
+      params: param,
+      onSuccess: res => {
+        const {status} = res;
+        if (status === 200) {
+          navigation.navigate('RegisterData', {email: email, code: code});
+        }
+      },
+      onError: error => {
+        console.log(error);
+      },
+    });
+  };
+
+  return {loading, submit, verify};
 };
 
 export default useRegister;

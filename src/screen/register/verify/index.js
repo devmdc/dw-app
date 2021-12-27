@@ -6,9 +6,14 @@ import {Container, Button, Text} from 'component';
 import {images} from 'assets';
 
 import styles, {setMarginTop} from './styles';
+import useRegister from '../useRegister';
 
-const VerifyScreen = ({navigation}) => {
+const VerifyScreen = ({route, navigation}) => {
+  const {email} = route.params;
+
   const [code, setCode] = useState('');
+
+  const {loading, verify} = useRegister();
 
   return (
     <Container>
@@ -37,10 +42,11 @@ const VerifyScreen = ({navigation}) => {
             />
           </View>
           <Button
+            loading={loading}
             style={styles.button}
             onPress={() => {
               if (code.length > 4) {
-                navigation.navigate('RegisterData');
+                verify(email, code);
               }
             }}>
             Verifikasi
