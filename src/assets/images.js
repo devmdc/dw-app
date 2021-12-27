@@ -8,6 +8,12 @@ const images = {
   logo: require('./images/logo.png'),
   logoTitle: require('./images/logoTitle.png'),
   monas: require('./images/monas.png'),
+  notification: require('./images/notification.png'),
+  notificationActive: require('./images/notificationActive.png'),
+  user: require('./images/user.png'),
+  userActive: require('./images/userActive.png'),
+  vacancies: require('./images/vacancies.png'),
+  vacanciesActive: require('./images/vacanciesActive.png'),
 };
 
 export {images};

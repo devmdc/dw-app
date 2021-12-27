@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import TabBottomNavigator from './TabBottomNavigator';
 import WelcomeScreen from '../screen/';
 import LoginScreen from '../screen/login';
 import RegisterScreen from '../screen/register';
@@ -28,11 +29,27 @@ function AuthStackScreen() {
   );
 }
 
+const MainStack = createStackNavigator();
+function MainStackScreen() {
+  return (
+    <MainStack.Navigator screenOptions={{headerShown: false}}>
+      <MainStack.Screen
+        name="BottomTab"
+        component={TabBottomNavigator}
+        options={{
+          animationEnabled: false,
+        }}
+      />
+    </MainStack.Navigator>
+  );
+}
+
 const AppContainer = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={'Auth'} headerMode={'none'}>
+      <Stack.Navigator initialRouteName={'Main'} headerMode={'none'}>
         <Stack.Screen name={'Auth'} component={AuthStackScreen} />
+        <Stack.Screen name={'Main'} component={MainStackScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

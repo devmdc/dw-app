@@ -16,8 +16,8 @@ const isDev = Config.ISDEV === 'true';
 const Container = ({
   children,
   style,
-  color = colors.pure,
-  statusBarColor = colors.pure,
+  color = colors.dwWhite,
+  statusBarColor = colors.dwWhite,
   padding = 0,
   needTouchOutside = false,
 }) => {
