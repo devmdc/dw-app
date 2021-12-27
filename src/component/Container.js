@@ -17,7 +17,7 @@ const Container = ({
   children,
   style,
   color = colors.dwWhite,
-  statusBarColor = colors.dwWhite,
+  statusBarColor = colors.dwDarkBlue,
   padding = 0,
   needTouchOutside = false,
 }) => {
@@ -39,7 +39,7 @@ const Container = ({
       <View
         style={[
           styles.statusBar,
-          {backgroundColor: isDev ? colors.yellow : statusBarColor},
+          {backgroundColor: isDev ? colors.dwBrightYellow : statusBarColor},
         ]}>
         <StatusBar
           translucent

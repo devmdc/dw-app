@@ -11,6 +11,7 @@ const Tab = createBottomTabNavigator();
 export default function TabBottomNavigator() {
   return (
     <Tab.Navigator
+      screenOptions={{headerShown: false}}
       initialRouteName={'Vacancy'}
       tabBar={props => <BottomBar {...props} />}>
       <Tab.Screen name="Vacancy" component={VacancyScreen} />

@@ -57,7 +57,6 @@ const BottomBar = ({state, descriptors, navigation}) => {
 
         const setTitle = () => {
           let text = 'Vacancies';
-          let isBold = true;
           switch (index) {
             case 0:
               text = 'Vacancies';
