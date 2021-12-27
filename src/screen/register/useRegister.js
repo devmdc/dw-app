@@ -47,7 +47,32 @@ const useRegister = () => {
     });
   };
 
-  return {loading, submit, verify};
+  const submitData = (email, code, name, password) => {
+    const param = {
+      email: email,
+      code: code,
+      full_name: name,
+      dob: '1990-10-15',
+      password: password,
+      fcm_token: 'token',
+    };
+
+    postData({
+      url: endpoint.POST_REGISTER_DATA,
+      params: param,
+      onSuccess: res => {
+        const {status} = res;
+        if (status === 200) {
+          console.log(res);
+        }
+      },
+      onError: error => {
+        console.log(error);
+      },
+    });
+  };
+
+  return {loading, submit, verify, submitData};
 };
 
 export default useRegister;

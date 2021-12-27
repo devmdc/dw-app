@@ -73,6 +73,15 @@ const showMsgError = msg => {
   });
 };
 
+const showMsgWarning = msg => {
+  showMessage({
+    message: 'Warning',
+    description: msg,
+    type: 'warning',
+    onPress: () => hideMessage(),
+  });
+};
+
 const showMsgSuccess = msg => {
   showMessage({
     message: 'Success',
@@ -86,4 +95,11 @@ const isSignin = () => {
   return !isEmpty(store.getState().user.data);
 };
 
-export {useHttp, getAuthHeader, isSignin, showMsgError, showMsgSuccess};
+export {
+  useHttp,
+  getAuthHeader,
+  isSignin,
+  showMsgError,
+  showMsgWarning,
+  showMsgSuccess,
+};

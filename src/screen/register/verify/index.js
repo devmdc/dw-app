@@ -11,9 +11,9 @@ import useRegister from '../useRegister';
 const VerifyScreen = ({route, navigation}) => {
   const {email} = route.params;
 
-  const [code, setCode] = useState('');
-
   const {loading, verify} = useRegister();
+
+  const [code, setCode] = useState('');
 
   return (
     <Container>
