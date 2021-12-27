@@ -4,10 +4,18 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Container, Button, Text, Input} from 'component';
 import {images} from 'assets';
 import {validate} from 'utils';
+import {useHttp} from 'api';
 
 import styles, {setMarginTop} from './styles';
+import useForgot from '../useForgot';
 
-const ForgotDataScreen = ({navigation}) => {
+const ForgotDataScreen = ({route, navigation}) => {
+  const {email, code} = route.params;
+
+  const {loading, submitData} = useForgot();
+
+  const {showMsgWarning} = useHttp();
+
   const [initial, setInitial] = useState(true);
   const [password, setPassword] = useState({value: '', isShow: true});
   const [rePassword, setRePassword] = useState({value: '', isShow: true});
@@ -73,11 +81,16 @@ const ForgotDataScreen = ({navigation}) => {
             />
           </View>
           <Button
+            loading={loading}
             style={styles.button}
             onPress={() => {
               setInitial(false);
               if (passError === null && rePassError === null) {
-                navigation.navigate('Login');
+                if (password !== rePassError) {
+                  showMsgWarning('Password are not matching');
+                } else {
+                  submitData(email, code, password);
+                }
               }
             }}>
             Ubah Password

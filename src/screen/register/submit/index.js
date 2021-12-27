@@ -13,6 +13,7 @@ const RegisterDataScreen = ({route, navigation}) => {
   const {email, code} = route.params;
 
   const {loading, submitData} = useRegister();
+
   const {showMsgWarning} = useHttp();
 
   const [initial, setInitial] = useState(true);
