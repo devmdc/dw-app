@@ -6,8 +6,11 @@ import {images} from 'assets';
 import {validate} from 'utils';
 
 import styles, {setMarginTop} from './styles';
+import useForgot from './useForgot';
 
 const ForgotScreen = ({navigation}) => {
+  const {loading, submit} = useForgot();
+
   const [initial, setInitial] = useState(true);
   const [email, setEmail] = useState('');
 
@@ -37,11 +40,12 @@ const ForgotScreen = ({navigation}) => {
             />
           </View>
           <Button
+            loading={loading}
             style={styles.button}
             onPress={() => {
               setInitial(false);
               if (emailError === null) {
-                navigation.navigate('VerifyForgot');
+                submit(email);
               }
             }}>
             Submit
