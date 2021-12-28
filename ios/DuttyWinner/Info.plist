@@ -28,11 +28,18 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.googleusercontent.apps.255241024812-4ecqmdbq49rsn4r74uv82l9tctd2tl0n</string>
+        <string>fb934401497190762</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+  <key>FacebookAppID</key>
+  <string>934401497190762</string>
+  <key>FacebookDisplayName</key>
+  <string>Dutty Winner</string>
+  <key>ITSAppUsesNonExemptEncryption</key>
+  <false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
