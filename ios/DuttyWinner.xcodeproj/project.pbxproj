@@ -17,6 +17,8 @@
 		6D3B7C742771EA0800AECB96 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A34729ED6B3433599F06835 /* Poppins-Medium.ttf */; };
 		6D3B7C752771EA0800AECB96 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1AF64E2F34E64A31920E20C3 /* Poppins-Regular.ttf */; };
 		6D3B7C762771EA0800AECB96 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 548815BF2A8141B8B30C702F /* Poppins-SemiBold.ttf */; };
+		6D42F139277A92F200F22842 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D42F138277A92F200F22842 /* GoogleService-Info.plist */; };
+		6D42F13A277A92F200F22842 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D42F138277A92F200F22842 /* GoogleService-Info.plist */; };
 		6D69213C2769D4EA00713089 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		6D69213D2769D4EA00713089 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		6D6921412769D4EA00713089 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -57,6 +59,7 @@
 		4D3C3DC6EBD9CC3D0C0115CE /* Pods-App-DuttyWinner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-DuttyWinner.release.xcconfig"; path = "Target Support Files/Pods-App-DuttyWinner/Pods-App-DuttyWinner.release.xcconfig"; sourceTree = "<group>"; };
 		548815BF2A8141B8B30C702F /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-SemiBold.ttf"; path = "../src/assets/fonts/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		5A34729ED6B3433599F06835 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Medium.ttf"; path = "../src/assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		6D42F138277A92F200F22842 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6D6921492769D4EA00713089 /* DuttyWinnerDevelopment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DuttyWinnerDevelopment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D69214A2769D4EA00713089 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7AE4D8EF85364CFCA58FB4A3 /* Pods-DuttyWinner-DuttyWinnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DuttyWinner-DuttyWinnerTests.release.xcconfig"; path = "Target Support Files/Pods-DuttyWinner-DuttyWinnerTests/Pods-DuttyWinner-DuttyWinnerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +131,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				6D42F138277A92F200F22842 /* GoogleService-Info.plist */,
 			);
 			name = DuttyWinner;
 			sourceTree = "<group>";
@@ -336,6 +340,7 @@
 				BD20C50869114230833C3CF9 /* Poppins-Medium.ttf in Resources */,
 				B663FA1A69484C99A9DA8B66 /* Poppins-Regular.ttf in Resources */,
 				607714F3FB354176ACD368CB /* Poppins-SemiBold.ttf in Resources */,
+				6D42F139277A92F200F22842 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +354,7 @@
 				6D3B7C742771EA0800AECB96 /* Poppins-Medium.ttf in Resources */,
 				6D3B7C752771EA0800AECB96 /* Poppins-Regular.ttf in Resources */,
 				6D3B7C762771EA0800AECB96 /* Poppins-SemiBold.ttf in Resources */,
+				6D42F13A277A92F200F22842 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Image, TouchableOpacity} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Container, Button, Text, Input} from 'component';
@@ -11,13 +11,18 @@ import useLogin from './useLogin';
 
 const LoginScreen = ({navigation}) => {
   const [initial, setInitial] = useState(true);
-  const {loading, submit} = useLogin();
+  const {loading, submit, configGoogle, googleLogin} = useLogin();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const emailError = validate('email', email);
   const passError = validate('password', password);
+
+  useEffect(() => {
+    configGoogle();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Container>
@@ -99,7 +104,7 @@ const LoginScreen = ({navigation}) => {
             />
           </View>
           <View style={styles.socmedWrapper}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={googleLogin}>
               <Image
                 style={[
                   styles.imageSocmed,

@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "255241024812",
+    "project_id": "duty-winner",
+    "storage_bucket": "duty-winner.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255241024812:android:0b7a9dfd508e1afbc0e889",
+        "android_client_info": {
+          "package_name": "com.duttywinner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255241024812-hjift07qd3iuiti1sbbauvl2m6ahesln.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.duttywinner",
+            "certificate_hash": "11bb029cf1a7278b2cfc5ef803c2f05b0e14ef0b"
+          }
+        },
+        {
+          "client_id": "255241024812-pnapc8vpol1rnuv9k58fo8dcldkbfjvg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.duttywinner",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "255241024812-haca1jjmgajfr8vacujf2ulbvaso4c8t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJI5v2eJbZFmNAcI_Qm_B2NkWV0BQbY70"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255241024812-haca1jjmgajfr8vacujf2ulbvaso4c8t.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "255241024812-4ecqmdbq49rsn4r74uv82l9tctd2tl0n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "co.id.mdc.DuttyWinner"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
