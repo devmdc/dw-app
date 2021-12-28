@@ -4,6 +4,12 @@ import {
   GoogleSignin,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
+import {
+  LoginManager,
+  AccessToken,
+  GraphRequest,
+  GraphRequestManager,
+} from 'react-native-fbsdk-next';
 
 const useLogin = () => {
   const {loading, postData, showMsgWarning} = useHttp();
@@ -47,6 +53,88 @@ const useLogin = () => {
         showMsgWarning('some other error happened');
       }
     }
+  };
+
+  const fbAuth = async () => {
+    let result;
+    try {
+      result = await LoginManager.logInWithPermissions([
+        'public_profile',
+        'email',
+      ]);
+    } catch (nativeError) {
+      try {
+        result = await LoginManager.logInWithPermissions([
+          'public_profile',
+          'email',
+        ]);
+      } catch (webError) {
+        // show error message to the user if none of the FB screens
+        // did not open
+        showMsgWarning('Web error, Facebook did not open');
+      }
+    }
+    // handle the case that users clicks cancel button in Login view
+    if (result.isCancelled) {
+      showMsgWarning('Login cancelled');
+    } else {
+      // Create a graph request asking for user information
+      FBGraphRequest('id, name, email, picture.type(large)', FBLoginCallback);
+    }
+  };
+
+  const FBGraphRequest = async (fields, callback) => {
+    const accessData = await AccessToken.getCurrentAccessToken();
+    const infoRequest = new GraphRequest(
+      '/me',
+      {
+        accessToken: accessData.accessToken,
+        parameters: {
+          fields: {
+            string: fields,
+          },
+        },
+      },
+      callback.bind(this),
+    );
+    // Execute the graph request created above
+    new GraphRequestManager().addRequest(infoRequest).start();
+  };
+
+  const FBLoginCallback = async (error, result) => {
+    if (error) {
+      showMsgWarning(error.toString());
+    } else {
+      // Retrieve and save user details in state. In our case with
+      // Redux and custom action saveUser
+      fbLogin(result.email, result.name, result.id);
+    }
+  };
+
+  const fbLogin = (email, name, fb_id) => {
+    const param = {
+      email: email,
+      name: name,
+      facebook_id: fb_id,
+      fcm_token: 'fcm_token',
+    };
+    console.log(param);
+    postData({
+      url: endpoint.POST_LOGIN_FACEBOOK,
+      params: param,
+      onSuccess: res => {
+        const {status, message} = res;
+
+        if (status === 200) {
+          RootNav.navigateToVacancies();
+        } else {
+          showMsgWarning(message);
+        }
+      },
+      onError: error => {
+        console.log(error);
+      },
+    });
   };
 
   const googleLogin = (email, name, google_id) => {
@@ -98,7 +186,7 @@ const useLogin = () => {
     });
   };
 
-  return {loading, submit, configGoogle, googleAuth};
+  return {loading, submit, configGoogle, googleAuth, fbAuth};
 };
 
 export default useLogin;

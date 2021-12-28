@@ -36,6 +36,8 @@
 	<string>1</string>
 	<key>FacebookAppID</key>
 	<string>934401497190762</string>
+  <key>FacebookClientToken</key>
+  <string>7330596a135ca6cce13b1788ef9cceb9</string>
 	<key>FacebookDisplayName</key>
 	<string>Duty Winner</string>
 	<key>ITSAppUsesNonExemptEncryption</key>

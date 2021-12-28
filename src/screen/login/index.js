@@ -11,7 +11,7 @@ import useLogin from './useLogin';
 
 const LoginScreen = ({navigation}) => {
   const [initial, setInitial] = useState(true);
-  const {loading, submit, configGoogle, googleAuth} = useLogin();
+  const {loading, submit, configGoogle, googleAuth, fbAuth} = useLogin();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -115,7 +115,7 @@ const LoginScreen = ({navigation}) => {
               />
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={fbAuth}>
               <Image
                 style={[
                   styles.imageSocmed,
