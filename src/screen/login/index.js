@@ -11,7 +11,7 @@ import useLogin from './useLogin';
 
 const LoginScreen = ({navigation}) => {
   const [initial, setInitial] = useState(true);
-  const {loading, submit, configGoogle, googleLogin} = useLogin();
+  const {loading, submit, configGoogle, googleAuth} = useLogin();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -104,7 +104,7 @@ const LoginScreen = ({navigation}) => {
             />
           </View>
           <View style={styles.socmedWrapper}>
-            <TouchableOpacity onPress={googleLogin}>
+            <TouchableOpacity onPress={googleAuth}>
               <Image
                 style={[
                   styles.imageSocmed,

@@ -26,23 +26,12 @@ const useLogin = () => {
     }
   };
 
-  const googleLogin = async () => {
+  const googleAuth = async () => {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      console.log(userInfo);
-      // const {data, status, message} = await loginGoogle(
-      //   userInfo.user.email,
-      //   userInfo.user.name,
-      //   userInfo.idToken,
-      //   token,
-      // );
 
-      // if (status === 200) {
-      //   RootNav.navigateToVacancies();
-      // } else {
-      //   showMsgWarning(message);
-      // }
+      googleLogin(userInfo.user.email, userInfo.user.name, userInfo.idToken);
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow
@@ -60,6 +49,32 @@ const useLogin = () => {
     }
   };
 
+  const googleLogin = (email, name, google_id) => {
+    const param = {
+      email: email,
+      name: name,
+      google_id: google_id,
+      fcm_token: 'fcm_token',
+    };
+
+    postData({
+      url: endpoint.POST_LOGIN_GOOGLE,
+      params: param,
+      onSuccess: res => {
+        const {status, message} = res;
+
+        if (status === 200) {
+          RootNav.navigateToVacancies();
+        } else {
+          showMsgWarning(message);
+        }
+      },
+      onError: error => {
+        console.log(error);
+      },
+    });
+  };
+
   const submit = (email, password) => {
     const param = {
       email: email,
@@ -72,6 +87,7 @@ const useLogin = () => {
       params: param,
       onSuccess: res => {
         const {status} = res;
+
         if (status === 200) {
           RootNav.navigateToVacancies();
         }
@@ -82,7 +98,7 @@ const useLogin = () => {
     });
   };
 
-  return {loading, submit, configGoogle, googleLogin};
+  return {loading, submit, configGoogle, googleAuth};
 };
 
 export default useLogin;
