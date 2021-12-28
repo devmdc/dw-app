@@ -118,7 +118,7 @@ const useLogin = () => {
       facebook_id: fb_id,
       fcm_token: 'fcm_token',
     };
-    console.log(param);
+
     postData({
       url: endpoint.POST_LOGIN_FACEBOOK,
       params: param,
