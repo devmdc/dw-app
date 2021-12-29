@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Image, TouchableOpacity} from 'react-native';
+import {View, Image, TouchableOpacity, Platform} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Container, Button, Text, Input} from 'component';
 import {colors, images} from 'assets';
@@ -11,7 +11,8 @@ import useLogin from './useLogin';
 
 const LoginScreen = ({navigation}) => {
   const [initial, setInitial] = useState(true);
-  const {loading, submit, configGoogle, googleAuth, fbAuth} = useLogin();
+  const {loading, submit, configGoogle, googleAuth, fbAuth, appleAuths} =
+    useLogin();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -125,17 +126,18 @@ const LoginScreen = ({navigation}) => {
                 resizeMode={'cover'}
               />
             </TouchableOpacity>
-
-            <TouchableOpacity>
-              <Image
-                style={[
-                  styles.imageSocmed,
-                  setMarginHorizontal('marginLeft', 10),
-                ]}
-                source={images.loginApple}
-                resizeMode={'cover'}
-              />
-            </TouchableOpacity>
+            {Platform.OS === 'ios' && (
+              <TouchableOpacity onPress={appleAuths}>
+                <Image
+                  style={[
+                    styles.imageSocmed,
+                    setMarginHorizontal('marginLeft', 10),
+                  ]}
+                  source={images.loginApple}
+                  resizeMode={'cover'}
+                />
+              </TouchableOpacity>
+            )}
           </View>
         </View>
       </KeyboardAwareScrollView>
