@@ -39,7 +39,10 @@ const useRegister = () => {
       onSuccess: res => {
         const {status} = res;
         if (status === 200) {
-          navigation.navigate('RegisterData', {email: email, code: code});
+          navigation.navigate('RegisterData', {
+            email: email,
+            code: parseInt(code, 10),
+          });
         }
       },
       onError: error => {

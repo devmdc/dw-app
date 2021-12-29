@@ -39,7 +39,10 @@ const useForgot = () => {
       onSuccess: res => {
         const {status} = res;
         if (status === 200) {
-          navigation.navigate('ForgotData', {email: email, code: code});
+          navigation.navigate('ForgotData', {
+            email: email,
+            code: parseInt(code, 10),
+          });
         }
       },
       onError: error => {
