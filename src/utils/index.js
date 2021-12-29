@@ -78,6 +78,25 @@ export function isEmpty(obj) {
   return true;
 }
 
+/**
+ * @description Create random String or Name
+ * @author Agung Wijaya <mdc.co.id>
+ * @date 2021-11-01
+ * @export
+ * @param {int} [length=Int]
+ * @returns
+ */
+export function makeRandomName(length) {
+  var result = '';
+  var characters =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
+  for (var i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
 import * as RootNav from './RootNavigation';
 
 export {RootNav};

@@ -2,6 +2,7 @@ import Config from 'react-native-config';
 
 const endpoint = {
   POST_LOGIN: Config.BASEURL + 'auth/login/manual',
+  POST_LOGIN_APPLE: Config.BASEURL + 'auth/login/apple',
   POST_LOGIN_GOOGLE: Config.BASEURL + 'auth/login/google',
   POST_LOGIN_FACEBOOK: Config.BASEURL + 'auth/login/facebook',
   POST_REGISTER_EMAIL: Config.BASEURL + 'auth/register/submit_email',

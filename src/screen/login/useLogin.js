@@ -1,5 +1,6 @@
 import {useHttp, endpoint} from 'api';
-import {RootNav} from 'utils';
+import {RootNav, makeRandomName} from 'utils';
+import jwt_decode from 'jwt-decode';
 import {
   GoogleSignin,
   statusCodes,
@@ -10,6 +11,7 @@ import {
   GraphRequest,
   GraphRequestManager,
 } from 'react-native-fbsdk-next';
+import {appleAuth} from '@invertase/react-native-apple-authentication';
 
 const useLogin = () => {
   const {loading, postData, showMsgWarning} = useHttp();
@@ -29,6 +31,23 @@ const useLogin = () => {
       });
     } catch (error) {
       console.log('[error GoogleSignin Configure]', error);
+    }
+  };
+
+  const appleAuths = async () => {
+    const appleAuthRequestResponse = await appleAuth.performRequest({
+      requestedOperation: appleAuth.Operation.LOGIN,
+      requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
+    });
+
+    const {email} = jwt_decode(appleAuthRequestResponse.identityToken);
+
+    const credentialState = await appleAuth.getCredentialStateForUser(
+      appleAuthRequestResponse.user,
+    );
+
+    if (credentialState === appleAuth.State.AUTHORIZED) {
+      appleLogin(email, appleAuthRequestResponse);
     }
   };
 
@@ -163,6 +182,30 @@ const useLogin = () => {
     });
   };
 
+  const appleLogin = (email, appleAuthRequestResponse) => {
+    let param = {
+      email: email,
+      name: `Guest ${makeRandomName(5)}`,
+      apple_id: appleAuthRequestResponse.identityToken,
+      fcm_token: 'fcm_token',
+    };
+
+    postData({
+      url: endpoint.POST_LOGIN_APPLE,
+      params: param,
+      onSuccess: res => {
+        const {status} = res;
+
+        if (status === 200) {
+          RootNav.navigateToVacancies();
+        }
+      },
+      onError: error => {
+        console.log(error);
+      },
+    });
+  };
+
   const submit = (email, password) => {
     const param = {
       email: email,
@@ -186,7 +229,7 @@ const useLogin = () => {
     });
   };
 
-  return {loading, submit, configGoogle, googleAuth, fbAuth};
+  return {loading, submit, configGoogle, googleAuth, fbAuth, appleAuths};
 };
 
 export default useLogin;
