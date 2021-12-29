@@ -4,7 +4,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Container, Button, Text, Input} from 'component';
 import {images} from 'assets';
 import {validate} from 'utils';
-import {useHttp} from 'api';
+import {showMsgWarning} from 'api';
 
 import styles, {setMarginTop} from './styles';
 import useRegister from '../useRegister';
@@ -13,8 +13,6 @@ const RegisterDataScreen = ({route, navigation}) => {
   const {email, code} = route.params;
 
   const {loading, submitData} = useRegister();
-
-  const {showMsgWarning} = useHttp();
 
   const [initial, setInitial] = useState(true);
   const [name, setName] = useState('');
@@ -101,10 +99,10 @@ const RegisterDataScreen = ({route, navigation}) => {
                 passError === null &&
                 rePassError === null
               ) {
-                if (password !== rePassError) {
+                if (password.value !== rePassword.value) {
                   showMsgWarning('Password are not matching');
                 } else {
-                  submitData(email, code, name, password);
+                  submitData(email, code, name, password.value);
                 }
               }
             }}>

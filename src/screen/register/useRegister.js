@@ -30,7 +30,7 @@ const useRegister = () => {
   const verify = (email, code) => {
     const param = {
       email: email,
-      code: code,
+      code: parseInt(code, 10),
     };
 
     postData({
@@ -41,7 +41,7 @@ const useRegister = () => {
         if (status === 200) {
           navigation.navigate('RegisterData', {
             email: email,
-            code: parseInt(code, 10),
+            code: code,
           });
         }
       },
@@ -54,7 +54,7 @@ const useRegister = () => {
   const submitData = (email, code, name, password) => {
     const param = {
       email: email,
-      code: code,
+      code: parseInt(code, 10),
       full_name: name,
       dob: '1990-10-15',
       password: password,

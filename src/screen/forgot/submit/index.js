@@ -4,7 +4,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Container, Button, Text, Input} from 'component';
 import {images} from 'assets';
 import {validate} from 'utils';
-import {useHttp} from 'api';
+import {showMsgWarning} from 'api';
 
 import styles, {setMarginTop} from './styles';
 import useForgot from '../useForgot';
@@ -13,8 +13,6 @@ const ForgotDataScreen = ({route, navigation}) => {
   const {email, code} = route.params;
 
   const {loading, submitData} = useForgot();
-
-  const {showMsgWarning} = useHttp();
 
   const [initial, setInitial] = useState(true);
   const [password, setPassword] = useState({value: '', isShow: true});

@@ -30,7 +30,7 @@ const useForgot = () => {
   const verify = (email, code) => {
     const param = {
       email: email,
-      code: code,
+      code: parseInt(code, 10),
     };
 
     postData({
@@ -54,7 +54,7 @@ const useForgot = () => {
   const submitData = (email, code, password) => {
     const param = {
       email: email,
-      code: code,
+      code: parseInt(code, 10),
       password: password,
     };
 
