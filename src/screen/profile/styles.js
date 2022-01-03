@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {colors} from 'assets';
 
 export function setMarginTop(number) {
   return {marginTop: number};
@@ -14,5 +15,14 @@ export default StyleSheet.create({
   },
   textInfo: {
     textAlign: 'center',
+  },
+  shadowNavbar: {
+    shadowColor: colors.dwGrey,
+    shadowOffset: {
+      width: 0.5,
+      height: 3,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 2.0,
   },
 });

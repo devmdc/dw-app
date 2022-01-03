@@ -49,7 +49,7 @@ function MainStackScreen() {
 const AppContainer = () => {
   return (
     <NavigationContainer ref={RootNav.navigationRef}>
-      <Stack.Navigator initialRouteName={'Auth'} headerMode={'none'}>
+      <Stack.Navigator initialRouteName={'Main'} headerMode={'none'}>
         <Stack.Screen name={'Auth'} component={AuthStackScreen} />
         <Stack.Screen name={'Main'} component={MainStackScreen} />
       </Stack.Navigator>
