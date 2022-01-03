@@ -1,21 +1,44 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Image, TouchableOpacity} from 'react-native';
 import DropShadow from 'react-native-drop-shadow';
-import {Container, Header, Text} from 'component';
+import {Container, Header, Text, Input} from 'component';
+import {colors, images} from 'assets';
 
-import styles, {setMarginTop} from './styles';
+import styles from './styles';
 
 const ProfileScreen = ({navigation}) => {
   return (
-    <Container>
+    <Container color={colors.dwSoftGrey}>
       <DropShadow style={styles.shadowNavbar}>
         <Header logo />
       </DropShadow>
-      {/* <View>
-        <Text style={[setMarginTop(50), styles.textInfo]} fontSize={13}>
-          Profile
-        </Text>
-      </View> */}
+      <View style={styles.wrapper}>
+        <View style={styles.wrapperProfile}>
+          <Image
+            style={styles.imgProfile}
+            source={images.profile}
+            resizeMode={'cover'}
+          />
+          <Text bold style={styles.txtName} fontSize={13}>
+            Andy
+          </Text>
+          <Input editable={false} value={'andy@gmail.com'} />
+          <Input
+            style={styles.marginT}
+            placeholder={'081234567890'}
+            onChangeTextValue={text => {
+              console.log(text);
+            }}
+            rightIcon={
+              <TouchableOpacity onPress={() => console.log('edit')}>
+                <Text bold fontSize={13}>
+                  Edit
+                </Text>
+              </TouchableOpacity>
+            }
+          />
+        </View>
+      </View>
     </Container>
   );
 };

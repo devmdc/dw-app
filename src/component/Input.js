@@ -26,7 +26,12 @@ const Input = ({
   ...props
 }) => (
   <View
-    style={[styles.container, isError ? styles.borderError : {}, style]}
+    style={[
+      styles.container,
+      isError ? styles.borderError : {},
+      !editable ? styles.containerDisabled : {},
+      style,
+    ]}
     {...props}>
     {leftIcon && leftIcon}
 
@@ -65,6 +70,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  containerDisabled: {
+    backgroundColor: colors.dwLightGrey,
+  },
   borderError: {
     borderColor: colors.dwRed,
   },
@@ -78,7 +86,7 @@ const styles = StyleSheet.create({
     color: colors.black,
   },
   disabled: {
-    color: colors.disabled,
+    color: colors.dwWhite,
   },
 });
 

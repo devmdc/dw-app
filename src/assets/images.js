@@ -12,6 +12,7 @@ const images = {
   monas: require('./images/monas.png'),
   notification: require('./images/notification.png'),
   notificationActive: require('./images/notificationActive.png'),
+  profile: require('./images/profile.png'),
   user: require('./images/user.png'),
   userActive: require('./images/userActive.png'),
   vacancies: require('./images/vacancies.png'),

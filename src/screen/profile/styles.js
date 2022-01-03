@@ -13,8 +13,32 @@ export default StyleSheet.create({
   container: {
     flex: 1,
   },
+  wrapper: {
+    flex: 1,
+    marginHorizontal: 20,
+    marginVertical: 20,
+  },
+  wrapperProfile: {
+    backgroundColor: colors.dwWhite,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    padding: 16,
+  },
   textInfo: {
     textAlign: 'center',
+  },
+  marginT: {
+    marginTop: 10,
+  },
+  imgProfile: {
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+  },
+  txtName: {
+    marginVertical: 15,
+    textTransform: 'uppercase',
   },
   shadowNavbar: {
     shadowColor: colors.dwGrey,
