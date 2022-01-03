@@ -6,7 +6,11 @@ import {colors, images} from 'assets';
 
 import styles from './styles';
 
+import MenuCollection from './menu';
+
 const ProfileScreen = ({navigation}) => {
+  let data = require('./menu/menu.json');
+
   return (
     <Container color={colors.dwSoftGrey}>
       <DropShadow style={styles.shadowNavbar}>
@@ -38,6 +42,7 @@ const ProfileScreen = ({navigation}) => {
             }
           />
         </View>
+        <MenuCollection data={data} />
       </View>
     </Container>
   );

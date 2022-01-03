@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Profile Setting",
+        "image": "usermenu"
+    },
+    {
+        "name": "Job Preference",
+        "image": "job"
+    },
+    {
+        "name": "My Experience",
+        "image": "experience"
+    },
+    {
+        "name": "Change password",
+        "image": "lock"
+    },
+    {
+        "name": "Terms Of Service",
+        "image": "tos"
+    },
+    {
+        "name": "Privacy Policy",
+        "image": "info"
+    },
+    {
+        "name": "Log Out",
+        "image": "out"
+    }
+]

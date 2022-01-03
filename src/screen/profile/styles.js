@@ -24,6 +24,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     borderRadius: 5,
     padding: 16,
+    marginBottom: 5,
   },
   textInfo: {
     textAlign: 'center',
