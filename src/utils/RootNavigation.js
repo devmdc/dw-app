@@ -16,6 +16,22 @@ export function navigateToVacancies() {
   navigationRef.current?.dispatch(resetAction);
 }
 
+export function navigateToWelcome() {
+  const resetAction = CommonActions.reset({
+    index: 0,
+    routes: [
+      {
+        name: 'Auth',
+        state: {
+          routes: [{name: 'Welcome'}],
+        },
+      },
+    ],
+  });
+
+  navigationRef.current?.dispatch(resetAction);
+}
+
 export function navigateToLogin() {
   const resetAction = CommonActions.reset({
     index: 0,

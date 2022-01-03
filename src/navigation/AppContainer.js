@@ -13,6 +13,8 @@ import ForgotDataScreen from '../screen/forgot/submit';
 
 import {RootNav} from 'utils';
 
+import {store} from '../store';
+
 const Stack = createStackNavigator();
 
 const AuthStack = createStackNavigator();
@@ -49,7 +51,9 @@ function MainStackScreen() {
 const AppContainer = () => {
   return (
     <NavigationContainer ref={RootNav.navigationRef}>
-      <Stack.Navigator initialRouteName={'Main'} headerMode={'none'}>
+      <Stack.Navigator
+        initialRouteName={store.getState().user.data.token ? 'Main' : 'Auth'}
+        headerMode={'none'}>
         <Stack.Screen name={'Auth'} component={AuthStackScreen} />
         <Stack.Screen name={'Main'} component={MainStackScreen} />
       </Stack.Navigator>

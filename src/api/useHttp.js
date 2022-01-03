@@ -17,7 +17,7 @@ const useHttp = (initialData = []) => {
     api
       .post(url, params, {
         headers: {
-          Authorization: `Bearer ${store.getState().user.data.users_token}`,
+          Authorization: `Bearer ${store.getState().user.data.token}`,
         },
       })
       .then(res => {
@@ -36,7 +36,7 @@ const useHttp = (initialData = []) => {
     api
       .get(url, {
         headers: {
-          Authorization: `Bearer ${store.getState().user.data.users_token}`,
+          Authorization: `Bearer ${store.getState().user.data.token}`,
         },
       })
       .then(res => {
@@ -60,7 +60,7 @@ const DEFAULT_PARAMS = {
 
 const getAuthHeader = () => ({
   headers: {
-    Authorization: `Bearer ${store.getState().user.data.users_token}`,
+    Authorization: `Bearer ${store.getState().user.data.token}`,
   },
 });
 

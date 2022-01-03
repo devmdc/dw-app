@@ -5,11 +5,13 @@ import {Container, Header, Text, Input} from 'component';
 import {colors, images} from 'assets';
 
 import styles from './styles';
-
 import MenuCollection from './menu';
+import useProfile from './useProfile';
 
 const ProfileScreen = ({navigation}) => {
   let data = require('./menu/menu.json');
+
+  const {logout} = useProfile();
 
   return (
     <Container color={colors.dwSoftGrey}>
@@ -42,7 +44,7 @@ const ProfileScreen = ({navigation}) => {
             }
           />
         </View>
-        <MenuCollection data={data} />
+        <MenuCollection data={data} logout={logout} />
       </View>
     </Container>
   );

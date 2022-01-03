@@ -12,6 +12,8 @@ import {
   GraphRequestManager,
 } from 'react-native-fbsdk-next';
 import {appleAuth} from '@invertase/react-native-apple-authentication';
+import {UserAction} from 'action';
+import {store} from '../../store';
 
 const useLogin = () => {
   const {loading, postData, showMsgWarning} = useHttp();
@@ -142,9 +144,10 @@ const useLogin = () => {
       url: endpoint.POST_LOGIN_FACEBOOK,
       params: param,
       onSuccess: res => {
-        const {status, message} = res;
+        const {data, status, message} = res;
 
         if (status === 200) {
+          store.dispatch(UserAction.setData(data));
           RootNav.navigateToVacancies();
         } else {
           showMsgWarning(message);
@@ -168,9 +171,10 @@ const useLogin = () => {
       url: endpoint.POST_LOGIN_GOOGLE,
       params: param,
       onSuccess: res => {
-        const {status, message} = res;
+        const {data, status, message} = res;
 
         if (status === 200) {
+          store.dispatch(UserAction.setData(data));
           RootNav.navigateToVacancies();
         } else {
           showMsgWarning(message);
@@ -194,9 +198,10 @@ const useLogin = () => {
       url: endpoint.POST_LOGIN_APPLE,
       params: param,
       onSuccess: res => {
-        const {status} = res;
+        const {data, status} = res;
 
         if (status === 200) {
+          store.dispatch(UserAction.setData(data));
           RootNav.navigateToVacancies();
         }
       },
@@ -217,9 +222,10 @@ const useLogin = () => {
       url: endpoint.POST_LOGIN,
       params: param,
       onSuccess: res => {
-        const {status} = res;
+        const {data, status} = res;
 
         if (status === 200) {
+          store.dispatch(UserAction.setData(data));
           RootNav.navigateToVacancies();
         }
       },

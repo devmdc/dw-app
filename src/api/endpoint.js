@@ -11,6 +11,7 @@ const endpoint = {
   POST_FORGOT_EMAIL: Config.BASEURL + 'auth/reset_password/submit_email',
   POST_FORGOT_VERIFY: Config.BASEURL + 'auth/reset_password/verify_code',
   POST_FORGOT_DATA: Config.BASEURL + 'auth/reset_password/submit_data',
+  POST_LOGOUT: Config.BASEURL + 'profile/profile/logout',
 };
 
 export {endpoint};
