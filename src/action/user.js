@@ -14,3 +14,9 @@ export const setData = data => ({
   type: 'USER_SET_DATA',
   data: data,
 });
+
+export const setDataProfile = (email, whatsapp) => ({
+  type: 'USER_SET_PROFILE',
+  email,
+  whatsapp,
+});

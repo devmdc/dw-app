@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Image, TouchableOpacity} from 'react-native';
+import {useSelector} from 'react-redux';
 import DropShadow from 'react-native-drop-shadow';
 import {Container, Header, Text, Input} from 'component';
 import {colors, images} from 'assets';
@@ -12,6 +13,12 @@ const ProfileScreen = ({navigation}) => {
   let data = require('./menu/menu.json');
 
   const {logout} = useProfile();
+
+  const {name, email, whatsapp} = useSelector(state => ({
+    name: state.user.data.full_name,
+    email: state.user.data.email,
+    whatsapp: state.user.data.whatsapp,
+  }));
 
   return (
     <Container color={colors.dwSoftGrey}>
@@ -26,12 +33,12 @@ const ProfileScreen = ({navigation}) => {
             resizeMode={'cover'}
           />
           <Text bold style={styles.txtName} fontSize={13}>
-            Andy
+            {name}
           </Text>
-          <Input editable={false} value={'andy@gmail.com'} />
+          <Input editable={false} value={email} />
           <Input
             style={styles.marginT}
-            placeholder={'081234567890'}
+            placeholder={whatsapp}
             onChangeTextValue={text => {
               console.log(text);
             }}

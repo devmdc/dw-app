@@ -11,6 +11,11 @@ function user(state = INITIAL_STATE, action) {
         ...state,
         data: action.data,
       };
+    case 'USER_SET_PROFILE':
+      return {
+        ...state,
+        data: {...state.data, email: action.email, whatsapp: action.whatsapp},
+      };
     case 'USER_EMPTY_DATA':
       return {
         ...state,
