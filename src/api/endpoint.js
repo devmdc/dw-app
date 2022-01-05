@@ -14,6 +14,7 @@ const endpoint = {
   GET_DETAIL_PROFILE: Config.BASEURL + 'profile/profile/detail',
   POST_LOGOUT: Config.BASEURL + 'profile/profile/logout',
   POST_EDIT_PHONE: Config.BASEURL + 'profile/update_whatsapp/submit_number',
+  POST_CHANGE_PASSWORD: Config.BASEURL + 'profile/change_password/update',
 };
 
 export {endpoint};

@@ -8,7 +8,11 @@ import {showMsgWarning} from 'api';
 
 import styles, {setMarginTop} from './styles';
 
+import usePassword from './usePassword';
+
 const ChangePasswordScreen = ({route, navigation}) => {
+  const {loading, submitData} = usePassword();
+
   const [initial, setInitial] = useState(true);
 
   const [oldPass, setOldPass] = useState({value: '', isShow: true});
@@ -96,6 +100,7 @@ const ChangePasswordScreen = ({route, navigation}) => {
           />
         </View>
         <Button
+          loading={loading}
           style={styles.button}
           onPress={() => {
             setInitial(false);
@@ -107,7 +112,7 @@ const ChangePasswordScreen = ({route, navigation}) => {
               if (newPass.value !== rePass.value) {
                 showMsgWarning('Password are not matching');
               } else {
-                console.log('submit');
+                submitData(oldPass, newPass);
               }
             }
           }}>
