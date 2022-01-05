@@ -11,6 +11,7 @@ import ForgotScreen from '../screen/forgot';
 import VerifyForgotScreen from '../screen/forgot/verify';
 import ForgotDataScreen from '../screen/forgot/submit';
 import WhatsappScreen from '../screen/profile/whatsapp';
+import ChangePasswordScreen from '../screen/profile/password';
 
 import {RootNav} from 'utils';
 
@@ -46,6 +47,10 @@ function MainStackScreen() {
         }}
       />
       <MainStack.Screen name={'Whatsapp'} component={WhatsappScreen} />
+      <MainStack.Screen
+        name={'ChangePassword'}
+        component={ChangePasswordScreen}
+      />
     </MainStack.Navigator>
   );
 }

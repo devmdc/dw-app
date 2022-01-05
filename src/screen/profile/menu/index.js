@@ -1,13 +1,19 @@
 import React from 'react';
 import {FlatList, View, Image, TouchableOpacity, Alert} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import {Text} from 'component';
 import {images} from 'assets';
 
 import styles from './styles';
 
 const MenuCollection = ({data = [1, 2, 3], logout}) => {
+  const navigation = useNavigation();
+
   const menuAction = index => {
     switch (index) {
+      case 3:
+        navigation.navigate('ChangePassword');
+        break;
       case 6:
         Alert.alert('Logout', 'Are you sure want to logout?', [
           {text: 'Tidak', style: 'cancel', onPress: () => {}},

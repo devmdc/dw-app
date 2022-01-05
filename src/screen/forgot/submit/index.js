@@ -84,7 +84,7 @@ const ForgotDataScreen = ({route, navigation}) => {
             onPress={() => {
               setInitial(false);
               if (passError === null && rePassError === null) {
-                if (password !== rePassError) {
+                if (password.value !== rePassword.value) {
                   showMsgWarning('Password are not matching');
                 } else {
                   submitData(email, code, password);
