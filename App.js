@@ -32,7 +32,7 @@ const App = () => {
     return new Promise(resolve =>
       setTimeout(() => {
         resolve('result');
-      }, 10000),
+      }, 500),
     );
   };
 
