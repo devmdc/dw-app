@@ -23,7 +23,7 @@ const Header = ({
   return (
     <View style={[styles.container, style, {backgroundColor: bgColor}]}>
       {isBack && (
-        <TouchableWithoutFeedback onPress={goBack}>
+        <TouchableWithoutFeedback style={styles.wrapperBack} onPress={goBack}>
           <Image
             style={[styles.icoBack]}
             source={images.back}
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   icoHeader: {
     width: 160,
     height: 64,
-    marginTop: 10,
+    marginTop: 20,
   },
   icoBack: {
     width: 24,
@@ -92,6 +92,10 @@ const styles = StyleSheet.create({
     fontSize: 17,
     color: colors.mint,
     fontWeight: '600',
+  },
+  wrapperBack: {
+    position: 'absolute',
+    left: 10,
   },
 });
 

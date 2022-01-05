@@ -43,7 +43,10 @@ const ProfileScreen = ({navigation}) => {
               console.log(text);
             }}
             rightIcon={
-              <TouchableOpacity onPress={() => console.log('edit')}>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('Whatsapp', {oldNumber: whatsapp})
+                }>
                 <Text bold fontSize={13}>
                   Edit
                 </Text>

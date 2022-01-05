@@ -10,6 +10,7 @@ import RegisterDataScreen from '../screen/register/submit';
 import ForgotScreen from '../screen/forgot';
 import VerifyForgotScreen from '../screen/forgot/verify';
 import ForgotDataScreen from '../screen/forgot/submit';
+import WhatsappScreen from '../screen/profile/whatsapp';
 
 import {RootNav} from 'utils';
 
@@ -44,6 +45,7 @@ function MainStackScreen() {
           animationEnabled: false,
         }}
       />
+      <MainStack.Screen name={'Whatsapp'} component={WhatsappScreen} />
     </MainStack.Navigator>
   );
 }
