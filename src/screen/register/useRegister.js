@@ -1,6 +1,8 @@
 import {useNavigation} from '@react-navigation/native';
 import {useHttp, endpoint} from 'api';
 import {RootNav} from 'utils';
+import {UserAction} from 'action';
+import {store} from '../../store';
 
 const useRegister = () => {
   const {loading, postData} = useHttp();
@@ -65,8 +67,9 @@ const useRegister = () => {
       url: endpoint.POST_REGISTER_DATA,
       params: param,
       onSuccess: res => {
-        const {status} = res;
+        const {data, status} = res;
         if (status === 200) {
+          store.dispatch(UserAction.setData(data));
           RootNav.navigateToVacancies();
         }
       },
