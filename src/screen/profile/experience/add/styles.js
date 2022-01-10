@@ -57,7 +57,7 @@ export default StyleSheet.create({
     shadowRadius: 2.0,
   },
   menu: {
-    width: width - 48,
+    width: width - 225,
     maxHeight: 300,
   },
 });

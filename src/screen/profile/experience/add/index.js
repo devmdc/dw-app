@@ -6,6 +6,7 @@ import {
   TouchableWithoutFeedback,
   ScrollView,
 } from 'react-native';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import DropShadow from 'react-native-drop-shadow';
 import Menu, {MenuItem} from 'react-native-material-menu';
 import {Container, Text, Header, Input} from 'component';
@@ -14,17 +15,28 @@ import {colors, images} from 'assets';
 
 import styles, {setMarginTop, sampleperiod, width} from './styles';
 
-const AddExperienceScreen = ({navigation}) => {
+const AddExperienceScreen = ({route, navigation}) => {
+  const {
+    name: rName,
+    pos: rPos,
+    city: rCity,
+    startDate,
+    endDate,
+    fee: rFee,
+    period: rPeriod,
+  } = route.params;
+
   const menu = useRef(null);
 
   const [initial, setInitial] = useState(true);
-  const [name, setName] = useState('');
-  const [pos, setPos] = useState('');
-  const [city, setCity] = useState('');
-  const [dateOne, setDateOne] = useState('');
-  const [dateTwo, setDateTwo] = useState('');
-  const [fee, setFee] = useState('');
-  const [period, setPeriod] = useState('');
+  const [datePickerVisible, setDatePickerVisible] = useState(false);
+  const [name, setName] = useState(rName || '');
+  const [pos, setPos] = useState(rPos || '');
+  const [city, setCity] = useState(rCity || '');
+  const [dateOne, setDateOne] = useState(startDate || '');
+  const [dateTwo, setDateTwo] = useState(endDate || '');
+  const [fee, setFee] = useState(rFee || '');
+  const [period, setPeriod] = useState(rPeriod || '');
 
   const nameError = validate('name', name);
   const posError = validate('position', pos);
@@ -89,14 +101,17 @@ const AddExperienceScreen = ({navigation}) => {
         </Text>
         <View style={styles.textWrapper}>
           <Input
-            style={{flex: 1, marginRight: 5}}
-            placeholder={'00/00/00'}
-            onChangeTextValue={text => {
-              setInitial(false);
-              setDateOne(text);
+            style={{
+              flex: 1,
+              marginLeft: 5,
+              backgroundColor: colors.dwWhite,
             }}
+            textStyle={{color: colors.dwBlack}}
+            editable={false}
+            pointerEvents={'none'}
+            placeholder={'00/00/00'}
             rightIcon={
-              <TouchableOpacity onPress={() => console.log('calendar 1')}>
+              <TouchableOpacity onPress={() => setDatePickerVisible(true)}>
                 <Image
                   source={images.calendar}
                   style={styles.icInput}
@@ -107,14 +122,17 @@ const AddExperienceScreen = ({navigation}) => {
             isError={dateOneError !== null && !initial}
           />
           <Input
-            style={{flex: 1, marginLeft: 5}}
-            placeholder={'00/00/00'}
-            onChangeTextValue={text => {
-              setInitial(false);
-              setDateTwo(text);
+            style={{
+              flex: 1,
+              marginLeft: 5,
+              backgroundColor: colors.dwWhite,
             }}
+            textStyle={{color: colors.dwBlack}}
+            editable={false}
+            pointerEvents={'none'}
+            placeholder={'00/00/00'}
             rightIcon={
-              <TouchableOpacity onPress={() => console.log('calendar 2')}>
+              <TouchableOpacity onPress={() => setDatePickerVisible(true)}>
                 <Image
                   source={images.calendar}
                   style={styles.icInput}
@@ -175,6 +193,16 @@ const AddExperienceScreen = ({navigation}) => {
           </Menu>
         </View>
       </View>
+
+      <DateTimePickerModal
+        isVisible={datePickerVisible}
+        mode="date"
+        onConfirm={date => {
+          setInitial(false);
+          setDatePickerVisible(false);
+        }}
+        onCancel={() => setDatePickerVisible(false)}
+      />
     </Container>
   );
 };
