@@ -12,6 +12,7 @@ import VerifyForgotScreen from '../screen/forgot/verify';
 import ForgotDataScreen from '../screen/forgot/submit';
 import WhatsappScreen from '../screen/profile/whatsapp';
 import ChangePasswordScreen from '../screen/profile/password';
+import ExperienceScreen from '../screen/profile/experience';
 
 import {RootNav} from 'utils';
 
@@ -51,6 +52,7 @@ function MainStackScreen() {
         name={'ChangePassword'}
         component={ChangePasswordScreen}
       />
+      <MainStack.Screen name={'Experience'} component={ExperienceScreen} />
     </MainStack.Navigator>
   );
 }
