@@ -1,6 +1,7 @@
 const images = {
   arrow: require('./images/arrow.png'),
   back: require('./images/back.png'),
+  calendar: require('./images/calendar.png'),
   divider: require('./images/divider.png'),
   experience: require('./images/experience.png'),
   eye: require('./images/eye.png'),

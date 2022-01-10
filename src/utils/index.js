@@ -27,6 +27,26 @@ export const validation_message = {
     },
   },
 
+  position: {
+    presence: {
+      message: '^Please enter your position',
+    },
+    length: {
+      minimum: 1,
+      message: '^Please enter your position',
+    },
+  },
+
+  city: {
+    presence: {
+      message: '^Please enter city',
+    },
+    length: {
+      minimum: 1,
+      message: '^Please enter city',
+    },
+  },
+
   password: {
     presence: {
       message: '^Please enter a password',
@@ -34,6 +54,16 @@ export const validation_message = {
     length: {
       minimum: 5,
       message: '^Your password must be at least 5 characters',
+    },
+  },
+
+  general: {
+    presence: {
+      message: '^Please enter field',
+    },
+    length: {
+      minimum: 1,
+      message: '^Please enter field',
     },
   },
 };

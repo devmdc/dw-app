@@ -8,7 +8,9 @@ import styles, {setMarginTop} from './styles';
 
 const ExperienceScreen = ({navigation}) => {
   const renderItem = ({item, index}) => {
-    return <ExperienceCard />;
+    return (
+      <ExperienceCard onPress={() => navigation.navigate('AddExperience')} />
+    );
   };
 
   return (
