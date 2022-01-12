@@ -1,4 +1,5 @@
 import validation from 'validate.js';
+import moment from 'moment-timezone';
 
 /**
  * @description Validation Message
@@ -125,6 +126,24 @@ export function makeRandomName(length) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
   return result;
+}
+
+/**
+ * @description Create format date
+ * @author Agung Wijaya <mdc.co.id>
+ * @date 2021-11-01
+ * @export
+ * @param {date, boolean} [date=Date, isDateOnLy=Bool]
+ * @returns
+ */
+export function formatDate(date, isDateOnly = false) {
+  if (!date) {
+    return '';
+  }
+
+  return isDateOnly
+    ? moment(date).format('YYYY-MM-DD')
+    : moment(date).format('DD MMMM YYYY HH:mm A');
 }
 
 import * as RootNav from './RootNavigation';

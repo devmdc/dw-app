@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {useHttp, endpoint} from 'api';
+import {formatDate} from 'utils';
 
 const useAddExp = () => {
   const {loading, postData, getData} = useHttp();
@@ -59,13 +60,11 @@ const useAddExp = () => {
       company_name: hotel,
       job_position_id: posId,
       city_id: cityId,
-      date_start: dateStart,
-      date_end: dateEnd,
-      payment: payment,
+      date_start: formatDate(dateStart, true),
+      date_end: formatDate(dateEnd, true),
+      payment: parseInt(payment, 10),
       period: period,
     };
-
-    console.log(param);
 
     postData({
       url: endpoint.POST_ADD_EXPERIENCE,
@@ -82,7 +81,16 @@ const useAddExp = () => {
     });
   };
 
-  return {loading, submit, city, position};
+  const checkDate = (dateStart, dateEnd) => {
+    console.log(dateStart, dateEnd);
+    if (dateStart > dateEnd) {
+      return false;
+    }
+
+    return true;
+  };
+
+  return {loading, submit, city, position, checkDate};
 };
 
 export default useAddExp;

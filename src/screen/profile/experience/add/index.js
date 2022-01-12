@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {
   View,
   TouchableOpacity,
@@ -10,8 +10,9 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import DropShadow from 'react-native-drop-shadow';
 import Menu, {MenuItem} from 'react-native-material-menu';
 import {Container, Text, Header, Input, Button} from 'component';
-import {validate} from 'utils';
+import {validate, formatDate} from 'utils';
 import {colors, images} from 'assets';
+import {showMsgWarning} from 'api';
 
 import styles, {setMarginTop, sampleperiod, width} from './styles';
 import useAddExp from './useAddExp';
@@ -27,14 +28,17 @@ const AddExperienceScreen = ({route, navigation}) => {
     period: rPeriod,
   } = route.params;
 
-  const {loading, city: dtCity, position, submit} = useAddExp();
+  const {loading, city: dtCity, position, submit, checkDate} = useAddExp();
 
   const menuPos = useRef(null);
   const menuCity = useRef(null);
   const menu = useRef(null);
 
   const [initial, setInitial] = useState(true);
-  const [datePickerVisible, setDatePickerVisible] = useState(false);
+  const [datePickerVisible, setDatePickerVisible] = useState({
+    status: false,
+    isDateFirst: true,
+  });
   const [name, setName] = useState(rName || '');
   const [pos, setPos] = useState(rPos || '');
   const [city, setCity] = useState(rCity || '');
@@ -50,6 +54,15 @@ const AddExperienceScreen = ({route, navigation}) => {
   const dateTwoError = validate('general', dateTwo);
   const feeError = validate('general', fee);
   const periodError = validate('general', period);
+
+  useEffect(() => {
+    console.log(checkDate(dateOne, dateTwo));
+    if (dateTwo !== '' && !checkDate(dateOne, dateTwo)) {
+      setDateTwo('');
+      showMsgWarning('End date must bigger then start date');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dateOne, dateTwo]);
 
   const openPosSelection = () => {
     menuPos.current.show();
@@ -157,8 +170,16 @@ const AddExperienceScreen = ({route, navigation}) => {
             editable={false}
             pointerEvents={'none'}
             placeholder={'00/00/00'}
+            value={formatDate(dateOne, true)}
             rightIcon={
-              <TouchableOpacity onPress={() => setDatePickerVisible(true)}>
+              <TouchableOpacity
+                onPress={() =>
+                  setDatePickerVisible({
+                    ...datePickerVisible,
+                    status: true,
+                    isDateFirst: true,
+                  })
+                }>
                 <Image
                   source={images.calendar}
                   style={styles.icInput}
@@ -174,8 +195,16 @@ const AddExperienceScreen = ({route, navigation}) => {
             editable={false}
             pointerEvents={'none'}
             placeholder={'00/00/00'}
+            value={formatDate(dateTwo, true)}
             rightIcon={
-              <TouchableOpacity onPress={() => setDatePickerVisible(true)}>
+              <TouchableOpacity
+                onPress={() =>
+                  setDatePickerVisible({
+                    ...datePickerVisible,
+                    status: true,
+                    isDateFirst: false,
+                  })
+                }>
                 <Image
                   source={images.calendar}
                   style={styles.icInput}
@@ -253,12 +282,20 @@ const AddExperienceScreen = ({route, navigation}) => {
       </Button>
 
       <DateTimePickerModal
-        isVisible={datePickerVisible}
+        isVisible={datePickerVisible.status}
         mode="date"
         onConfirm={date => {
-          setDatePickerVisible(false);
+          setDatePickerVisible({...datePickerVisible, status: false});
+
+          if (datePickerVisible.isDateFirst) {
+            setDateOne(date);
+          } else {
+            setDateTwo(date);
+          }
         }}
-        onCancel={() => setDatePickerVisible(false)}
+        onCancel={() =>
+          setDatePickerVisible({...datePickerVisible, status: false})
+        }
       />
     </Container>
   );
