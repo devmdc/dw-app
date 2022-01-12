@@ -60,4 +60,30 @@ export default StyleSheet.create({
     width: width - 225,
     maxHeight: 300,
   },
+  menuCity: {
+    marginTop: 65,
+    width: width - 32,
+    maxHeight: 300,
+  },
+  inputPosition: {
+    backgroundColor: colors.dwWhite,
+  },
+  inputCity: {
+    backgroundColor: colors.dwWhite,
+  },
+  inputPeriod: {
+    width: width - 225,
+    marginLeft: 5,
+    backgroundColor: colors.dwWhite,
+  },
+  inputDateEnd: {
+    flex: 1,
+    marginLeft: 5,
+    backgroundColor: colors.dwWhite,
+  },
+  inputDateStart: {
+    flex: 1,
+    marginLeft: 5,
+    backgroundColor: colors.dwWhite,
+  },
 });

@@ -14,6 +14,7 @@ import {validate} from 'utils';
 import {colors, images} from 'assets';
 
 import styles, {setMarginTop, sampleperiod, width} from './styles';
+import useAddExp from './useAddExp';
 
 const AddExperienceScreen = ({route, navigation}) => {
   const {
@@ -26,6 +27,10 @@ const AddExperienceScreen = ({route, navigation}) => {
     period: rPeriod,
   } = route.params;
 
+  const {loading, city: dtCity} = useAddExp();
+
+  const menuPos = useRef(null);
+  const menuCity = useRef(null);
   const menu = useRef(null);
 
   const [initial, setInitial] = useState(true);
@@ -46,12 +51,29 @@ const AddExperienceScreen = ({route, navigation}) => {
   const feeError = validate('general', fee);
   const periodError = validate('general', period);
 
+  const openPosSelection = () => {
+    menuPos.current.show();
+  };
+
+  const selectPos = value => {
+    setPos(value.name);
+    menuPos.current.hide();
+  };
+
+  const openCitySelection = () => {
+    menuCity.current.show();
+  };
+
+  const selectCity = value => {
+    setCity(value.name);
+    menuCity.current.hide();
+  };
+
   const openPeriodSelection = () => {
     menu.current.show();
   };
 
   const selectPeriod = value => {
-    setInitial(false);
     setPeriod(value.name);
     menu.current.hide();
   };
@@ -71,29 +93,58 @@ const AddExperienceScreen = ({route, navigation}) => {
         <Input
           placeholder={'Company name'}
           onChangeTextValue={text => {
-            setInitial(false);
             setName(text);
           }}
           isError={nameError !== null && !initial}
         />
-        <Input
-          style={setMarginTop(16)}
-          placeholder={'Job Position'}
-          onChangeTextValue={text => {
-            setInitial(false);
-            setPos(text);
-          }}
-          isError={posError !== null && !initial}
-        />
-        <Input
-          style={setMarginTop(16)}
-          placeholder={'City'}
-          onChangeTextValue={text => {
-            setInitial(false);
-            setCity(text);
-          }}
-          isError={cityError !== null && !initial}
-        />
+        <Menu
+          ref={menuPos}
+          style={styles.menuCity}
+          button={
+            <TouchableWithoutFeedback onPress={openPosSelection}>
+              <Input
+                style={[setMarginTop(16), styles.inputPosition]}
+                textStyle={{color: colors.dwBlack}}
+                editable={false}
+                pointerEvents={'none'}
+                placeholder={'Job Position'}
+                value={pos}
+                isError={posError !== null && !initial}
+              />
+            </TouchableWithoutFeedback>
+          }>
+          <ScrollView>
+            {dtCity.map((value, index) => (
+              <MenuItem key={index} onPress={() => selectPos(value)}>
+                {value.name}
+              </MenuItem>
+            ))}
+          </ScrollView>
+        </Menu>
+        <Menu
+          ref={menuCity}
+          style={styles.menuCity}
+          button={
+            <TouchableWithoutFeedback onPress={openCitySelection}>
+              <Input
+                style={[setMarginTop(16), styles.inputCity]}
+                textStyle={{color: colors.dwBlack}}
+                editable={false}
+                pointerEvents={'none'}
+                placeholder={'City'}
+                value={city}
+                isError={cityError !== null && !initial}
+              />
+            </TouchableWithoutFeedback>
+          }>
+          <ScrollView>
+            {dtCity.map((value, index) => (
+              <MenuItem key={index} onPress={() => selectCity(value)}>
+                {value.name}
+              </MenuItem>
+            ))}
+          </ScrollView>
+        </Menu>
         <Text
           style={[setMarginTop(25), {color: colors.dwDarkGrey}]}
           fontSize={13}>
@@ -101,11 +152,7 @@ const AddExperienceScreen = ({route, navigation}) => {
         </Text>
         <View style={styles.textWrapper}>
           <Input
-            style={{
-              flex: 1,
-              marginLeft: 5,
-              backgroundColor: colors.dwWhite,
-            }}
+            style={styles.inputDateStart}
             textStyle={{color: colors.dwBlack}}
             editable={false}
             pointerEvents={'none'}
@@ -122,11 +169,7 @@ const AddExperienceScreen = ({route, navigation}) => {
             isError={dateOneError !== null && !initial}
           />
           <Input
-            style={{
-              flex: 1,
-              marginLeft: 5,
-              backgroundColor: colors.dwWhite,
-            }}
+            style={styles.inputDateEnd}
             textStyle={{color: colors.dwBlack}}
             editable={false}
             pointerEvents={'none'}
@@ -153,7 +196,6 @@ const AddExperienceScreen = ({route, navigation}) => {
             style={{width: width - 225, marginRight: 5}}
             placeholder={'0'}
             onChangeTextValue={text => {
-              setInitial(false);
               setFee(text);
             }}
             isError={feeError !== null && !initial}
@@ -169,11 +211,7 @@ const AddExperienceScreen = ({route, navigation}) => {
             button={
               <TouchableWithoutFeedback onPress={openPeriodSelection}>
                 <Input
-                  style={{
-                    width: width - 225,
-                    marginLeft: 5,
-                    backgroundColor: colors.dwWhite,
-                  }}
+                  style={styles.inputPeriod}
                   textStyle={{color: colors.dwBlack}}
                   value={period}
                   placeholder={'Period'}
@@ -198,7 +236,6 @@ const AddExperienceScreen = ({route, navigation}) => {
         isVisible={datePickerVisible}
         mode="date"
         onConfirm={date => {
-          setInitial(false);
           setDatePickerVisible(false);
         }}
         onCancel={() => setDatePickerVisible(false)}
