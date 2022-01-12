@@ -34,6 +34,15 @@ export default StyleSheet.create({
     paddingBottom: 16,
     paddingTop: 11,
   },
+  imgAdd: {
+    width: 72,
+    height: 72,
+  },
+  footer: {
+    position: 'absolute',
+    right: 16,
+    bottom: 16,
+  },
   shadowNavbar: {
     shadowColor: colors.dwGrey,
     shadowOffset: {

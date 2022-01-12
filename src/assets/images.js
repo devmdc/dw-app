@@ -1,4 +1,5 @@
 const images = {
+  add: require('./images/add.png'),
   arrow: require('./images/arrow.png'),
   back: require('./images/back.png'),
   calendar: require('./images/calendar.png'),
@@ -20,6 +21,7 @@ const images = {
   notification: require('./images/notification.png'),
   notificationActive: require('./images/notificationActive.png'),
   out: require('./images/out.png'),
+  pencil: require('./images/pencil.png'),
   profile: require('./images/profile.png'),
   time: require('./images/time.png'),
   tos: require('./images/tos.png'),

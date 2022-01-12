@@ -1,5 +1,12 @@
 import React from 'react';
-import {StyleSheet, View, TouchableWithoutFeedback, Image} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  TouchableWithoutFeedback,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import NumberFormat from 'react-number-format';
 import {colors, images} from 'assets';
 import {Text} from 'component';
 
@@ -14,6 +21,7 @@ const ExperienceCard = ({
   fee,
   type,
   onPress,
+  onEdit,
 }) => {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
@@ -40,8 +48,23 @@ const ExperienceCard = ({
             />
             <Text style={styles.txtWorkingDate}>{`${workingDate}`}</Text>
           </View>
-          <Text style={styles.txtFee}>{`${fee} / ${type}`}</Text>
+          <NumberFormat
+            value={fee}
+            displayType={'text'}
+            thousandSeparator={true}
+            prefix={'IDR '}
+            renderText={value => (
+              <Text style={styles.txtFee}>{`${value} / ${type}`}</Text>
+            )}
+          />
         </View>
+        <TouchableOpacity onPress={onEdit}>
+          <Image
+            source={images.pencil}
+            style={styles.imgEdit}
+            resizeMode={'cover'}
+          />
+        </TouchableOpacity>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -59,6 +82,7 @@ ExperienceCard.defaultProps = {
   isButton: true,
   image: images.profile,
   onPress: () => console.log('Card Pressed'),
+  onEdit: () => console.log('Edit Pressed'),
 };
 
 const styles = StyleSheet.create({
@@ -74,6 +98,10 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
+  },
+  imgEdit: {
+    width: 21,
+    height: 21,
   },
   imgLocation: {
     width: 8,

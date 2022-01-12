@@ -48,6 +48,7 @@ const useAddExp = () => {
   };
 
   const submit = (
+    id,
     hotel,
     posId,
     cityId,
@@ -55,8 +56,9 @@ const useAddExp = () => {
     dateEnd,
     payment,
     period,
+    isEdit,
   ) => {
-    const param = {
+    var param = {
       company_name: hotel,
       job_position_id: posId,
       city_id: cityId,
@@ -66,8 +68,16 @@ const useAddExp = () => {
       period: period,
     };
 
+    if (isEdit) {
+      param = {...param, id: id};
+    }
+
+    const url = isEdit
+      ? endpoint.POST_EDIT_EXPERIENCE
+      : endpoint.POST_ADD_EXPERIENCE;
+
     postData({
-      url: endpoint.POST_ADD_EXPERIENCE,
+      url: url,
       params: param,
       onSuccess: res => {
         const {status} = res;
@@ -82,7 +92,6 @@ const useAddExp = () => {
   };
 
   const checkDate = (dateStart, dateEnd) => {
-    console.log(dateStart, dateEnd);
     if (dateStart > dateEnd) {
       return false;
     }

@@ -18,6 +18,8 @@ const endpoint = {
   GET_CITY: Config.BASEURL + 'profile/add_experience/get_city',
   GET_JOB_POSITION: Config.BASEURL + 'profile/add_experience/get_job_position',
   POST_ADD_EXPERIENCE: Config.BASEURL + 'profile/add_experience/add',
+  POST_EDIT_EXPERIENCE: Config.BASEURL + 'profile/edit_experience/edit',
+  GET_EXPERIENCE: Config.BASEURL + 'profile/my_experience/list',
 };
 
 export {endpoint};

@@ -19,6 +19,7 @@ import useAddExp from './useAddExp';
 
 const AddExperienceScreen = ({route, navigation}) => {
   const {
+    id,
     name: rName,
     pos: rPos,
     city: rCity,
@@ -56,7 +57,6 @@ const AddExperienceScreen = ({route, navigation}) => {
   const periodError = validate('general', period);
 
   useEffect(() => {
-    console.log(checkDate(dateOne, dateTwo));
     if (dateTwo !== '' && !checkDate(dateOne, dateTwo)) {
       setDateTwo('');
       showMsgWarning('End date must bigger then start date');
@@ -105,6 +105,7 @@ const AddExperienceScreen = ({route, navigation}) => {
       <View style={styles.inputWrapper}>
         <Input
           placeholder={'Company name'}
+          value={name}
           onChangeTextValue={text => {
             setName(text);
           }}
@@ -224,6 +225,7 @@ const AddExperienceScreen = ({route, navigation}) => {
           <Input
             style={{width: width - 225, marginRight: 5}}
             placeholder={'0'}
+            value={fee}
             onChangeTextValue={text => {
               setFee(text);
             }}
@@ -275,10 +277,20 @@ const AddExperienceScreen = ({route, navigation}) => {
             feeError === null &&
             periodError === null
           ) {
-            submit(name, pos.id, city.id, dateOne, dateTwo, fee, period);
+            submit(
+              id,
+              name,
+              pos.id,
+              city.id,
+              dateOne,
+              dateTwo,
+              fee,
+              period,
+              rName ? true : false,
+            );
           }
         }}>
-        Add
+        {rName ? 'Save' : 'Add'}
       </Button>
 
       <DateTimePickerModal
