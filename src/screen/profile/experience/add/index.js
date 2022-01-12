@@ -9,7 +9,7 @@ import {
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import DropShadow from 'react-native-drop-shadow';
 import Menu, {MenuItem} from 'react-native-material-menu';
-import {Container, Text, Header, Input} from 'component';
+import {Container, Text, Header, Input, Button} from 'component';
 import {validate} from 'utils';
 import {colors, images} from 'assets';
 
@@ -27,7 +27,7 @@ const AddExperienceScreen = ({route, navigation}) => {
     period: rPeriod,
   } = route.params;
 
-  const {loading, city: dtCity} = useAddExp();
+  const {loading, city: dtCity, position, submit} = useAddExp();
 
   const menuPos = useRef(null);
   const menuCity = useRef(null);
@@ -44,8 +44,8 @@ const AddExperienceScreen = ({route, navigation}) => {
   const [period, setPeriod] = useState(rPeriod || '');
 
   const nameError = validate('name', name);
-  const posError = validate('position', pos);
-  const cityError = validate('city', city);
+  const posError = validate('position', pos.name);
+  const cityError = validate('city', city.name);
   const dateOneError = validate('general', dateOne);
   const dateTwoError = validate('general', dateTwo);
   const feeError = validate('general', fee);
@@ -56,7 +56,7 @@ const AddExperienceScreen = ({route, navigation}) => {
   };
 
   const selectPos = value => {
-    setPos(value.name);
+    setPos(value);
     menuPos.current.hide();
   };
 
@@ -65,7 +65,7 @@ const AddExperienceScreen = ({route, navigation}) => {
   };
 
   const selectCity = value => {
-    setCity(value.name);
+    setCity(value);
     menuCity.current.hide();
   };
 
@@ -99,7 +99,7 @@ const AddExperienceScreen = ({route, navigation}) => {
         />
         <Menu
           ref={menuPos}
-          style={styles.menuCity}
+          style={styles.menuPos}
           button={
             <TouchableWithoutFeedback onPress={openPosSelection}>
               <Input
@@ -108,13 +108,13 @@ const AddExperienceScreen = ({route, navigation}) => {
                 editable={false}
                 pointerEvents={'none'}
                 placeholder={'Job Position'}
-                value={pos}
+                value={pos.name}
                 isError={posError !== null && !initial}
               />
             </TouchableWithoutFeedback>
           }>
           <ScrollView>
-            {dtCity.map((value, index) => (
+            {position.map((value, index) => (
               <MenuItem key={index} onPress={() => selectPos(value)}>
                 {value.name}
               </MenuItem>
@@ -132,7 +132,7 @@ const AddExperienceScreen = ({route, navigation}) => {
                 editable={false}
                 pointerEvents={'none'}
                 placeholder={'City'}
-                value={city}
+                value={city.name}
                 isError={cityError !== null && !initial}
               />
             </TouchableWithoutFeedback>
@@ -231,6 +231,26 @@ const AddExperienceScreen = ({route, navigation}) => {
           </Menu>
         </View>
       </View>
+
+      <Button
+        loading={loading}
+        style={styles.button}
+        onPress={() => {
+          setInitial(false);
+          if (
+            nameError === null &&
+            posError === null &&
+            cityError === null &&
+            dateOneError === null &&
+            dateTwoError === null &&
+            feeError === null &&
+            periodError === null
+          ) {
+            submit(name, pos.id, city.id, dateOne, dateTwo, fee, period);
+          }
+        }}>
+        Add
+      </Button>
 
       <DateTimePickerModal
         isVisible={datePickerVisible}

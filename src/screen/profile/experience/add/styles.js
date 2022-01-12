@@ -60,6 +60,11 @@ export default StyleSheet.create({
     width: width - 225,
     maxHeight: 300,
   },
+  menuPos: {
+    marginTop: 65,
+    width: width - 32,
+    maxHeight: 300,
+  },
   menuCity: {
     marginTop: 65,
     width: width - 32,
@@ -85,5 +90,10 @@ export default StyleSheet.create({
     flex: 1,
     marginLeft: 5,
     backgroundColor: colors.dwWhite,
+  },
+  button: {
+    height: 48,
+    marginHorizontal: 26,
+    marginBottom: 26,
   },
 });

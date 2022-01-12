@@ -8,9 +8,11 @@ const useAddExp = () => {
   const navigation = useNavigation();
 
   const [city, setCity] = useState([]);
+  const [position, setPosition] = useState([]);
 
   useEffect(() => {
     getCity();
+    getPosition();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -20,7 +22,7 @@ const useAddExp = () => {
       onSuccess: res => {
         const {data, status} = res;
         if (status === 200) {
-          console.log(data);
+          setPosition(data);
         }
       },
       onError: error => {
@@ -63,6 +65,8 @@ const useAddExp = () => {
       period: period,
     };
 
+    console.log(param);
+
     postData({
       url: endpoint.POST_ADD_EXPERIENCE,
       params: param,
@@ -78,7 +82,7 @@ const useAddExp = () => {
     });
   };
 
-  return {loading, submit, city};
+  return {loading, submit, city, position};
 };
 
 export default useAddExp;
