@@ -16,9 +16,11 @@ import {validate, formatDate} from 'utils';
 import styles, {setMarginTop, genderData} from './styles';
 
 import useSetting from './useSetting';
+import useAddExp from '../experience/add/useAddExp';
 
 const SettingScreen = ({route, navigation}) => {
-  const {loading, data, submit} = useSetting();
+  const {loading, data, education, submit} = useSetting();
+  const {city} = useAddExp();
 
   const menuGender = useRef(null);
   const menuPosition = useRef(null);
@@ -29,15 +31,21 @@ const SettingScreen = ({route, navigation}) => {
   const [name, setName] = useState(data.full_name);
   const [birth, setBirth] = useState(data.dob);
   const [gender, setGender] = useState(data.gender);
-  const [position, setPosition] = useState(data.last_education_text);
-  const [location, setLocation] = useState(data.city_name);
+  const [position, setPosition] = useState({id: 0, name: ''});
+  const [location, setLocation] = useState({id: 0, name: ''});
 
   useEffect(() => {
     setName(data.full_name);
     setBirth(data.dob);
     setGender(data.gender);
-    setPosition(data.last_education_text);
-    setLocation(data.city_name);
+    setPosition({
+      id: data.last_education_id,
+      name: data.last_education_text,
+    });
+    setLocation({
+      id: data.city_id,
+      name: data.city_name,
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
@@ -150,15 +158,15 @@ const SettingScreen = ({route, navigation}) => {
                   textStyle={{color: colors.dwBlack}}
                   editable={false}
                   pointerEvents={'none'}
-                  placeholder={'Select your position'}
-                  value={position}
+                  placeholder={'Select your education'}
+                  value={position.name}
                 />
               </TouchableWithoutFeedback>
             }>
             <ScrollView>
-              {[1, 2, 3, 4, 5, 6].map((value, index) => (
+              {education.map((value, index) => (
                 <MenuItem key={index} onPress={() => selectPosition(value)}>
-                  {value}
+                  {value.name}
                 </MenuItem>
               ))}
             </ScrollView>
@@ -174,7 +182,7 @@ const SettingScreen = ({route, navigation}) => {
                   editable={false}
                   pointerEvents={'none'}
                   placeholder={'Select your location'}
-                  value={location}
+                  value={location.name}
                 />
               </TouchableWithoutFeedback>
             }>

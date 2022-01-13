@@ -21,6 +21,7 @@ const endpoint = {
   POST_EDIT_EXPERIENCE: Config.BASEURL + 'profile/edit_experience/edit',
   GET_EXPERIENCE: Config.BASEURL + 'profile/my_experience/list',
   GET_SETTING_DATA: Config.BASEURL + 'profile/profile_setting/data',
+  GET_EDUCATION: Config.BASEURL + 'profile/profile_setting/get_education',
 };
 
 export {endpoint};

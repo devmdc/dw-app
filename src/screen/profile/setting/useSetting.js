@@ -8,9 +8,11 @@ const useSetting = () => {
   const navigation = useNavigation();
 
   const [data, setData] = useState({});
+  const [education, setEducation] = useState([]);
 
   useEffect(() => {
     getProfile();
+    getEducation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -20,8 +22,22 @@ const useSetting = () => {
       onSuccess: res => {
         const {data: dtProfile, status} = res;
         if (status === 200) {
-          console.log(dtProfile);
           setData(dtProfile);
+        }
+      },
+      onError: error => {
+        console.log(error);
+      },
+    });
+  };
+
+  const getEducation = () => {
+    getData({
+      url: endpoint.GET_EDUCATION,
+      onSuccess: res => {
+        const {data: dtEdu, status} = res;
+        if (status === 200) {
+          setEducation(dtEdu);
         }
       },
       onError: error => {
@@ -55,7 +71,7 @@ const useSetting = () => {
     });
   };
 
-  return {loading, data, submit};
+  return {loading, data, education, submit};
 };
 
 export default useSetting;
