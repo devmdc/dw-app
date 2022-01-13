@@ -187,9 +187,9 @@ const SettingScreen = ({route, navigation}) => {
               </TouchableWithoutFeedback>
             }>
             <ScrollView>
-              {[1, 2, 3, 4, 5, 6].map((value, index) => (
+              {city.map((value, index) => (
                 <MenuItem key={index} onPress={() => selectLocation(value)}>
-                  {value}
+                  {value.name}
                 </MenuItem>
               ))}
             </ScrollView>
