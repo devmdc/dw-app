@@ -3,6 +3,11 @@ import {colors} from 'assets';
 
 export const width = Dimensions.get('screen').width;
 
+export const genderData = [
+  {id: 1, name: 'Male'},
+  {id: 2, name: 'Female'},
+];
+
 export function setMarginTop(number) {
   return {marginTop: number};
 }
@@ -80,6 +85,6 @@ export default StyleSheet.create({
   menu: {
     marginTop: 65,
     width: width - 50,
-    maxHeight: 300,
+    maxHeight: 180,
   },
 });

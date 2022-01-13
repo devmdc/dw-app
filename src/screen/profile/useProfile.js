@@ -18,7 +18,6 @@ const useProfile = () => {
       onSuccess: res => {
         const {data, status} = res;
         if (status === 200) {
-          console.log(data);
           store.dispatch(UserAction.setDataProfile(data.email, data.whatsapp));
         }
       },

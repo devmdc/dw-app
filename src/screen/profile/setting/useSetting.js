@@ -1,10 +1,34 @@
+import {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {useHttp, endpoint} from 'api';
 
 const useSetting = () => {
-  const {loading, postData} = useHttp();
+  const {loading, postData, getData} = useHttp();
 
   const navigation = useNavigation();
+
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    getProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const getProfile = () => {
+    getData({
+      url: endpoint.GET_SETTING_DATA,
+      onSuccess: res => {
+        const {data: dtProfile, status} = res;
+        if (status === 200) {
+          console.log(dtProfile);
+          setData(dtProfile);
+        }
+      },
+      onError: error => {
+        console.log(error);
+      },
+    });
+  };
 
   const submit = phone => {
     let fChar = phone.charAt(0);
@@ -31,7 +55,7 @@ const useSetting = () => {
     });
   };
 
-  return {loading, submit};
+  return {loading, data, submit};
 };
 
 export default useSetting;

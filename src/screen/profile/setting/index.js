@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {
   View,
   TouchableOpacity,
@@ -11,13 +11,14 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import Menu, {MenuItem} from 'react-native-material-menu';
 import {Container, Button, Text, Input, Header} from 'component';
 import {images, colors} from 'assets';
+import {validate, formatDate} from 'utils';
 
-import styles, {setMarginTop} from './styles';
+import styles, {setMarginTop, genderData} from './styles';
 
 import useSetting from './useSetting';
 
 const SettingScreen = ({route, navigation}) => {
-  const {loading, submit} = useSetting();
+  const {loading, data, submit} = useSetting();
 
   const menuGender = useRef(null);
   const menuPosition = useRef(null);
@@ -25,18 +26,27 @@ const SettingScreen = ({route, navigation}) => {
 
   const [inital, setInital] = useState(true);
   const [datePickerVisible, setDatePickerVisible] = useState(false);
-  const [name, setName] = useState('');
-  const [birth, setBirth] = useState('');
-  const [gender, setGender] = useState('');
-  const [position, setPosition] = useState('');
-  const [location, setLocation] = useState('');
+  const [name, setName] = useState(data.full_name);
+  const [birth, setBirth] = useState(data.dob);
+  const [gender, setGender] = useState(data.gender);
+  const [position, setPosition] = useState(data.last_education_text);
+  const [location, setLocation] = useState(data.city_name);
+
+  useEffect(() => {
+    setName(data.full_name);
+    setBirth(data.dob);
+    setGender(data.gender);
+    setPosition(data.last_education_text);
+    setLocation(data.city_name);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
 
   const openGenderSelection = () => {
     menuGender.current.show();
   };
 
   const selectGender = value => {
-    setGender(value);
+    setGender(value.name);
     menuGender.current.hide();
   };
 
@@ -70,7 +80,7 @@ const SettingScreen = ({route, navigation}) => {
         <View style={[setMarginTop(20), styles.line]} />
         <View style={styles.wrapperPict}>
           <Image
-            source={images.calendar}
+            source={{uri: data.photo}}
             style={styles.profilePict}
             resizeMode={'cover'}
           />
@@ -82,6 +92,7 @@ const SettingScreen = ({route, navigation}) => {
           <Input
             style={styles.marginT}
             placeholder={'Type your name'}
+            value={name}
             onChangeTextValue={text => {
               setName(text);
             }}
@@ -92,6 +103,7 @@ const SettingScreen = ({route, navigation}) => {
             editable={false}
             pointerEvents={'none'}
             placeholder={'24/05/1996'}
+            value={formatDate(birth, true)}
             rightIcon={
               <TouchableOpacity
                 onPress={() => {
@@ -116,13 +128,14 @@ const SettingScreen = ({route, navigation}) => {
                   editable={false}
                   pointerEvents={'none'}
                   placeholder={'Select your gender'}
+                  value={gender}
                 />
               </TouchableWithoutFeedback>
             }>
             <ScrollView>
-              {[1, 2, 3, 4, 5, 6].map((value, index) => (
+              {genderData.map((value, index) => (
                 <MenuItem key={index} onPress={() => selectGender(value)}>
-                  {value}
+                  {value.name}
                 </MenuItem>
               ))}
             </ScrollView>
@@ -138,6 +151,7 @@ const SettingScreen = ({route, navigation}) => {
                   editable={false}
                   pointerEvents={'none'}
                   placeholder={'Select your position'}
+                  value={position}
                 />
               </TouchableWithoutFeedback>
             }>
@@ -160,6 +174,7 @@ const SettingScreen = ({route, navigation}) => {
                   editable={false}
                   pointerEvents={'none'}
                   placeholder={'Select your location'}
+                  value={location}
                 />
               </TouchableWithoutFeedback>
             }>
@@ -187,6 +202,7 @@ const SettingScreen = ({route, navigation}) => {
         mode="date"
         onConfirm={date => {
           setDatePickerVisible(false);
+          setBirth(date);
         }}
         onCancel={() => setDatePickerVisible(false)}
       />
