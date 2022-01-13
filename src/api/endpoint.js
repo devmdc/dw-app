@@ -22,6 +22,7 @@ const endpoint = {
   GET_EXPERIENCE: Config.BASEURL + 'profile/my_experience/list',
   GET_SETTING_DATA: Config.BASEURL + 'profile/profile_setting/data',
   GET_EDUCATION: Config.BASEURL + 'profile/profile_setting/get_education',
+  POST_SETTING_DATA: Config.BASEURL + 'profile/profile_setting/update',
 };
 
 export {endpoint};

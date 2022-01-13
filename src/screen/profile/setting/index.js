@@ -26,13 +26,19 @@ const SettingScreen = ({route, navigation}) => {
   const menuPosition = useRef(null);
   const menuLocation = useRef(null);
 
-  const [inital, setInital] = useState(true);
+  const [initial, setInitial] = useState(true);
   const [datePickerVisible, setDatePickerVisible] = useState(false);
   const [name, setName] = useState(data.full_name);
   const [birth, setBirth] = useState(data.dob);
   const [gender, setGender] = useState(data.gender);
   const [position, setPosition] = useState({id: 0, name: ''});
   const [location, setLocation] = useState({id: 0, name: ''});
+
+  const nameError = validate('name', name);
+  const birthError = validate('general', birth);
+  const genderError = validate('general', gender);
+  const positionError = validate('general', position.name);
+  const locationError = validate('general', location.name);
 
   useEffect(() => {
     setName(data.full_name);
@@ -104,6 +110,7 @@ const SettingScreen = ({route, navigation}) => {
             onChangeTextValue={text => {
               setName(text);
             }}
+            isError={nameError !== null && !initial}
           />
           <Input
             style={styles.inputDisable}
@@ -124,6 +131,7 @@ const SettingScreen = ({route, navigation}) => {
                 />
               </TouchableOpacity>
             }
+            isError={birthError !== null && !initial}
           />
           <Menu
             ref={menuGender}
@@ -137,6 +145,7 @@ const SettingScreen = ({route, navigation}) => {
                   pointerEvents={'none'}
                   placeholder={'Select your gender'}
                   value={gender}
+                  isError={genderError !== null && !initial}
                 />
               </TouchableWithoutFeedback>
             }>
@@ -160,6 +169,7 @@ const SettingScreen = ({route, navigation}) => {
                   pointerEvents={'none'}
                   placeholder={'Select your education'}
                   value={position.name}
+                  isError={positionError !== null && !initial}
                 />
               </TouchableWithoutFeedback>
             }>
@@ -183,6 +193,7 @@ const SettingScreen = ({route, navigation}) => {
                   pointerEvents={'none'}
                   placeholder={'Select your location'}
                   value={location.name}
+                  isError={locationError !== null && !initial}
                 />
               </TouchableWithoutFeedback>
             }>
@@ -199,7 +210,23 @@ const SettingScreen = ({route, navigation}) => {
           loading={loading}
           style={styles.button}
           onPress={() => {
-            setInital(false);
+            setInitial(false);
+            if (
+              nameError === null &&
+              genderError === null &&
+              birthError === null &&
+              positionError === null &&
+              locationError === null
+            ) {
+              submit(
+                data.photo,
+                name,
+                gender,
+                formatDate(birth, true),
+                position.id,
+                location.id,
+              );
+            }
           }}>
           Update
         </Button>

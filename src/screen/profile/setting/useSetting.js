@@ -46,18 +46,18 @@ const useSetting = () => {
     });
   };
 
-  const submit = phone => {
-    let fChar = phone.charAt(0);
-    if (parseInt(fChar, 10) === 0) {
-      phone = `+62${parseInt(phone, 10)}`;
-    }
-
+  const submit = (photo, name, gender, dob, eduId, cityId) => {
     const param = {
-      number: phone,
+      photo: photo,
+      full_name: name,
+      gender: gender,
+      dob: dob,
+      last_education_id: eduId,
+      city_id: cityId,
     };
-
+    console.log(param);
     postData({
-      url: endpoint.POST_EDIT_PHONE,
+      url: endpoint.POST_SETTING_DATA,
       params: param,
       onSuccess: res => {
         const {status} = res;
