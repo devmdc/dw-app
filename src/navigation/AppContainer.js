@@ -14,6 +14,7 @@ import WhatsappScreen from '../screen/profile/whatsapp';
 import ChangePasswordScreen from '../screen/profile/password';
 import ExperienceScreen from '../screen/profile/experience';
 import AddExperienceScreen from '../screen/profile/experience/add';
+import SettingScreen from '../screen/profile/setting';
 
 import {RootNav} from 'utils';
 
@@ -58,6 +59,7 @@ function MainStackScreen() {
         name={'AddExperience'}
         component={AddExperienceScreen}
       />
+      <MainStack.Screen name={'Setting'} component={SettingScreen} />
     </MainStack.Navigator>
   );
 }

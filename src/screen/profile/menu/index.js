@@ -29,6 +29,9 @@ const MenuCollection = ({data = [1, 2, 3], logout}) => {
           },
         ]);
         break;
+      default:
+        navigation.navigate('Setting');
+        break;
     }
   };
 

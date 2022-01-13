@@ -92,7 +92,7 @@ const useAddExp = () => {
   };
 
   const checkDate = (dateStart, dateEnd) => {
-    if (dateStart > dateEnd) {
+    if (formatDate(dateStart, true) > formatDate(dateEnd, true)) {
       return false;
     }
 
