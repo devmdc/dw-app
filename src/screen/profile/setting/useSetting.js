@@ -1,10 +1,11 @@
 import {useEffect, useState} from 'react';
+import {Buffer} from 'buffer';
 import {useNavigation} from '@react-navigation/native';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {useHttp, endpoint} from 'api';
 
 const useSetting = () => {
-  const {loading, postData, getData} = useHttp();
+  const {loading, postData, getData, uploadData} = useHttp();
 
   const navigation = useNavigation();
 
@@ -27,7 +28,6 @@ const useSetting = () => {
     };
 
     launchImageLibrary(opt, response => {
-      console.log(response);
       if (response.didCancel) {
         console.log('User cancelled photo picker');
       } else if (response.error) {
@@ -35,9 +35,29 @@ const useSetting = () => {
       } else if (response.customButton) {
         console.log('User tapped custom button: ', response.customButton);
       } else {
-        let base64Pict = 'data:image/jpeg;base64,' + response.assets[0].base64;
+        let base64Pict = 'data:image/png;base64,' + response.assets[0].base64;
         setData({...data, photo: base64Pict});
+        submitPicture(response.assets[0].base64);
       }
+    });
+  };
+
+  const submitPicture = base64 => {
+    const buffer = Buffer.from(base64, 'base64');
+
+    uploadData({
+      url: endpoint.POST_UPLOAD_DATA,
+      data: buffer,
+      onSuccess: res => {
+        console.log(res);
+        const {data: dtUpload, status} = res;
+        if (status === 200) {
+          setData({...data, photo: dtUpload.file_url});
+        }
+      },
+      onError: error => {
+        console.log(error);
+      },
     });
   };
 

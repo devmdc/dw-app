@@ -50,7 +50,30 @@ const useHttp = (initialData = []) => {
       });
   };
 
-  return {loading, postData, getData};
+  const uploadData = ({
+    url,
+    data,
+    onSuccess = () => {},
+    onError = () => {},
+  }) => {
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'image/png',
+        Authorization: `Bearer ${store.getState().user.data.token}`,
+      },
+      body: data,
+    })
+      .then(response => response.json())
+      .then(res => {
+        onSuccess(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  return {loading, postData, getData, uploadData};
 };
 
 const DEFAULT_PARAMS = {
