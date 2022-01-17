@@ -36,8 +36,8 @@
 	<string>1</string>
 	<key>FacebookAppID</key>
 	<string>934401497190762</string>
-  <key>FacebookClientToken</key>
-  <string>7330596a135ca6cce13b1788ef9cceb9</string>
+	<key>FacebookClientToken</key>
+	<string>7330596a135ca6cce13b1788ef9cceb9</string>
 	<key>FacebookDisplayName</key>
 	<string>Duty Winner</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
@@ -57,6 +57,12 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+  <key>NSCameraUsageDescription</key>
+  <string>$(PRODUCT_NAME) would like to use your camera to edit profile picture</string>
+  <key>NSPhotoLibraryAddUsageDescription</key>
+  <string>$(PRODUCT_NAME) would like to save photos to your photo gallery</string>
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>$(PRODUCT_NAME) would like access to your photo gallery to edit profile picture</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Poppins-Bold.ttf</string>

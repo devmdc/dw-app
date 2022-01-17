@@ -87,7 +87,7 @@ const ForgotDataScreen = ({route, navigation}) => {
                 if (password.value !== rePassword.value) {
                   showMsgWarning('Password are not matching');
                 } else {
-                  submitData(email, code, password);
+                  submitData(email, code, password.value);
                 }
               }
             }}>

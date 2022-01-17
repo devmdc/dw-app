@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import DropShadow from 'react-native-drop-shadow';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import Menu, {MenuItem} from 'react-native-material-menu';
 import {Container, Button, Text, Input, Header} from 'component';
 import {images, colors} from 'assets';
@@ -19,7 +20,7 @@ import useSetting from './useSetting';
 import useAddExp from '../experience/add/useAddExp';
 
 const SettingScreen = ({route, navigation}) => {
-  const {loading, data, education, submit} = useSetting();
+  const {loading, data, education, submit, takePicture} = useSetting();
   const {city} = useAddExp();
 
   const menuGender = useRef(null);
@@ -93,11 +94,13 @@ const SettingScreen = ({route, navigation}) => {
         </Text>
         <View style={[setMarginTop(20), styles.line]} />
         <View style={styles.wrapperPict}>
-          <Image
-            source={{uri: data.photo}}
-            style={styles.profilePict}
-            resizeMode={'cover'}
-          />
+          <TouchableOpacity onPress={takePicture}>
+            <Image
+              source={{uri: data.photo}}
+              style={styles.profilePict}
+              resizeMode={'cover'}
+            />
+          </TouchableOpacity>
           <Text style={[styles.profileText]} fontSize={11}>
             Click the picture to change
           </Text>

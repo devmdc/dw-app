@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
+import {launchImageLibrary} from 'react-native-image-picker';
 import {useHttp, endpoint} from 'api';
 
 const useSetting = () => {
@@ -15,6 +16,30 @@ const useSetting = () => {
     getEducation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const takePicture = () => {
+    const opt = {
+      maxHeight: 200,
+      maxWidth: 200,
+      selectionLimit: 0,
+      mediaType: 'photo',
+      includeBase64: true,
+    };
+
+    launchImageLibrary(opt, response => {
+      console.log(response);
+      if (response.didCancel) {
+        console.log('User cancelled photo picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      } else {
+        let base64Pict = 'data:image/jpeg;base64,' + response.assets[0].base64;
+        setData({...data, photo: base64Pict});
+      }
+    });
+  };
 
   const getProfile = () => {
     getData({
@@ -55,7 +80,7 @@ const useSetting = () => {
       last_education_id: eduId,
       city_id: cityId,
     };
-    console.log(param);
+
     postData({
       url: endpoint.POST_SETTING_DATA,
       params: param,
@@ -71,7 +96,7 @@ const useSetting = () => {
     });
   };
 
-  return {loading, data, education, submit};
+  return {loading, data, education, submit, takePicture};
 };
 
 export default useSetting;

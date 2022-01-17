@@ -112,7 +112,7 @@ const ChangePasswordScreen = ({route, navigation}) => {
               if (newPass.value !== rePass.value) {
                 showMsgWarning('Password are not matching');
               } else {
-                submitData(oldPass, newPass);
+                submitData(oldPass.value, newPass.value);
               }
             }
           }}>
