@@ -15,6 +15,7 @@ import ChangePasswordScreen from '../screen/profile/password';
 import ExperienceScreen from '../screen/profile/experience';
 import AddExperienceScreen from '../screen/profile/experience/add';
 import SettingScreen from '../screen/profile/setting';
+import PreferenceScreen from '../screen/profile/preference';
 
 import {RootNav} from 'utils';
 
@@ -60,6 +61,7 @@ function MainStackScreen() {
         component={AddExperienceScreen}
       />
       <MainStack.Screen name={'Setting'} component={SettingScreen} />
+      <MainStack.Screen name={'Preference'} component={PreferenceScreen} />
     </MainStack.Navigator>
   );
 }

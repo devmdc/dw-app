@@ -11,6 +11,9 @@ const MenuCollection = ({data = [1, 2, 3], logout}) => {
 
   const menuAction = index => {
     switch (index) {
+      case 1:
+        navigation.navigate('Preference');
+        break;
       case 2:
         navigation.navigate('Experience');
         break;

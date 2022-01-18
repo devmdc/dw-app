@@ -321,6 +321,8 @@ PODS:
     - React
   - react-native-image-picker (4.0.3):
     - React-Core
+  - react-native-pager-view (5.4.9):
+    - React-Core
   - react-native-safe-area-context (3.3.2):
     - React-Core
   - react-native-splash-screen (3.3.0):
@@ -457,6 +459,7 @@ DEPENDENCIES:
   - react-native-fbsdk-next (from `../node_modules/react-native-fbsdk-next`)
   - react-native-image-base64 (from `../node_modules/react-native-image-base64`)
   - react-native-image-picker (from `../node_modules/react-native-image-picker`)
+  - react-native-pager-view (from `../node_modules/react-native-pager-view`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -548,6 +551,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-image-base64"
   react-native-image-picker:
     :path: "../node_modules/react-native-image-picker"
+  react-native-pager-view:
+    :path: "../node_modules/react-native-pager-view"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-splash-screen:
@@ -637,6 +642,7 @@ SPEC CHECKSUMS:
   react-native-fbsdk-next: 19e974b071047b7ed1dad86a9dc3fe77dff76b8c
   react-native-image-base64: acfe962aa79535d826a2668e66474e85a9ee468d
   react-native-image-picker: 4089335b89b625d4e34d53fb249c48a7a791b3ea
+  react-native-pager-view: 311c10a4eead1be627cad59062aa059d8108b943
   react-native-safe-area-context: 5cf05f49df9d17261e40e518481f2e334c6cd4b5
   react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
   React-perflogger: 93075d8931c32cd1fce8a98c15d2d5ccc4d891bd
