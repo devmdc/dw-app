@@ -24,6 +24,7 @@ const endpoint = {
   GET_EDUCATION: Config.BASEURL + 'profile/profile_setting/get_education',
   POST_SETTING_DATA: Config.BASEURL + 'profile/profile_setting/update',
   POST_UPLOAD_DATA: Config.BASEURLUPLOAD + 'tool/file/upload',
+  GET_JP_DATA: Config.BASEURL + 'profile/job_preference/data',
 };
 
 export {endpoint};
