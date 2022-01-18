@@ -14,6 +14,10 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: colors.dwSoftGrey,
   },
+  contentList: {
+    paddingHorizontal: 16,
+    paddingVertical: 5,
+  },
   textInfo: {
     textAlign: 'center',
   },

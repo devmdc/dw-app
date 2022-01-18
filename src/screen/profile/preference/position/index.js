@@ -1,15 +1,24 @@
 import React from 'react';
-import {View} from 'react-native';
-import {Text} from 'component';
+import {View, FlatList} from 'react-native';
 
-import styles, {setMarginTop} from './styles';
+import styles from './styles';
+
+import CardJobPreference from '../component/cardjp';
 
 const PositionCollection = ({navigation}) => {
+  const renderItem = ({item, index}) => {
+    return <CardJobPreference name={'Customer Service'} />;
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={[setMarginTop(50), styles.textInfo]} fontSize={13}>
-        Position
-      </Text>
+      <FlatList
+        contentContainerStyle={styles.contentList}
+        showsVerticalScrollIndicator={false}
+        data={[1, 2, 3]}
+        keyExtractor={index => index.toString()}
+        renderItem={renderItem}
+      />
     </View>
   );
 };
