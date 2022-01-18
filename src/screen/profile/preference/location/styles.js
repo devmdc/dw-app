@@ -16,7 +16,7 @@ export default StyleSheet.create({
   },
   contentList: {
     paddingHorizontal: 16,
-    paddingVertical: 5,
+    paddingVertical: 11,
   },
   textInfo: {
     textAlign: 'center',
