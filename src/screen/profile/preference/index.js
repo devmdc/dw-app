@@ -7,7 +7,11 @@ import styles, {setMarginTop} from './styles';
 
 import PreferenceTopNavigator from './navigation/PreferenceTopNavigator';
 
+import usePreference from './usePreference';
+
 const PreferenceScreen = ({route, navigation}) => {
+  const {submit} = usePreference();
+
   const [initial, setInitial] = useState(true);
 
   return (
@@ -27,6 +31,7 @@ const PreferenceScreen = ({route, navigation}) => {
           style={styles.button}
           onPress={() => {
             setInitial(false);
+            submit();
           }}>
           Update
         </Button>

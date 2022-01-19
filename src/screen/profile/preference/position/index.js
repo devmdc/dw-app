@@ -9,10 +9,15 @@ import CardJobPreference from '../component/cardjp';
 import usePosition from './usePosition';
 
 const PositionCollection = ({navigation}) => {
-  const {loading, position} = usePosition();
+  const {loading, position, saveData} = usePosition();
 
   const renderItem = ({item, index}) => {
-    return <CardJobPreference name={item.name} />;
+    return (
+      <CardJobPreference
+        name={item.name}
+        onPress={check => saveData(check, item)}
+      />
+    );
   };
 
   return (

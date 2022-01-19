@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import {useHttp, endpoint} from 'api';
@@ -6,43 +6,21 @@ import {PreferenceAction} from 'action';
 import {store} from '../../../store';
 
 const usePreference = () => {
-  const {loading, postData, getData} = useHttp();
+  const {loading, postData} = useHttp();
 
   const {dataPos, dataLoc} = useSelector(state => ({
     dataPos: state.preference.dataPos,
-    dataLoc: state.user.data.dataLoc,
+    dataLoc: state.preference.dataLoc,
   }));
 
   const navigation = useNavigation();
 
-  const [position, setPosition] = useState([]);
-  const [location, setLocation] = useState([]);
-
   useEffect(() => {
-    getdata();
+    store.dispatch(PreferenceAction.setEmpty());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const getdata = () => {
-    getData({
-      url: endpoint.GET_JP_DATA,
-      onSuccess: res => {
-        const {data, status} = res;
-
-        if (status === 200) {
-          setPosition(data.position);
-          setLocation(data.location);
-        }
-      },
-      onError: error => {
-        console.log(error);
-      },
-    });
-  };
-
   const submit = () => {
-    store.dispatch(PreferenceAction.setEmpty());
-
     const param = {
       position: dataPos,
       location: dataLoc,
@@ -63,7 +41,7 @@ const usePreference = () => {
     });
   };
 
-  return {loading, position, location, submit};
+  return {loading, submit};
 };
 
 export default usePreference;

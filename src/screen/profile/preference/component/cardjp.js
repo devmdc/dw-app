@@ -3,11 +3,15 @@ import {View, TouchableWithoutFeedback, Image, StyleSheet} from 'react-native';
 import {colors, images} from 'assets';
 import {Text} from 'component';
 
-const CardJobPreference = ({name}) => {
+const CardJobPreference = ({name, onPress}) => {
   const [check, setCheck] = useState(false);
 
   return (
-    <TouchableWithoutFeedback onPress={() => setCheck(!check)}>
+    <TouchableWithoutFeedback
+      onPress={() => {
+        onPress(!check);
+        setCheck(!check);
+      }}>
       <View style={styles.container}>
         <Text
           style={styles.textName}

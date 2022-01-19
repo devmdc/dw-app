@@ -1,5 +1,7 @@
 import {useState, useEffect} from 'react';
 import {useHttp, endpoint} from 'api';
+import {PreferenceAction} from 'action';
+import {store} from '../../../../store';
 
 const usePosition = () => {
   const {loading, getData} = useHttp();
@@ -27,7 +29,12 @@ const usePosition = () => {
     });
   };
 
-  return {loading, position};
+  const saveData = (check, item) => {
+    let newData = {...item, check: check};
+    store.dispatch(PreferenceAction.setDataPos(newData));
+  };
+
+  return {loading, position, saveData};
 };
 
 export default usePosition;
