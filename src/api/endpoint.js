@@ -25,6 +25,7 @@ const endpoint = {
   POST_SETTING_DATA: Config.BASEURL + 'profile/profile_setting/update',
   POST_UPLOAD_DATA: Config.BASEURLUPLOAD + 'tool/file/upload',
   GET_JP_DATA: Config.BASEURL + 'profile/job_preference/data',
+  POST_JP_DATA: Config.BASEURL + 'profile/job_preference/edit',
 };
 
 export {endpoint};
