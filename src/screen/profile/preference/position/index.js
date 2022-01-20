@@ -15,6 +15,7 @@ const PositionCollection = ({navigation}) => {
     return (
       <CardJobPreference
         name={item.name}
+        checked={item.check}
         onPress={check => saveData(check, item)}
       />
     );

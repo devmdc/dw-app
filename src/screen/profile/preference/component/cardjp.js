@@ -3,8 +3,8 @@ import {View, TouchableWithoutFeedback, Image, StyleSheet} from 'react-native';
 import {colors, images} from 'assets';
 import {Text} from 'component';
 
-const CardJobPreference = ({name, onPress}) => {
-  const [check, setCheck] = useState(false);
+const CardJobPreference = ({name, checked, onPress}) => {
+  const [check, setCheck] = useState(checked);
 
   return (
     <TouchableWithoutFeedback
@@ -32,6 +32,7 @@ const CardJobPreference = ({name, onPress}) => {
 
 CardJobPreference.defaultProps = {
   name: 'Customer Service',
+  checked: false,
 };
 
 const styles = StyleSheet.create({

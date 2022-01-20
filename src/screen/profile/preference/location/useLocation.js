@@ -21,6 +21,7 @@ const useLocation = () => {
 
         if (status === 200) {
           setLocation(data.location);
+          store.dispatch(PreferenceAction.setInitLoc(data.location));
         }
       },
       onError: error => {

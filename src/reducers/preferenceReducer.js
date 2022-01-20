@@ -5,6 +5,16 @@ const INITIAL_STATE = {
 
 function preference(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case 'JP_INIT_POS':
+      return {
+        ...state,
+        dataPos: action.data,
+      };
+    case 'JP_INIT_LOC':
+      return {
+        ...state,
+        dataLoc: action.data,
+      };
     case 'JP_SET_DATA_POS':
       var newData = [];
       if (action.data.check) {

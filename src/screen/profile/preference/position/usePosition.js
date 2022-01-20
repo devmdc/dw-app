@@ -21,6 +21,7 @@ const usePosition = () => {
 
         if (status === 200) {
           setPosition(data.position);
+          store.dispatch(PreferenceAction.setInitPos(data.position));
         }
       },
       onError: error => {
