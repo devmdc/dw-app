@@ -31,6 +31,9 @@ export default StyleSheet.create({
     marginTop: 15,
     alignItems: 'center',
   },
+  inputDisable: {
+    backgroundColor: colors.dwWhite,
+  },
   inputDateStart: {
     backgroundColor: colors.dwWhite,
   },

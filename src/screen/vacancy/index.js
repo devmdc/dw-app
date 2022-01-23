@@ -1,5 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import {View, TouchableOpacity, Image} from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  Image,
+} from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import DropShadow from 'react-native-drop-shadow';
 import {Container, Header, Text, Input, Button} from 'component';
@@ -39,16 +44,24 @@ const VacancyScreen = ({navigation}) => {
             <Text semibold style={[styles.textInfo]} fontSize={17}>
               Search Vacancy
             </Text>
-            <Input
-              style={[setMarginTop(15)]}
-              placeholder={'Job Position'}
-              onChangeTextValue={text => console.log(text)}
-            />
-            <Input
-              style={[setMarginTop(15)]}
-              placeholder={'Location / City'}
-              onChangeTextValue={text => console.log(text)}
-            />
+            <TouchableWithoutFeedback
+              onPress={() => navigation.navigate('Position')}>
+              <Input
+                style={[setMarginTop(15), styles.inputDisable]}
+                editable={false}
+                pointerEvents={'none'}
+                placeholder={'Job Position'}
+              />
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback
+              onPress={() => navigation.navigate('Location')}>
+              <Input
+                style={[setMarginTop(15), styles.inputDisable]}
+                editable={false}
+                pointerEvents={'none'}
+                placeholder={'Location / City'}
+              />
+            </TouchableWithoutFeedback>
             <Text
               style={[setMarginTop(15), {color: colors.dwDarkGrey}]}
               fontSize={13}>

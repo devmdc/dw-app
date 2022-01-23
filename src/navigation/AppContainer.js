@@ -16,6 +16,8 @@ import ExperienceScreen from '../screen/profile/experience';
 import AddExperienceScreen from '../screen/profile/experience/add';
 import SettingScreen from '../screen/profile/setting';
 import PreferenceScreen from '../screen/profile/preference';
+import PositionScreen from '../screen/vacancy/position';
+import LocationScreen from '../screen/vacancy/location';
 
 import {RootNav} from 'utils';
 
@@ -62,6 +64,8 @@ function MainStackScreen() {
       />
       <MainStack.Screen name={'Setting'} component={SettingScreen} />
       <MainStack.Screen name={'Preference'} component={PreferenceScreen} />
+      <MainStack.Screen name={'Position'} component={PositionScreen} />
+      <MainStack.Screen name={'Location'} component={LocationScreen} />
     </MainStack.Navigator>
   );
 }
