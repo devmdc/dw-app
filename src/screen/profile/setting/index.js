@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import DropShadow from 'react-native-drop-shadow';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import Menu, {MenuItem} from 'react-native-material-menu';
 import {Container, Button, Text, Input, Header} from 'component';
 import {images, colors} from 'assets';
@@ -240,7 +239,7 @@ const SettingScreen = ({route, navigation}) => {
         mode="date"
         onConfirm={date => {
           setDatePickerVisible(false);
-          setBirth(date);
+          setBirth(formatDate(date, true));
         }}
         onCancel={() => setDatePickerVisible(false)}
       />
