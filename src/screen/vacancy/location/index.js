@@ -4,6 +4,7 @@ import DropShadow from 'react-native-drop-shadow';
 import {Container, Header, Text} from 'component';
 
 import styles, {setMarginTop} from './styles';
+import CardPosLoc from '../component/cardposloc';
 
 const NotificationScreen = ({navigation}) => {
   return (
