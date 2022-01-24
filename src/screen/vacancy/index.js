@@ -127,7 +127,11 @@ const VacancyScreen = ({navigation}) => {
               </View>
             </View>
 
-            <Button style={[setMarginTop(15), styles.button]}>Search</Button>
+            <Button
+              style={[setMarginTop(15), styles.button]}
+              onPress={() => navigation.navigate('Result')}>
+              Search
+            </Button>
           </View>
         </DropShadow>
       </View>

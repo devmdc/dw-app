@@ -10,7 +10,7 @@ import NumberFormat from 'react-number-format';
 import {colors, images} from 'assets';
 import {Text} from 'component';
 
-const ExperienceCard = ({
+const CardVacancyResult = ({
   style,
   id,
   name,
@@ -58,19 +58,12 @@ const ExperienceCard = ({
             )}
           />
         </View>
-        <TouchableOpacity onPress={onEdit}>
-          <Image
-            source={images.pencil}
-            style={styles.imgEdit}
-            resizeMode={'cover'}
-          />
-        </TouchableOpacity>
       </View>
     </TouchableWithoutFeedback>
   );
 };
 
-ExperienceCard.defaultProps = {
+CardVacancyResult.defaultProps = {
   id: 1,
   name: 'Company Name',
   pos: 'Job Position',
@@ -147,4 +140,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ExperienceCard;
+export default CardVacancyResult;

@@ -18,6 +18,7 @@ import SettingScreen from '../screen/profile/setting';
 import PreferenceScreen from '../screen/profile/preference';
 import PositionScreen from '../screen/vacancy/position';
 import LocationScreen from '../screen/vacancy/location';
+import ResultScreen from '../screen/vacancy/result';
 
 import {RootNav} from 'utils';
 
@@ -66,6 +67,7 @@ function MainStackScreen() {
       <MainStack.Screen name={'Preference'} component={PreferenceScreen} />
       <MainStack.Screen name={'Position'} component={PositionScreen} />
       <MainStack.Screen name={'Location'} component={LocationScreen} />
+      <MainStack.Screen name={'Result'} component={ResultScreen} />
     </MainStack.Navigator>
   );
 }
