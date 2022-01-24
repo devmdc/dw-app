@@ -11,6 +11,10 @@ export function setMarginHorizontal(margin, number) {
 export default StyleSheet.create({
   container: {
     flex: 1,
+    marginBottom: 84,
+  },
+  contentList: {
+    padding: 16,
   },
   textInfo: {
     textAlign: 'center',
