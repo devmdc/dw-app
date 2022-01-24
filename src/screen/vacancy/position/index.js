@@ -9,7 +9,7 @@ import CardPosLoc from '../component/cardposloc';
 
 import usePosition from '../../profile/preference/position/usePosition';
 
-const NotificationScreen = ({navigation}) => {
+const PositionScreen = ({navigation}) => {
   const {loading, position} = usePosition();
 
   const renderItem = ({item, index}) => {
@@ -30,7 +30,7 @@ const NotificationScreen = ({navigation}) => {
       <View style={styles.container}>
         <View style={styles.wrapper}>
           <Text bold style={[setMarginTop(10), styles.infoText]} fontSize={17}>
-            Job Preference
+            Job Position
           </Text>
           <View style={[setMarginTop(20), styles.line]} />
           <Input
@@ -62,4 +62,4 @@ const NotificationScreen = ({navigation}) => {
   );
 };
 
-export default NotificationScreen;
+export default PositionScreen;

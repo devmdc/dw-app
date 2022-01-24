@@ -13,7 +13,26 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.dwSoftGrey,
+  },
+  wrapper: {
+    alignItems: 'center',
+    padding: 20,
+    backgroundColor: colors.dwWhite,
+  },
+  wrapperList: {
+    flex: 1,
+  },
+  contentList: {
     padding: 16,
+  },
+  line: {
+    width: '100%',
+    height: 0.5,
+    backgroundColor: colors.dwLightGrey,
+  },
+  imgInput: {
+    width: 15,
+    height: 15,
   },
   textInfo: {
     textAlign: 'center',
