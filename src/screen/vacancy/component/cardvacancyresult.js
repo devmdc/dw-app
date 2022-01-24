@@ -71,8 +71,6 @@ CardVacancyResult.defaultProps = {
   workingDate: 'Working Date Range',
   fee: 1000000,
   type: 'bulan',
-  buttonTitle: 'confirm',
-  isButton: true,
   image: images.profile,
   onPress: () => console.log('Card Pressed'),
   onEdit: () => console.log('Edit Pressed'),

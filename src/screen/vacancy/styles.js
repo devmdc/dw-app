@@ -15,6 +15,10 @@ export default StyleSheet.create({
     backgroundColor: colors.dwSoftGrey,
     padding: 16,
   },
+  scrolView: {
+    backgroundColor: colors.dwSoftGrey,
+    marginBottom: 64,
+  },
   headerWrapper: {
     backgroundColor: colors.dwWhite,
     padding: 16,
@@ -43,6 +47,14 @@ export default StyleSheet.create({
   },
   button: {
     height: 48,
+  },
+  line: {
+    width: '100%',
+    height: 0.5,
+    backgroundColor: colors.dwLightGrey,
+  },
+  contentList: {
+    paddingVertical: 16,
   },
   shadowNavbar: {
     shadowColor: colors.dwGrey,
