@@ -26,6 +26,10 @@ const endpoint = {
   POST_UPLOAD_DATA: Config.BASEURLUPLOAD + 'tool/file/upload',
   GET_JP_DATA: Config.BASEURL + 'profile/job_preference/data',
   POST_JP_DATA: Config.BASEURL + 'profile/job_preference/edit',
+  GET_DETAIL_VACANCY: Config.BASEURL + 'vacancy/detail/detail',
+  GET_SEARCH_LIST: Config.BASEURL + 'vacancy/search/list',
+  GET_SEARCH_POSITION: Config.BASEURL + 'vacancy/search/get_job_position',
+  GET_SEARCH_CITY: Config.BASEURL + 'vacancy/search/get_city',
 };
 
 export {endpoint};

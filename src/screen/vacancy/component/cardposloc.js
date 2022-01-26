@@ -1,16 +1,13 @@
-import React, {useState} from 'react';
-import {View, TouchableWithoutFeedback, Image, StyleSheet} from 'react-native';
-import {colors, images} from 'assets';
+import React from 'react';
+import {View, TouchableWithoutFeedback, StyleSheet} from 'react-native';
+import {colors} from 'assets';
 import {Text} from 'component';
 
-const CardJobPreference = ({name, checked, onPress}) => {
-  const [check, setCheck] = useState(checked);
-
+const CardJobPreference = ({name, onPress}) => {
   return (
     <TouchableWithoutFeedback
       onPress={() => {
-        onPress(!check);
-        setCheck(!check);
+        onPress();
       }}>
       <View style={styles.container}>
         <Text
@@ -20,11 +17,6 @@ const CardJobPreference = ({name, checked, onPress}) => {
           semibold>
           {name}
         </Text>
-        <Image
-          resizeMode={'cover'}
-          source={check ? images.radio : images.unradio}
-          style={styles.iconCheck}
-        />
       </View>
     </TouchableWithoutFeedback>
   );
@@ -32,7 +24,6 @@ const CardJobPreference = ({name, checked, onPress}) => {
 
 CardJobPreference.defaultProps = {
   name: 'Customer Service',
-  checked: false,
 };
 
 const styles = StyleSheet.create({

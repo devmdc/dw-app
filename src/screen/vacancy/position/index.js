@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, FlatList, TouchableOpacity, Image} from 'react-native';
 import DropShadow from 'react-native-drop-shadow';
 import {Container, Header, Text, Loading, Input} from 'component';
@@ -7,17 +7,22 @@ import {images} from 'assets';
 import styles, {setMarginTop} from './styles';
 import CardPosLoc from '../component/cardposloc';
 
-import usePosition from '../../profile/preference/position/usePosition';
+import useSearchPosition from './useSearchPosition';
 
-const PositionScreen = ({navigation}) => {
-  const {loading, position} = usePosition();
+const PositionScreen = ({route, navigation}) => {
+  const {setPosition} = route.params || {};
+  const {loading, position, search} = useSearchPosition();
+
+  const [key, setKey] = useState('');
 
   const renderItem = ({item, index}) => {
     return (
       <CardPosLoc
         name={item.name}
-        checked={item.check}
-        onPress={check => console.log(check)}
+        onPress={check => {
+          setPosition({id: item.id, name: item.name});
+          navigation.goBack();
+        }}
       />
     );
   };
@@ -37,7 +42,7 @@ const PositionScreen = ({navigation}) => {
             style={[setMarginTop(20)]}
             placeholder={'Search again..'}
             rightIcon={
-              <TouchableOpacity onPress={() => console.log('search')}>
+              <TouchableOpacity onPress={() => search(key.toLowerCase())}>
                 <Image
                   style={styles.imgInput}
                   source={images.search}
@@ -45,6 +50,10 @@ const PositionScreen = ({navigation}) => {
                 />
               </TouchableOpacity>
             }
+            onChangeTextValue={text => {
+              setKey(text);
+              search(text.toLowerCase());
+            }}
           />
         </View>
         <View style={styles.wrapperList}>

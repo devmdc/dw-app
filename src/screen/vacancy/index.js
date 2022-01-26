@@ -26,6 +26,8 @@ const VacancyScreen = ({navigation}) => {
     status: false,
     isDateFirst: true,
   });
+  const [position, setPosition] = useState({id: 0, name: ''});
+  const [city, setCity] = useState({id: 0, name: ''});
   const [dateStart, setDateStart] = useState('');
   const [dateEnd, setDateEnd] = useState('');
 
@@ -54,21 +56,25 @@ const VacancyScreen = ({navigation}) => {
                 Search Vacancy
               </Text>
               <TouchableWithoutFeedback
-                onPress={() => navigation.navigate('Position')}>
+                onPress={() => navigation.navigate('Position', {setPosition})}>
                 <Input
                   style={[setMarginTop(15), styles.inputDisable]}
+                  textStyle={{color: colors.dwBlack}}
                   editable={false}
                   pointerEvents={'none'}
                   placeholder={'Job Position'}
+                  value={position.name}
                 />
               </TouchableWithoutFeedback>
               <TouchableWithoutFeedback
-                onPress={() => navigation.navigate('Location')}>
+                onPress={() => navigation.navigate('Location', {setCity})}>
                 <Input
                   style={[setMarginTop(15), styles.inputDisable]}
+                  textStyle={{color: colors.dwBlack}}
                   editable={false}
                   pointerEvents={'none'}
                   placeholder={'Location / City'}
+                  value={city.name}
                 />
               </TouchableWithoutFeedback>
               <Text
@@ -138,7 +144,14 @@ const VacancyScreen = ({navigation}) => {
 
               <Button
                 style={[setMarginTop(15), styles.button]}
-                onPress={() => navigation.navigate('Result')}>
+                onPress={() =>
+                  navigation.navigate('Result', {
+                    c_id: city.id,
+                    jp_id: position.id,
+                    dtStart: formatDate(dateStart, true),
+                    dtEnd: formatDate(dateStart, true),
+                  })
+                }>
                 Search
               </Button>
             </View>
