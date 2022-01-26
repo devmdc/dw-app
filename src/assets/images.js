@@ -26,6 +26,7 @@ const images = {
   profile: require('./images/profile.png'),
   radio: require('./images/radio.png'),
   search: require('./images/search.png'),
+  searchBack: require('./images/searchBack.png'),
   time: require('./images/time.png'),
   tos: require('./images/tos.png'),
   uncheck: require('./images/uncheck.png'),

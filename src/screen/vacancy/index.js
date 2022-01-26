@@ -146,10 +146,10 @@ const VacancyScreen = ({navigation}) => {
                 style={[setMarginTop(15), styles.button]}
                 onPress={() =>
                   navigation.navigate('Result', {
-                    c_id: city.id,
-                    jp_id: position.id,
+                    city: city,
+                    position: position,
                     dtStart: formatDate(dateStart, true),
-                    dtEnd: formatDate(dateStart, true),
+                    dtEnd: formatDate(dateEnd, true),
                   })
                 }>
                 Search

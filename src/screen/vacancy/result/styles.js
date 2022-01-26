@@ -15,9 +15,17 @@ export default StyleSheet.create({
     backgroundColor: colors.dwSoftGrey,
   },
   wrapper: {
-    alignItems: 'center',
-    padding: 20,
+    padding: 16,
     backgroundColor: colors.dwWhite,
+    flexDirection: 'row',
+  },
+  wrapInfo: {
+    flex: 1,
+  },
+  searchIcon: {
+    width: 24,
+    height: 24,
+    alignSelf: 'center',
   },
   wrapperList: {
     flex: 1,
