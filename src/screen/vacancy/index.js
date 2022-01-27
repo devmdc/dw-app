@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import DropShadow from 'react-native-drop-shadow';
-import {Container, Header, Text, Input, Button} from 'component';
+import {Container, Header, Text, Input, Button, Loading} from 'component';
 import {formatDate} from 'utils';
 import {colors, images} from 'assets';
 import {showMsgWarning} from 'api';
@@ -20,7 +20,7 @@ import CardVacancyRecent from './component/cardvacancyrecent';
 import useVacancy from './useVacancy';
 
 const VacancyScreen = ({navigation}) => {
-  const {checkDate} = useVacancy();
+  const {loading, data, checkDate} = useVacancy();
 
   const [datePickerVisible, setDatePickerVisible] = useState({
     status: false,
@@ -40,7 +40,21 @@ const VacancyScreen = ({navigation}) => {
   }, [dateStart, dateEnd]);
 
   const renderItem = ({item, index}) => {
-    return <CardVacancyRecent />;
+    return (
+      <CardVacancyRecent
+        id={item.id}
+        name={item.company_name}
+        pos={item.job_position_name}
+        location={item.city_name}
+        workingDate={`${formatDate(item.date_start, true)} - ${formatDate(
+          item.date_end,
+          true,
+        )}`}
+        fee={item.payment}
+        type={item.period}
+        image={{uri: item.image}}
+      />
+    );
   };
 
   return (
@@ -157,18 +171,23 @@ const VacancyScreen = ({navigation}) => {
             </View>
           </DropShadow>
 
-          <Text
-            bold
-            style={[setMarginTop(30), {color: colors.dwMainColor}]}
-            fontSize={15}>
-            Recent Vacancies
-          </Text>
-          <View style={[setMarginTop(15), styles.line]} />
+          {!loading && data.length > 0 && (
+            <>
+              <Text
+                bold
+                style={[setMarginTop(30), {color: colors.dwMainColor}]}
+                fontSize={15}>
+                Recent Vacancies
+              </Text>
+              <View style={[setMarginTop(15), styles.line]} />
+            </>
+          )}
+          {loading && <Loading />}
           <FlatList
             contentContainerStyle={styles.contentList}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            data={[1, 2, 3, 4, 5, 6]}
+            data={loading ? [] : data}
             keyExtractor={index => index.toString()}
             renderItem={renderItem}
           />

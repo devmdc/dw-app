@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {View, FlatList, TouchableOpacity, Image} from 'react-native';
 import DropShadow from 'react-native-drop-shadow';
-import {Container, Header, Text, Loading, Input} from 'component';
+import {Container, Header, Text, Loading} from 'component';
 import {formatDate} from 'utils';
 import {colors, images} from 'assets';
 
