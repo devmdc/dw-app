@@ -20,7 +20,7 @@ const useSearchResult = () => {
 
     postData({
       url: endpoint.GET_SEARCH_LIST,
-      param,
+      params: param,
       onSuccess: res => {
         const {data: result, status, meta} = res;
         const {total_data} = meta || {};
