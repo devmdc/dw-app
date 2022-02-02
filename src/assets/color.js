@@ -7,6 +7,8 @@ const colors = {
   dwWhite: '#FFFFFF',
   dwMainColor: '#3286C6',
   dwBlue: '#414B90',
+  dwMediumBlue: '#3286C6',
+  dwLine: '#CAD1D7',
   dwDarkBlue: '#212648',
   dwLightBlue: '#38A9DC',
   dwFreshOrange: '#F79256',

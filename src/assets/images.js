@@ -34,6 +34,11 @@ const images = {
   user: require('./images/user.png'),
   userActive: require('./images/userActive.png'),
   usermenu: require('./images/usermenu.png'),
+  vacanGender: require('./images/vacanGender.png'),
+  vacanJob: require('./images/vacanJob.png'),
+  vacanLocation: require('./images/vacanLocation.png'),
+  vacanPerson: require('./images/vacanPerson.png'),
+  vacanProfile: require('./images/vacanProfile.png'),
   vacancies: require('./images/vacancies.png'),
   vacanciesActive: require('./images/vacanciesActive.png'),
 };
