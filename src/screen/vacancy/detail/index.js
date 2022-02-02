@@ -12,7 +12,7 @@ const DetailVacancyScreen = ({route, navigation}) => {
   }, []);
 
   return (
-    <Container>
+    <Container color={'transparent'}>
       <DropShadow style={[styles.shadowNavbar, {zIndex: 2}]}>
         <Header isBack logo />
       </DropShadow>
@@ -183,6 +183,10 @@ const DetailVacancyScreen = ({route, navigation}) => {
           </Text>
         </View>
       </ScrollView>
+
+      <DropShadow style={[styles.shadowFooter, {zIndex: 4}]}>
+        <View style={styles.wrapperFooter} />
+      </DropShadow>
     </Container>
   );
 };

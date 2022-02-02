@@ -62,6 +62,12 @@ export default StyleSheet.create({
     backgroundColor: colors.dwLine,
     width: '100%',
   },
+  wrapperFooter: {
+    height: 128,
+    backgroundColor: colors.dwWhite,
+    borderTopRightRadius: 16,
+    borderTopLeftRadius: 16,
+  },
   shadowNavbar: {
     shadowColor: colors.dwGrey,
     shadowOffset: {
@@ -79,5 +85,14 @@ export default StyleSheet.create({
     },
     shadowOpacity: 1,
     shadowRadius: 3.0,
+  },
+  shadowFooter: {
+    shadowColor: colors.dwGrey,
+    shadowOffset: {
+      width: 0.5,
+      height: 0,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 5.0,
   },
 });
