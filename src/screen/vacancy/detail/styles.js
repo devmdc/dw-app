@@ -38,7 +38,7 @@ export default StyleSheet.create({
     width: 72,
     backgroundColor: colors.dwWhite,
     position: 'absolute',
-    top: -36,
+    top: -52,
     borderRadius: 36,
     alignSelf: 'center',
   },

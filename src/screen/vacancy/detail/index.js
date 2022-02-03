@@ -7,6 +7,7 @@ import DropShadow from 'react-native-drop-shadow';
 import {Container, Header, Loading, Text, Button} from 'component';
 import {colors, images} from 'assets';
 import {formatDate} from 'utils';
+import {getColor, getTitle} from 'constant';
 
 import styles, {setMarginTop, setMarginRight} from './styles';
 
@@ -118,8 +119,14 @@ const DetailVacancyScreen = ({route, navigation}) => {
       {loading && <Loading />}
       {!loading && (
         <>
-          <View style={styles.wrapperStatus}>
-            <Text style={styles.textStatus}>Request Interview</Text>
+          <View
+            style={[
+              styles.wrapperStatus,
+              {backgroundColor: getColor(data.vacancy_status)},
+            ]}>
+            <Text style={styles.textStatus}>
+              {getTitle(data.vacancy_status)}
+            </Text>
           </View>
 
           <ScrollView
