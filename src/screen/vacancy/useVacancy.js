@@ -13,7 +13,7 @@ const useVacancy = () => {
   }, []);
 
   const getRecentData = () => {
-    let param = {limit: 6};
+    let param = {limit: 5};
 
     postData({
       url: endpoint.GET_RECENT_VACANCY,

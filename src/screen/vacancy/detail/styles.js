@@ -50,6 +50,7 @@ export default StyleSheet.create({
   imageProfile: {
     width: 72,
     height: 72,
+    borderRadius: 36,
     alignSelf: 'center',
   },
   imageVacan: {

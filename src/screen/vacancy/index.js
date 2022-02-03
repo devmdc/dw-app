@@ -53,7 +53,9 @@ const VacancyScreen = ({navigation}) => {
         fee={item.payment}
         type={item.period}
         image={{uri: item.image}}
-        onPress={() => navigation.navigate('DetailVacancy')}
+        onPress={() =>
+          navigation.navigate('DetailVacancy', {id: item.id, uri: item.image})
+        }
       />
     );
   };
