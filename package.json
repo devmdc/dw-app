@@ -52,6 +52,7 @@
     "react-native-modal-datetime-picker": "^13.0.1",
     "react-native-otp-inputs": "^7.1.1",
     "react-native-pager-view": "^5.4.9",
+    "react-native-ratings": "^8.1.0",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.1",
     "react-native-splash-screen": "^3.3.0",

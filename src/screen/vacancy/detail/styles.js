@@ -5,8 +5,12 @@ export function setMarginTop(number) {
   return {marginTop: number};
 }
 
-export function setMarginHorizontal(margin, number) {
-  return {margin: number};
+export function setMarginHorizontal(number) {
+  return {marginHorizontal: number};
+}
+
+export function setMarginRight(number) {
+  return {marginRight: number};
 }
 
 export default StyleSheet.create({
@@ -38,6 +42,18 @@ export default StyleSheet.create({
     borderRadius: 36,
     alignSelf: 'center',
   },
+  wrapperButtonFooter: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 30,
+  },
+  buttonFooter: {
+    flex: 1,
+  },
+  buttonBorder: {
+    backgroundColor: colors.dwWhite,
+    borderColor: colors.dwWhite,
+  },
   textTitle: {
     alignSelf: 'center',
     color: colors.dwGrey,
@@ -46,6 +62,11 @@ export default StyleSheet.create({
   textStatus: {
     color: colors.dwWhite,
     textTransform: 'capitalize',
+  },
+  textFooter: {
+    color: colors.dwDarkGrey,
+    textTransform: 'capitalize',
+    textAlign: 'center',
   },
   imageProfile: {
     width: 72,
@@ -64,7 +85,8 @@ export default StyleSheet.create({
     width: '100%',
   },
   wrapperFooter: {
-    height: 128,
+    paddingTop: 20,
+    paddingBottom: 25,
     backgroundColor: colors.dwWhite,
     borderTopRightRadius: 16,
     borderTopLeftRadius: 16,

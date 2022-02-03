@@ -27,7 +27,7 @@ const Button = ({
   const TouchablePlatformSpecific =
     Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback;
 
-  const currentColor = disabled ? colors.silver : color;
+  const currentColor = disabled ? colors.dwGrey : color;
 
   const stylesBtn = [
     styles.container,
@@ -40,6 +40,7 @@ const Button = ({
 
   return (
     <TouchablePlatformSpecific
+      disabled={disabled}
       onPress={() => {
         if (!disabled && !loading) {
           onPress();
