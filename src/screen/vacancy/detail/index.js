@@ -230,7 +230,12 @@ const DetailVacancyScreen = ({route, navigation}) => {
 
           <DropShadow style={[styles.shadowFooter, {zIndex: 4}]}>
             <View style={styles.wrapperFooter}>
-              {getFooter(data.applicant_status)}
+              {getFooter(
+                data.applicant_status,
+                data.interview_date,
+                data.rating_point,
+                data.rating_text,
+              )}
             </View>
           </DropShadow>
         </>

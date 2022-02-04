@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useHttp, endpoint} from 'api';
-
+import {formatNewDate} from 'utils';
 import {STATUS_APPLIED} from 'constant';
 
 import FooterInterview from './component/footerinterview';
@@ -29,30 +29,100 @@ const useDetailVacancy = () => {
     });
   };
 
-  const getFooter = (status = STATUS_APPLIED.NOT_APPLIED) => {
+  const getFooter = (
+    status = STATUS_APPLIED.NOT_APPLIED,
+    date,
+    rating,
+    ratingText,
+  ) => {
     switch (status) {
       case STATUS_APPLIED.UNSUITABLE:
-        return <FooterStatus />;
+        return (
+          <FooterStatus
+            title={'Age or gender didn’t match'}
+            btntitle={`Can't Apply`}
+            btnDisabled={true}
+          />
+        );
       case STATUS_APPLIED.APPLIED:
-        return <FooterStatus />;
+        return (
+          <FooterStatus
+            title={'Waiting interview'}
+            btntitle={'Applied'}
+            btnDisabled={true}
+          />
+        );
       case STATUS_APPLIED.REQUEST_INTERVIEW:
-        return <FooterInterview />;
+        return (
+          <FooterInterview
+            title={'Interview date :'}
+            subtitle={formatNewDate(date)}
+            btnleft={'Reject'}
+            btnright={'Accept'}
+          />
+        );
       case STATUS_APPLIED.INTERVIEW_ACCEPTED:
-        return <FooterStatus />;
+        return (
+          <FooterStatus
+            title={'Interview date :'}
+            subtitle={formatNewDate(date)}
+            btntitle={'Accepted'}
+            btnDisabled={true}
+          />
+        );
       case STATUS_APPLIED.INTERVIEW_REJECTED:
-        return <FooterStatus />;
+        return (
+          <FooterStatus
+            title={'Interview date :'}
+            subtitle={formatNewDate(date)}
+            btntitle={'Rejected'}
+            btnDisabled={true}
+          />
+        );
       case STATUS_APPLIED.UPCOMING:
-        return <FooterResult />;
+        return (
+          <FooterResult
+            title={'Upcoming'}
+            subtitle={
+              'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'
+            }
+          />
+        );
       case STATUS_APPLIED.FAILED:
-        return <FooterStatus />;
+        return (
+          <FooterStatus
+            title={'Interview failed'}
+            btntitle={'Failed'}
+            btnDisabled={true}
+          />
+        );
       case STATUS_APPLIED.ONGOING:
-        return <FooterStatus />;
+        return (
+          <FooterStatus
+            title={'Lorem ipsum'}
+            btntitle={'On Going'}
+            btnDisabled={true}
+          />
+        );
       case STATUS_APPLIED.FINISHED:
-        return <FooterStatus />;
+        return (
+          <FooterStatus
+            title={'Wait for job provider rating'}
+            btntitle={'Finished'}
+            btnDisabled={true}
+          />
+        );
       case STATUS_APPLIED.REVIEWED:
-        return <FooterResult />;
+        return (
+          <FooterResult title={'Review'} subtitle={ratingText} star={rating} />
+        );
       default:
-        return <FooterInterview />;
+        return (
+          <FooterStatus
+            title={'Apply or decline this vacancy'}
+            btntitle={'Apply'}
+          />
+        );
     }
   };
 

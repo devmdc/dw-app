@@ -31,7 +31,6 @@ const FooterStatus = ({title, subtitle, btntitle, btnDisabled, onPress}) => {
 
 FooterStatus.defaultProps = {
   title: 'Title Footer',
-  subtitle: 'Subtitle Footer',
   btntitle: 'Footer',
   btnDisabled: false,
   onPress: () => console.log('pressed'),

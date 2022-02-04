@@ -146,6 +146,22 @@ export function formatDate(date, isDateOnly = false) {
     : moment(date).format('DD MMMM YYYY HH:mm A');
 }
 
+/**
+ * @description Create format date
+ * @author Agung Wijaya <mdc.co.id>
+ * @date 2021-11-01
+ * @export
+ * @param {date, boolean} [date=Date, isDateOnLy=Bool]
+ * @returns
+ */
+export function formatNewDate(date) {
+  if (!date) {
+    return '';
+  }
+
+  return moment(date).format('DD MMM YYYY');
+}
+
 import * as RootNav from './RootNavigation';
 
 export {RootNav};
