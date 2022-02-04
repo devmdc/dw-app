@@ -1,114 +1,26 @@
 import React, {useEffect} from 'react';
 import {View, Image, ScrollView} from 'react-native';
-import {Rating} from 'react-native-ratings';
 import ViewMoreText from 'react-native-view-more-text';
 import NumberFormat from 'react-number-format';
 import DropShadow from 'react-native-drop-shadow';
-import {Container, Header, Loading, Text, Button} from 'component';
+import {Container, Header, Loading, Text} from 'component';
 import {colors, images} from 'assets';
 import {formatDate} from 'utils';
 import {getColor, getTitle} from 'constant';
 
-import styles, {setMarginTop, setMarginRight} from './styles';
+import styles, {setMarginTop} from './styles';
 
 import useDetailVacancy from './useDetailVacancy';
 
 const DetailVacancyScreen = ({route, navigation}) => {
   const {id, uri} = route.params || {};
 
-  const {loading, data, getData} = useDetailVacancy();
+  const {loading, data, getData, getFooter} = useDetailVacancy();
 
   useEffect(() => {
     getData(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const footerInterview = () => {
-    return (
-      <View>
-        <Text style={styles.textFooter} fontSize={13}>
-          Interview date :{' '}
-          <Text bold style={styles.textFooter} fontSize={13}>
-            DD/MM/YYY
-          </Text>
-        </Text>
-        <View style={[styles.wrapperButtonFooter, setMarginTop(20)]}>
-          <Button
-            style={[
-              styles.buttonFooter,
-              styles.buttonBorder,
-              setMarginRight(10),
-            ]}
-            textColor={colors.dwGrey}
-            onPress={() => console.log('left button')}>
-            Reject
-          </Button>
-          <Button
-            style={[styles.buttonFooter]}
-            onPress={() => console.log('right button')}>
-            Accept
-          </Button>
-        </View>
-      </View>
-    );
-  };
-
-  const footerStatus = param => {
-    const {title, subtitle, btntitle} = param || {};
-
-    return (
-      <View>
-        <Text style={styles.textFooter} fontSize={13}>
-          {title}
-          {subtitle && (
-            <Text bold style={styles.textFooter} fontSize={13}>
-              {' '}
-              {subtitle}
-            </Text>
-          )}
-        </Text>
-        <View style={[styles.wrapperButtonFooter, setMarginTop(20)]}>
-          <Button
-            disabled={true}
-            style={[styles.buttonFooter]}
-            onPress={() => console.log('right button')}>
-            {btntitle}
-          </Button>
-        </View>
-      </View>
-    );
-  };
-
-  const footerResult = param => {
-    const {title, star, subtitle} = param || {};
-
-    return (
-      <View>
-        <Text bold style={styles.textFooter} fontSize={13}>
-          {title}
-        </Text>
-        {star && (
-          <View style={setMarginTop(20)}>
-            <Rating
-              readonly
-              type={'custom'}
-              ratingCount={5}
-              minValue={0}
-              imageSize={20}
-              startingValue={star}
-              ratingColor={colors.dwBrightYellow}
-              ratingBackgroundColor={colors.dwBrightYellow}
-            />
-          </View>
-        )}
-        <View style={[styles.wrapperButtonFooter, setMarginTop(20)]}>
-          <Text style={[styles.textFooter, {textAlign: 'left'}]} fontSize={13}>
-            {subtitle}
-          </Text>
-        </View>
-      </View>
-    );
-  };
 
   return (
     <Container color={'transparent'}>
@@ -122,10 +34,10 @@ const DetailVacancyScreen = ({route, navigation}) => {
           <View
             style={[
               styles.wrapperStatus,
-              {backgroundColor: getColor(data.vacancy_status)},
+              {backgroundColor: getColor(data.applicant_status)},
             ]}>
             <Text style={styles.textStatus}>
-              {getTitle(data.vacancy_status)}
+              {getTitle(data.applicant_status)}
             </Text>
           </View>
 
@@ -318,12 +230,7 @@ const DetailVacancyScreen = ({route, navigation}) => {
 
           <DropShadow style={[styles.shadowFooter, {zIndex: 4}]}>
             <View style={styles.wrapperFooter}>
-              {footerResult({
-                title: 'Upcoming',
-                star: 5,
-                subtitle:
-                  'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
-              })}
+              {getFooter(data.applicant_status)}
             </View>
           </DropShadow>
         </>

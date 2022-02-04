@@ -6,7 +6,20 @@ import {colors} from 'assets';
  * @date 2022-01-03
  * @export
  */
-export const STATUS = {
+export const STATUS_VACANCY = {
+  OPEN: 'Open',
+  CLOSED: 'Closed',
+};
+
+/**
+ * @description Enum of status applied
+ * @author Raden Agung Wijaya <mdc.co.id>
+ * @date 2022-01-03
+ * @export
+ */
+export const STATUS_APPLIED = {
+  NOT_APPLIED: 'Not Applied',
+  UNSUITABLE: 'Unsuitable',
   APPLIED: 'Waiting Interview',
   REQUEST_INTERVIEW: 'Request Interview',
   INTERVIEW_ACCEPTED: 'Interview Accepted',
@@ -19,61 +32,65 @@ export const STATUS = {
 };
 
 /**
- * @description For define title by status
+ * @description For define title by status applied
  * @author Raden Agung Wijaya <mdc.co.id>
  * @date 2022-01-03
  * @export
  */
-export function getTitle(status = STATUS.APPLIED) {
+export function getTitle(status = STATUS_APPLIED.NOT_APPLIED) {
   switch (status) {
-    case STATUS.APPLIED:
+    case STATUS_APPLIED.UNSUITABLE:
+      return 'Unsuitable';
+    case STATUS_APPLIED.APPLIED:
       return 'Waiting Interview';
-    case STATUS.REQUEST_INTERVIEW:
+    case STATUS_APPLIED.REQUEST_INTERVIEW:
       return 'Request Interview';
-    case STATUS.INTERVIEW_ACCEPTED:
+    case STATUS_APPLIED.INTERVIEW_ACCEPTED:
       return 'Interview Accepted';
-    case STATUS.INTERVIEW_REJECTED:
+    case STATUS_APPLIED.INTERVIEW_REJECTED:
       return 'Interview Rejected';
-    case STATUS.UPCOMING:
+    case STATUS_APPLIED.UPCOMING:
       return 'Upcoming';
-    case STATUS.FAILED:
+    case STATUS_APPLIED.FAILED:
       return 'Failed';
-    case STATUS.ONGOING:
+    case STATUS_APPLIED.ONGOING:
       return 'On Going';
-    case STATUS.FINISHED:
+    case STATUS_APPLIED.FINISHED:
       return 'Finished';
-    case STATUS.REVIEWED:
+    case STATUS_APPLIED.REVIEWED:
       return 'Reviewed';
     default:
-      return STATUS.APPLIED;
+      return 'Not Applied';
   }
 }
 
 /**
- * @description For define color by status
+ * @description For define color by status applied
  * @author Raden Agung Wijaya <mdc.co.id>
  * @date 2022-01-03
  * @export
  */
-export function getColor(status = STATUS.APPLIED) {
+export function getColor(status = STATUS_APPLIED.NOT_APPLIED) {
   switch (status) {
-    case STATUS.APPLIED:
+    case STATUS_APPLIED.UNSUITABLE:
+      return colors.dwFreshOrange;
+    case STATUS_APPLIED.APPLIED:
       return colors.dwBlueTwitter;
-    case STATUS.REQUEST_INTERVIEW:
+    case STATUS_APPLIED.REQUEST_INTERVIEW:
       return colors.dwBlueTwitter;
-    case STATUS.INTERVIEW_ACCEPTED:
+    case STATUS_APPLIED.INTERVIEW_ACCEPTED:
       return colors.dwBlueTwitter;
-    case STATUS.INTERVIEW_REJECTED:
+    case STATUS_APPLIED.INTERVIEW_REJECTED:
       return colors.dwRed;
-    case STATUS.UPCOMING:
+    case STATUS_APPLIED.UPCOMING:
       return colors.dwBlueTwitter;
-    case STATUS.FAILED:
+    case STATUS_APPLIED.FAILED:
       return colors.dwRed;
-    case STATUS.ONGOING:
+    case STATUS_APPLIED.ONGOING:
       return colors.dwBlueTwitter;
-    case STATUS.FINISHED:
+    case STATUS_APPLIED.FINISHED:
       return colors.dwWhatsapp;
-    case STATUS.REVIEWED:
+    case STATUS_APPLIED.REVIEWED:
       return colors.dwWhatsapp;
     default:
       return colors.dwBlueTwitter;
