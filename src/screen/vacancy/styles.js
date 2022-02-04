@@ -5,8 +5,16 @@ export function setMarginTop(number) {
   return {marginTop: number};
 }
 
-export function setMarginHorizontal(margin, number) {
-  return {margin: number};
+export function setMarginHorizontal(number) {
+  return {marginHorizontal: number};
+}
+
+export function setMarginRight(number) {
+  return {marginRight: number};
+}
+
+export function setFlex(number) {
+  return {flex: number};
 }
 
 export default StyleSheet.create({
@@ -23,6 +31,11 @@ export default StyleSheet.create({
     backgroundColor: colors.dwWhite,
     padding: 16,
     borderRadius: 10,
+  },
+  sectionWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   textInfo: {
     textAlign: 'center',

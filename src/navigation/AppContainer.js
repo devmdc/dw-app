@@ -19,6 +19,7 @@ import PreferenceScreen from '../screen/profile/preference';
 import PositionScreen from '../screen/vacancy/position';
 import LocationScreen from '../screen/vacancy/location';
 import ResultScreen from '../screen/vacancy/result';
+import MoreScreen from '../screen/vacancy/more';
 import DetailVacancyScreen from '../screen/vacancy/detail';
 
 import {RootNav} from 'utils';
@@ -69,6 +70,7 @@ function MainStackScreen() {
       <MainStack.Screen name={'Position'} component={PositionScreen} />
       <MainStack.Screen name={'Location'} component={LocationScreen} />
       <MainStack.Screen name={'Result'} component={ResultScreen} />
+      <MainStack.Screen name={'More'} component={MoreScreen} />
       <MainStack.Screen
         name={'DetailVacancy'}
         component={DetailVacancyScreen}

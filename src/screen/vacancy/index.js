@@ -15,7 +15,9 @@ import {colors, images} from 'assets';
 import {showMsgWarning} from 'api';
 
 import styles, {setMarginTop} from './styles';
+
 import CardVacancyRecent from './component/cardvacancyrecent';
+import Section from './component/section';
 
 import useVacancy from './useVacancy';
 
@@ -174,18 +176,38 @@ const VacancyScreen = ({navigation}) => {
             </View>
           </DropShadow>
 
-          {!loading && data.length > 0 && (
-            <>
-              <Text
-                bold
-                style={[setMarginTop(30), {color: colors.dwMainColor}]}
-                fontSize={15}>
-                Recent Vacancies
-              </Text>
-              <View style={[setMarginTop(15), styles.line]} />
-            </>
-          )}
           {loading && <Loading />}
+
+          {!loading && data.length > 0 && (
+            <Section
+              style={setMarginTop(30)}
+              titleColor={colors.dwWhatsapp}
+              title={'Suggested Vacancies'}
+              more={'See More'}
+              onPress={() =>
+                navigation.navigate('More', {title: 'Suggested Vacancies'})
+              }
+            />
+          )}
+          <FlatList
+            contentContainerStyle={styles.contentList}
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            data={loading ? [] : data}
+            keyExtractor={index => index.toString()}
+            renderItem={renderItem}
+          />
+
+          {!loading && data.length > 0 && (
+            <Section
+              style={setMarginTop(10)}
+              title={'Recent Vacancies'}
+              more={'See More'}
+              onPress={() =>
+                navigation.navigate('More', {title: 'Recent Vacancies'})
+              }
+            />
+          )}
           <FlatList
             contentContainerStyle={styles.contentList}
             horizontal={true}
