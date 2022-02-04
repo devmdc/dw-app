@@ -5,7 +5,7 @@ import {Text, Button} from 'component';
 
 import {setMarginTop} from '../styles';
 
-const FooterStatus = ({title, subtitle, btntitle, onPress}) => {
+const FooterStatus = ({title, subtitle, btntitle, btnDisabled, onPress}) => {
   return (
     <View>
       <Text style={styles.textFooter} fontSize={13}>
@@ -18,7 +18,10 @@ const FooterStatus = ({title, subtitle, btntitle, onPress}) => {
         )}
       </Text>
       <View style={[styles.wrapperButtonFooter, setMarginTop(20)]}>
-        <Button disabled={true} style={[styles.buttonFooter]} onPress={onPress}>
+        <Button
+          disabled={btnDisabled}
+          style={[styles.buttonFooter]}
+          onPress={onPress}>
           {btntitle}
         </Button>
       </View>
@@ -30,6 +33,7 @@ FooterStatus.defaultProps = {
   title: 'Title Footer',
   subtitle: 'Subtitle Footer',
   btntitle: 'Footer',
+  btnDisabled: false,
   onPress: () => console.log('pressed'),
 };
 

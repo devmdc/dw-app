@@ -32,25 +32,25 @@ const useDetailVacancy = () => {
   const getFooter = (status = STATUS_APPLIED.NOT_APPLIED) => {
     switch (status) {
       case STATUS_APPLIED.UNSUITABLE:
-        return <FooterInterview />;
+        return <FooterStatus />;
       case STATUS_APPLIED.APPLIED:
-        return <FooterInterview />;
+        return <FooterStatus />;
       case STATUS_APPLIED.REQUEST_INTERVIEW:
         return <FooterInterview />;
       case STATUS_APPLIED.INTERVIEW_ACCEPTED:
-        return <FooterInterview />;
+        return <FooterStatus />;
       case STATUS_APPLIED.INTERVIEW_REJECTED:
-        return <FooterInterview />;
+        return <FooterStatus />;
       case STATUS_APPLIED.UPCOMING:
-        return <FooterInterview />;
+        return <FooterResult />;
       case STATUS_APPLIED.FAILED:
-        return <FooterInterview />;
+        return <FooterStatus />;
       case STATUS_APPLIED.ONGOING:
-        return <FooterInterview />;
+        return <FooterStatus />;
       case STATUS_APPLIED.FINISHED:
-        return <FooterInterview />;
+        return <FooterStatus />;
       case STATUS_APPLIED.REVIEWED:
-        return <FooterInterview />;
+        return <FooterResult />;
       default:
         return <FooterInterview />;
     }

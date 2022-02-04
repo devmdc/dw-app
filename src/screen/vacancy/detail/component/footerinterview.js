@@ -10,6 +10,7 @@ const FooterInterview = ({
   subtitle,
   btnleft,
   btnright,
+  btnDisabled,
   onPressLeft,
   onPressRight,
 }) => {
@@ -23,12 +24,16 @@ const FooterInterview = ({
       </Text>
       <View style={[styles.wrapperButtonFooter, setMarginTop(20)]}>
         <Button
+          disabled={btnDisabled}
           style={[styles.buttonFooter, styles.buttonBorder, setMarginRight(10)]}
           textColor={colors.dwGrey}
           onPress={onPressLeft}>
           {btnleft}
         </Button>
-        <Button style={[styles.buttonFooter]} onPress={onPressRight}>
+        <Button
+          disabled={btnDisabled}
+          style={[styles.buttonFooter]}
+          onPress={onPressRight}>
           {btnright}
         </Button>
       </View>
@@ -41,6 +46,7 @@ FooterInterview.defaultProps = {
   subtitle: 'DD/MM/YYY',
   btnleft: 'Reject',
   btnright: 'Accept',
+  btnDisabled: false,
   onPressLeft: () => console.log('pressed'),
   onPressRight: () => console.log('pressed'),
 };
