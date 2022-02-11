@@ -22,7 +22,14 @@ import Section from './component/section';
 import useVacancy from './useVacancy';
 
 const VacancyScreen = ({navigation}) => {
-  const {loading, dataRecent, dataSuggest, checkDate} = useVacancy();
+  const {
+    loading,
+    dataRecent,
+    dataSuggest,
+    checkDate,
+    getSuggestData,
+    getRecentData,
+  } = useVacancy();
 
   const [datePickerVisible, setDatePickerVisible] = useState({
     status: false,
@@ -40,6 +47,12 @@ const VacancyScreen = ({navigation}) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateStart, dateEnd]);
+
+  useEffect(() => {
+    getSuggestData(5);
+    getRecentData(5);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const renderItem = ({item, index}) => {
     return (

@@ -8,15 +8,43 @@ import {colors, images} from 'assets';
 import styles from './styles';
 import CardResult from '../component/cardvacancyresult';
 
+import useVacancy from '../useVacancy';
+
 const MoreScreen = ({route, navigation}) => {
   const {title} = route.params || {};
+  const isRecent = title.includes('Recent');
+
+  const {loading, dataRecent, dataSuggest, getSuggestData, getRecentData} =
+    useVacancy();
 
   useEffect(() => {
+    if (isRecent) {
+      getRecentData(100);
+    } else {
+      getSuggestData(100);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const renderItem = ({item, index}) => {
-    return <CardResult />;
+    return (
+      <CardResult
+        id={item.id}
+        name={item.company_name}
+        pos={item.job_position_name}
+        location={item.city_name}
+        workingDate={`${formatDate(item.date_start, true)} - ${formatDate(
+          item.date_end,
+          true,
+        )}`}
+        fee={item.payment}
+        type={item.period}
+        image={{uri: item.image}}
+        onPress={() =>
+          navigation.navigate('DetailVacancy', {id: item.id, uri: item.image})
+        }
+      />
+    );
   };
 
   return (
@@ -28,7 +56,8 @@ const MoreScreen = ({route, navigation}) => {
         <View style={[styles.wrapper]}>
           <View style={styles.wrapInfo}>
             <Text semibold style={[{color: colors.dwDarkGrey}]} fontSize={15}>
-              Found 5 job/vacancies
+              Found {isRecent ? dataRecent.length : dataSuggest.length}{' '}
+              job/vacancies
             </Text>
             <Text style={[{color: colors.dwGrey}]} fontSize={11}>
               {title}
@@ -43,10 +72,11 @@ const MoreScreen = ({route, navigation}) => {
           </TouchableOpacity>
         </View>
         <View style={styles.wrapperList}>
+          {loading && <Loading />}
           <FlatList
             contentContainerStyle={styles.contentList}
             showsVerticalScrollIndicator={false}
-            data={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
+            data={loading ? [] : isRecent ? dataRecent : dataSuggest}
             keyExtractor={index => index.toString()}
             renderItem={renderItem}
           />

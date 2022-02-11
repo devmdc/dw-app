@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import {useHttp, endpoint} from 'api';
 import {formatDate} from 'utils';
 
@@ -8,14 +8,8 @@ const useVacancy = () => {
   const [dataSuggest, setDataSuggest] = useState([]);
   const [dataRecent, setDataRecent] = useState([]);
 
-  useEffect(() => {
-    getSuggestData();
-    getRecentData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const getSuggestData = () => {
-    let param = {limit: 5};
+  const getSuggestData = limit => {
+    let param = {limit: limit};
 
     postData({
       url: endpoint.GET_SUGGEST_VACANCY,
@@ -33,8 +27,8 @@ const useVacancy = () => {
     });
   };
 
-  const getRecentData = () => {
-    let param = {limit: 5};
+  const getRecentData = limit => {
+    let param = {limit: limit};
 
     postData({
       url: endpoint.GET_RECENT_VACANCY,
@@ -60,7 +54,14 @@ const useVacancy = () => {
     return true;
   };
 
-  return {loading, dataRecent, dataSuggest, checkDate};
+  return {
+    loading,
+    dataRecent,
+    dataSuggest,
+    checkDate,
+    getSuggestData,
+    getRecentData,
+  };
 };
 
 export default useVacancy;
