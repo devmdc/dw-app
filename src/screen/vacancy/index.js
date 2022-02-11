@@ -22,7 +22,7 @@ import Section from './component/section';
 import useVacancy from './useVacancy';
 
 const VacancyScreen = ({navigation}) => {
-  const {loading, data, checkDate} = useVacancy();
+  const {loading, dataRecent, dataSuggest, checkDate} = useVacancy();
 
   const [datePickerVisible, setDatePickerVisible] = useState({
     status: false,
@@ -178,7 +178,7 @@ const VacancyScreen = ({navigation}) => {
 
           {loading && <Loading />}
 
-          {!loading && data.length > 0 && (
+          {!loading && dataSuggest.length > 0 && (
             <Section
               style={setMarginTop(30)}
               titleColor={colors.dwWhatsapp}
@@ -193,12 +193,12 @@ const VacancyScreen = ({navigation}) => {
             contentContainerStyle={styles.contentList}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            data={loading ? [] : data}
+            data={loading ? [] : dataSuggest}
             keyExtractor={index => index.toString()}
             renderItem={renderItem}
           />
 
-          {!loading && data.length > 0 && (
+          {!loading && dataRecent.length > 0 && (
             <Section
               style={setMarginTop(10)}
               title={'Recent Vacancies'}
@@ -212,7 +212,7 @@ const VacancyScreen = ({navigation}) => {
             contentContainerStyle={styles.contentList}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            data={loading ? [] : data}
+            data={loading ? [] : dataRecent}
             keyExtractor={index => index.toString()}
             renderItem={renderItem}
           />

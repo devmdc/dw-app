@@ -24,7 +24,6 @@ const DetailVacancyScreen = ({route, navigation}) => {
 
   useEffect(() => {
     if (isFetching) {
-      console.log('masuk');
       getData();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
