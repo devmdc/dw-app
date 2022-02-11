@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {View, Image, ScrollView} from 'react-native';
+import {useSelector} from 'react-redux';
 import ViewMoreText from 'react-native-view-more-text';
 import NumberFormat from 'react-number-format';
 import DropShadow from 'react-native-drop-shadow';
@@ -15,10 +16,22 @@ import useDetailVacancy from './useDetailVacancy';
 const DetailVacancyScreen = ({route, navigation}) => {
   const {id, uri} = route.params || {};
 
-  const {loading, data, getData, getFooter} = useDetailVacancy();
+  const {isFetching} = useSelector(state => ({
+    isFetching: state.vacancy.isFetching,
+  }));
+
+  const {loading, data, getData, getFooter} = useDetailVacancy(id);
 
   useEffect(() => {
-    getData(id);
+    if (isFetching) {
+      console.log('masuk');
+      getData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isFetching]);
+
+  useEffect(() => {
+    getData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

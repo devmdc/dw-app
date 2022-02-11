@@ -1,19 +1,37 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {colors} from 'assets';
 import {Text, Button} from 'component';
 
 import {setMarginTop, setMarginRight} from '../styles';
 
+import useDetailVacancy from '../useDetailVacancy';
+
 const FooterInterview = ({
+  id,
   title,
   subtitle,
   btnleft,
   btnright,
   btnDisabled,
-  onPressLeft,
-  onPressRight,
 }) => {
+  const {submitData} = useDetailVacancy(id);
+
+  const [loadRight, setLoadRight] = useState(false);
+  const [loadLeft, setLoadLeft] = useState(false);
+
+  const actionPress = async isLeft => {
+    if (isLeft) {
+      setLoadLeft(true);
+      await submitData('reject');
+      setLoadLeft(false);
+    } else {
+      setLoadRight(true);
+      await submitData('accept');
+      setLoadRight(false);
+    }
+  };
+
   return (
     <View>
       <Text style={styles.textFooter} fontSize={13}>
@@ -24,16 +42,18 @@ const FooterInterview = ({
       </Text>
       <View style={[styles.wrapperButtonFooter, setMarginTop(20)]}>
         <Button
+          loading={loadLeft}
           disabled={btnDisabled}
           style={[styles.buttonFooter, styles.buttonBorder, setMarginRight(10)]}
           textColor={colors.dwGrey}
-          onPress={onPressLeft}>
+          onPress={() => actionPress(true)}>
           {btnleft}
         </Button>
         <Button
+          loading={loadRight}
           disabled={btnDisabled}
           style={[styles.buttonFooter]}
-          onPress={onPressRight}>
+          onPress={() => actionPress(false)}>
           {btnright}
         </Button>
       </View>
@@ -47,8 +67,6 @@ FooterInterview.defaultProps = {
   btnleft: 'Reject',
   btnright: 'Accept',
   btnDisabled: false,
-  onPressLeft: () => console.log('pressed'),
-  onPressRight: () => console.log('pressed'),
 };
 
 const styles = StyleSheet.create({

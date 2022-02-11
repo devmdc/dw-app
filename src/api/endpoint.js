@@ -31,6 +31,9 @@ const endpoint = {
   GET_SEARCH_LIST: Config.BASEURL + 'vacancy/search/list',
   GET_SEARCH_POSITION: Config.BASEURL + 'vacancy/search/get_job_position',
   GET_SEARCH_CITY: Config.BASEURL + 'vacancy/search/get_city',
+  POST_APPLY_VACANCY: Config.BASEURL + 'vacancy/detail/apply',
+  POST_ACCEPT_VACANCY: Config.BASEURL + 'vacancy/detail/accept',
+  POST_REJECT_VACANCY: Config.BASEURL + 'vacancy/detail/reject',
 };
 
 export {endpoint};

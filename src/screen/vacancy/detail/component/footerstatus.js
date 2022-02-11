@@ -1,11 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {colors} from 'assets';
 import {Text, Button} from 'component';
 
 import {setMarginTop} from '../styles';
 
-const FooterStatus = ({title, subtitle, btntitle, btnDisabled, onPress}) => {
+import useDetailVacancy from '../useDetailVacancy';
+
+const FooterStatus = ({id, title, subtitle, btntitle, btnDisabled}) => {
+  const {submitData} = useDetailVacancy(id);
+
+  const [loading, setLoading] = useState(false);
+
+  const actionPress = async () => {
+    setLoading(true);
+    await submitData('apply');
+    setLoading(false);
+  };
+
   return (
     <View>
       <Text style={styles.textFooter} fontSize={13}>
@@ -19,9 +31,10 @@ const FooterStatus = ({title, subtitle, btntitle, btnDisabled, onPress}) => {
       </Text>
       <View style={[styles.wrapperButtonFooter, setMarginTop(20)]}>
         <Button
+          loading={loading}
           disabled={btnDisabled}
           style={[styles.buttonFooter]}
-          onPress={onPress}>
+          onPress={actionPress}>
           {btntitle}
         </Button>
       </View>
@@ -33,7 +46,6 @@ FooterStatus.defaultProps = {
   title: 'Title Footer',
   btntitle: 'Footer',
   btnDisabled: false,
-  onPress: () => console.log('pressed'),
 };
 
 const styles = StyleSheet.create({
