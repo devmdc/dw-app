@@ -43,9 +43,7 @@ const BottomBar = ({state, descriptors, navigation}) => {
               icon = isFocused ? images.vacanciesActive : images.vacancies;
               break;
             case 1:
-              icon = isFocused
-                ? images.notificationActive
-                : images.notification;
+              icon = isFocused ? images.agendaActive : images.agenda;
               break;
             case 2:
               icon = isFocused ? images.userActive : images.user;
@@ -62,7 +60,7 @@ const BottomBar = ({state, descriptors, navigation}) => {
               text = 'Vacancies';
               break;
             case 1:
-              text = 'Notification';
+              text = 'Agenda';
               break;
             case 2:
               text = 'Profile';

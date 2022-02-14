@@ -1,5 +1,7 @@
 const images = {
   add: require('./images/add.png'),
+  agenda: require('./images/agenda.png'),
+  agendaActive: require('./images/agendaActive.png'),
   arrow: require('./images/arrow.png'),
   back: require('./images/back.png'),
   calendar: require('./images/calendar.png'),

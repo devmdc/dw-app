@@ -21,6 +21,8 @@ const CardNotification = ({
   fee,
   type,
   interviewDate,
+  status,
+  statusBC,
   onPress,
   onEdit,
 }) => {
@@ -64,6 +66,11 @@ const CardNotification = ({
             </Text>
           )}
         </View>
+        <View style={[styles.wrapperStatus, {backgroundColor: statusBC}]}>
+          <Text medium style={styles.txtStatus}>
+            {status}
+          </Text>
+        </View>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -78,6 +85,8 @@ CardNotification.defaultProps = {
   fee: 1000000,
   type: 'bulan',
   image: images.profile,
+  status: 'On Going',
+  statusBC: colors.dwBlueTwitter,
   onPress: () => console.log('Card Pressed'),
   onEdit: () => console.log('Edit Pressed'),
 };
@@ -104,6 +113,13 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     marginRight: 6,
+  },
+  wrapperStatus: {
+    width: 100,
+    height: 25,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   wrapperText: {
     alignItems: 'center',
@@ -141,6 +157,11 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: colors.dwDarkGrey,
     marginTop: 5,
+  },
+  txtStatus: {
+    fontSize: 11,
+    color: colors.dwWhite,
+    textAlign: 'center',
   },
   imgIcon: {
     width: 9,

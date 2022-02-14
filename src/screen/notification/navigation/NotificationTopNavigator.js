@@ -27,7 +27,7 @@ const NotificationTopNavigator = () => {
       backBehavior={'none'}>
       <Tab.Screen name="Job" component={JobCollection} />
       <Tab.Screen name="Interview" component={InterviewCollection} />
-      <Tab.Screen name="Vacancy" component={VacancyCollection} />
+      <Tab.Screen name="Applied" component={VacancyCollection} />
     </Tab.Navigator>
   );
 };
