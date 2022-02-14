@@ -11,6 +11,7 @@ import ForgotScreen from '../screen/forgot';
 import VerifyForgotScreen from '../screen/forgot/verify';
 import ForgotDataScreen from '../screen/forgot/submit';
 import WhatsappScreen from '../screen/profile/whatsapp';
+import WhatsappVerifyScreen from '../screen/profile/whatsapp/verify';
 import ChangePasswordScreen from '../screen/profile/password';
 import ExperienceScreen from '../screen/profile/experience';
 import AddExperienceScreen from '../screen/profile/experience/add';
@@ -56,6 +57,10 @@ function MainStackScreen() {
         }}
       />
       <MainStack.Screen name={'Whatsapp'} component={WhatsappScreen} />
+      <MainStack.Screen
+        name={'WhatsappVerify'}
+        component={WhatsappVerifyScreen}
+      />
       <MainStack.Screen
         name={'ChangePassword'}
         component={ChangePasswordScreen}

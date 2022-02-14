@@ -14,6 +14,8 @@ const endpoint = {
   GET_DETAIL_PROFILE: Config.BASEURL + 'profile/profile/detail',
   POST_LOGOUT: Config.BASEURL + 'profile/profile/logout',
   POST_EDIT_PHONE: Config.BASEURL + 'profile/update_whatsapp/submit_number',
+  POST_EDIT_PHONE_VERIFY:
+    Config.BASEURL + 'profile/update_whatsapp/verify_code',
   POST_CHANGE_PASSWORD: Config.BASEURL + 'profile/change_password/update',
   GET_CITY: Config.BASEURL + 'profile/add_experience/get_city',
   GET_JOB_POSITION: Config.BASEURL + 'profile/add_experience/get_job_position',

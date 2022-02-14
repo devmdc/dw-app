@@ -22,7 +22,7 @@ const useWhatsapp = () => {
       onSuccess: res => {
         const {status} = res;
         if (status === 200) {
-          navigation.goBack();
+          navigation.navigate('WhatsappVerify', {number: phone});
         }
       },
       onError: error => {

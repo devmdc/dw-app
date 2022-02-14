@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import DropShadow from 'react-native-drop-shadow';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Container, Button, Text, Input, Header} from 'component';
 
 import styles, {setMarginTop} from './styles';

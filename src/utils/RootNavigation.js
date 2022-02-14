@@ -32,6 +32,29 @@ export function navigateToWelcome() {
   navigationRef.current?.dispatch(resetAction);
 }
 
+export function navigateToProfile() {
+  const resetAction = CommonActions.reset({
+    index: 0,
+    routes: [
+      {
+        name: 'Main',
+        state: {
+          routes: [
+            {
+              name: 'BottomTab',
+              state: {
+                routes: [{name: 'Profile'}],
+              },
+            },
+          ],
+        },
+      },
+    ],
+  });
+
+  navigationRef.current?.dispatch(resetAction);
+}
+
 export function navigateToLogin() {
   const resetAction = CommonActions.reset({
     index: 0,
