@@ -16,6 +16,7 @@ import ChangePasswordScreen from '../screen/profile/password';
 import ExperienceScreen from '../screen/profile/experience';
 import AddExperienceScreen from '../screen/profile/experience/add';
 import SettingScreen from '../screen/profile/setting';
+import WebviewScreen from '../screen/profile/webview';
 import PreferenceScreen from '../screen/profile/preference';
 import PositionScreen from '../screen/vacancy/position';
 import LocationScreen from '../screen/vacancy/location';
@@ -71,6 +72,7 @@ function MainStackScreen() {
         component={AddExperienceScreen}
       />
       <MainStack.Screen name={'Setting'} component={SettingScreen} />
+      <MainStack.Screen name={'WebView'} component={WebviewScreen} />
       <MainStack.Screen name={'Preference'} component={PreferenceScreen} />
       <MainStack.Screen name={'Position'} component={PositionScreen} />
       <MainStack.Screen name={'Location'} component={LocationScreen} />

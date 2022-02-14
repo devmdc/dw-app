@@ -20,6 +20,12 @@ const MenuCollection = ({data = [1, 2, 3], logout}) => {
       case 3:
         navigation.navigate('ChangePassword');
         break;
+      case 4:
+        navigation.navigate('WebView', {isPrivacy: false});
+        break;
+      case 5:
+        navigation.navigate('WebView', {isPrivacy: true});
+        break;
       case 6:
         Alert.alert('Logout', 'Are you sure want to logout?', [
           {text: 'Tidak', style: 'cancel', onPress: () => {}},
