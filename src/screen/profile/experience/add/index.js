@@ -51,8 +51,8 @@ const AddExperienceScreen = ({route, navigation}) => {
   const nameError = validate('name', name);
   const posError = validate('position', pos.name);
   const cityError = validate('city', city.name);
-  const dateOneError = validate('general', dateOne);
-  const dateTwoError = validate('general', dateTwo);
+  const dateOneError = validate('general', String(dateOne));
+  const dateTwoError = validate('general', String(dateTwo));
   const feeError = validate('general', fee);
   const periodError = validate('general', period);
 
@@ -98,7 +98,7 @@ const AddExperienceScreen = ({route, navigation}) => {
       </DropShadow>
       <View style={styles.header}>
         <Text bold style={styles.textInfo} fontSize={17}>
-          Add Job Experience
+          {rName ? 'Edit Job Experience' : 'Add Job Experience'}
         </Text>
         <View style={[setMarginTop(20), styles.line]} />
       </View>
