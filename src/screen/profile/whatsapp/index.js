@@ -8,8 +8,6 @@ import styles, {setMarginTop} from './styles';
 import useWhatsapp from './useWhatsapp';
 
 const WhatsappScreen = ({route, navigation}) => {
-  const {oldNumber} = route.params;
-
   const {loading, submit} = useWhatsapp();
 
   const [phone, setPhone] = useState('');
@@ -28,7 +26,6 @@ const WhatsappScreen = ({route, navigation}) => {
           Type your whatsapp number
         </Text>
         <View style={styles.inputWrapper}>
-          <Input editable={false} value={oldNumber} />
           <Input
             style={styles.marginT}
             placeholder={'New Number'}
