@@ -20,6 +20,7 @@ const ExperienceCard = ({
   workingDate,
   fee,
   type,
+  isManual,
   onPress,
   onEdit,
 }) => {
@@ -58,13 +59,15 @@ const ExperienceCard = ({
             )}
           />
         </View>
-        <TouchableOpacity onPress={onEdit}>
-          <Image
-            source={images.pencil}
-            style={styles.imgEdit}
-            resizeMode={'cover'}
-          />
-        </TouchableOpacity>
+        {isManual && (
+          <TouchableOpacity onPress={onEdit}>
+            <Image
+              source={images.pencil}
+              style={styles.imgEdit}
+              resizeMode={'cover'}
+            />
+          </TouchableOpacity>
+        )}
       </View>
     </TouchableWithoutFeedback>
   );

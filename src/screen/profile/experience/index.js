@@ -21,7 +21,7 @@ const ExperienceScreen = ({navigation}) => {
         name={item.company_name}
         pos={item.job_position_name}
         image={{
-          uri: 'https://www.ahstatic.com/photos/b151_rodbb_00_p_1024x768.jpg',
+          uri: item.image,
         }}
         location={item.city_name}
         workingDate={`${formatDate(item.date_start, true)} - ${formatDate(
@@ -30,6 +30,7 @@ const ExperienceScreen = ({navigation}) => {
         )}`}
         fee={item.payment}
         type={item.period}
+        isManual={item.type === 'Manual'}
         onEdit={() =>
           navigation.navigate('AddExperience', {
             id: item.id,
