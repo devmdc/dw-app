@@ -32,6 +32,26 @@ export const STATUS_APPLIED = {
 };
 
 /**
+ * @description Enum of status agenda
+ * @author Raden Agung Wijaya <mdc.co.id>
+ * @date 2022-01-03
+ * @export
+ */
+export const STATUS_AGENDA = {
+  NOT_APPLIED: 'Not Applied',
+  UNSUITABLE: 'Unsuitable',
+  APPLIED: 'Applied',
+  REQUEST_INTERVIEW: 'Requested',
+  INTERVIEW_ACCEPTED: 'Accepted',
+  INTERVIEW_REJECTED: 'Rejected',
+  UPCOMING: 'Upcoming',
+  FAILED: 'Failed',
+  ONGOING: 'On Going',
+  FINISHED: 'Finished',
+  REVIEWED: 'Reviewed',
+};
+
+/**
  * @description For define title by status applied
  * @author Raden Agung Wijaya <mdc.co.id>
  * @date 2022-01-03
@@ -91,6 +111,72 @@ export function getColor(status = STATUS_APPLIED.NOT_APPLIED) {
     case STATUS_APPLIED.FINISHED:
       return colors.dwWhatsapp;
     case STATUS_APPLIED.REVIEWED:
+      return colors.dwWhatsapp;
+    default:
+      return colors.dwBlueTwitter;
+  }
+}
+
+/**
+ * @description For define title by status agenda
+ * @author Raden Agung Wijaya <mdc.co.id>
+ * @date 2022-01-03
+ * @export
+ */
+export function getTitleAgenda(status = STATUS_AGENDA.NOT_APPLIED) {
+  switch (status) {
+    case STATUS_AGENDA.UNSUITABLE:
+      return 'Unsuitable';
+    case STATUS_AGENDA.APPLIED:
+      return 'Applied';
+    case STATUS_AGENDA.REQUEST_INTERVIEW:
+      return 'Requested';
+    case STATUS_AGENDA.INTERVIEW_ACCEPTED:
+      return 'Accepted';
+    case STATUS_AGENDA.INTERVIEW_REJECTED:
+      return 'Rejected';
+    case STATUS_AGENDA.UPCOMING:
+      return 'Upcoming';
+    case STATUS_AGENDA.FAILED:
+      return 'Failed';
+    case STATUS_AGENDA.ONGOING:
+      return 'On Going';
+    case STATUS_AGENDA.FINISHED:
+      return 'Finished';
+    case STATUS_AGENDA.REVIEWED:
+      return 'Reviewed';
+    default:
+      return 'Not Applied';
+  }
+}
+
+/**
+ * @description For define color by status agenda
+ * @author Raden Agung Wijaya <mdc.co.id>
+ * @date 2022-01-03
+ * @export
+ */
+export function getColorAgenda(status = STATUS_AGENDA.NOT_APPLIED) {
+  switch (status) {
+    case STATUS_AGENDA.UNSUITABLE:
+      return colors.dwFreshOrange;
+    case STATUS_AGENDA.APPLIED:
+      return colors.dwBlueTwitter;
+    case STATUS_AGENDA.REQUEST_INTERVIEW:
+      return colors.dwBlueTwitter;
+    case STATUS_AGENDA.INTERVIEW_ACCEPTED:
+      return colors.dwBlueTwitter;
+    case STATUS_AGENDA.INTERVIEW_REJECTED:
+      return colors.dwRed;
+    case STATUS_AGENDA.UPCOMING:
+      return colors.dwBlueTwitter;
+    case STATUS_AGENDA.FAILED:
+      return colors.dwRed;
+    case STATUS_AGENDA.ONGOING:
+      return colors.dwBlueTwitter;
+    case STATUS_AGENDA.FINISHED:
+      return colors.dwWhatsapp;
+    case STATUS_AGENDA.REVIEWED:
       return colors.dwWhatsapp;
     default:
       return colors.dwBlueTwitter;

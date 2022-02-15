@@ -37,6 +37,9 @@ const endpoint = {
   POST_APPLY_VACANCY: Config.BASEURL + 'vacancy/detail/apply',
   POST_ACCEPT_VACANCY: Config.BASEURL + 'vacancy/detail/accept',
   POST_REJECT_VACANCY: Config.BASEURL + 'vacancy/detail/reject',
+  GET_APPLIED_AGENDA: Config.BASEURL + 'agenda/applied',
+  GET_INTERVIEW_AGENDA: Config.BASEURL + 'agenda/interview',
+  GET_JOBS_AGENDA: Config.BASEURL + 'agenda/jobs',
 };
 
 export {endpoint};
