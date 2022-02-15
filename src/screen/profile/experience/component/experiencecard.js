@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import NumberFormat from 'react-number-format';
+import {Rating} from 'react-native-ratings';
 import {colors, images} from 'assets';
 import {Text} from 'component';
 
@@ -20,6 +21,7 @@ const ExperienceCard = ({
   workingDate,
   fee,
   type,
+  rating,
   isManual,
   onPress,
   onEdit,
@@ -58,6 +60,21 @@ const ExperienceCard = ({
               <Text style={styles.txtFee}>{`${value} / ${type}`}</Text>
             )}
           />
+          <View
+            style={{
+              marginTop: rating && rating > 0 ? 10 : 0,
+              alignItems: 'flex-start',
+            }}>
+            <Rating
+              readonly
+              type={'custom'}
+              ratingCount={rating}
+              minValue={0}
+              imageSize={20}
+              ratingColor={colors.dwBrightYellow}
+              ratingBackgroundColor={colors.dwBrightYellow}
+            />
+          </View>
         </View>
         {isManual && (
           <TouchableOpacity onPress={onEdit}>
@@ -81,6 +98,7 @@ ExperienceCard.defaultProps = {
   workingDate: 'Working Date Range',
   fee: 1000000,
   type: 'bulan',
+  rating: 0,
   buttonTitle: 'confirm',
   isButton: true,
   image: images.profile,

@@ -30,6 +30,7 @@ const ExperienceScreen = ({navigation}) => {
         )}`}
         fee={item.payment}
         type={item.period}
+        rating={item.rating}
         isManual={item.type === 'Manual'}
         onEdit={() =>
           navigation.navigate('AddExperience', {
@@ -61,6 +62,7 @@ const ExperienceScreen = ({navigation}) => {
       {loading && <Loading />}
       {!loading && dataJob && dataJob.length > 0 && (
         <FlatList
+          showsVerticalScrollIndicator={false}
           data={dataJob}
           renderItem={renderItem}
           keyExtractor={(item, index) => String(index)}
