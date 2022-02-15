@@ -3,6 +3,9 @@ import {Buffer} from 'buffer';
 import {useNavigation} from '@react-navigation/native';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {useHttp, endpoint} from 'api';
+import {UserAction} from 'action';
+
+import {store} from '../../../store';
 
 const useSetting = () => {
   const {loading, postData, getData, uploadData} = useHttp();
@@ -107,6 +110,7 @@ const useSetting = () => {
       onSuccess: res => {
         const {status} = res;
         if (status === 200) {
+          store.dispatch(UserAction.setEditData(photo, name));
           navigation.goBack();
         }
       },

@@ -15,6 +15,12 @@ export const setData = data => ({
   data: data,
 });
 
+export const setEditData = (photo, name) => ({
+  type: 'USER_EDIT_DATA',
+  photo: photo,
+  name: name,
+});
+
 export const setDataProfile = (email, whatsapp) => ({
   type: 'USER_SET_PROFILE',
   email,

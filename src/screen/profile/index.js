@@ -14,8 +14,9 @@ const ProfileScreen = ({navigation}) => {
 
   const {logout} = useProfile();
 
-  const {name, email, whatsapp} = useSelector(state => ({
+  const {name, photo, email, whatsapp} = useSelector(state => ({
     name: state.user.data.full_name,
+    photo: state.user.data.photo,
     email: state.user.data.email,
     whatsapp: state.user.data.whatsapp,
   }));
@@ -29,7 +30,7 @@ const ProfileScreen = ({navigation}) => {
         <View style={styles.wrapperProfile}>
           <Image
             style={styles.imgProfile}
-            source={images.profile}
+            source={{uri: photo}}
             resizeMode={'cover'}
           />
           <Text bold style={styles.txtName} fontSize={13}>

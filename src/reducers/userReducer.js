@@ -11,6 +11,11 @@ function user(state = INITIAL_STATE, action) {
         ...state,
         data: action.data,
       };
+    case 'USER_EDIT_DATA':
+      return {
+        ...state,
+        data: {...state.data, photo: action.photo, full_name: action.name},
+      };
     case 'USER_SET_PROFILE':
       return {
         ...state,
