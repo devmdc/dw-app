@@ -168,7 +168,7 @@ const DetailVacancyScreen = ({route, navigation}) => {
                   medium
                   fontSize={11}
                   style={[{color: colors.dwLightGrey}, setMarginTop(2)]}>
-                  Lorem Ipsum
+                  {data.day_off}
                 </Text>
                 <View style={[styles.line, setMarginTop(5)]} />
               </View>
