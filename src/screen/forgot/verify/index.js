@@ -28,7 +28,7 @@ const VerifyForgotScreen = ({route, navigation}) => {
             Kami sudah mengirimkan email verifikasi{'\n'}berupa 5 digit angka.
             Silakan cek email{'\n'}
             <Text fontSize={13} semibold>
-              andy@gmail.com
+              {email}
             </Text>
           </Text>
           <View style={styles.inputWrapper}>
