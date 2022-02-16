@@ -44,6 +44,14 @@ const ExperienceScreen = ({navigation}) => {
             period: item.period,
           })
         }
+        onPress={() => {
+          if (item.type !== 'Manual') {
+            navigation.navigate('DetailVacancy', {
+              id: item.id,
+              uri: item.image,
+            });
+          }
+        }}
       />
     );
   };
