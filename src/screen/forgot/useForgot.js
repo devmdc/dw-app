@@ -64,7 +64,7 @@ const useForgot = () => {
       onSuccess: res => {
         const {status} = res;
         if (status === 200) {
-          RootNav.navigateToVacancies();
+          RootNav.navigateToLogin();
         }
       },
       onError: error => {
