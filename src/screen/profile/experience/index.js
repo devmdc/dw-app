@@ -47,7 +47,7 @@ const ExperienceScreen = ({navigation}) => {
         onPress={() => {
           if (item.type !== 'Manual') {
             navigation.navigate('DetailVacancy', {
-              id: item.id,
+              id: item.vacancy_id,
               uri: item.image,
             });
           }
