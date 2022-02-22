@@ -30,7 +30,7 @@ export default StyleSheet.create({
   },
   textWrapper: {
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-between',
     marginTop: 16,
   },
   line: {
@@ -57,7 +57,6 @@ export default StyleSheet.create({
     shadowRadius: 2.0,
   },
   menu: {
-    width: width - 225,
     maxHeight: 300,
   },
   menuPos: {
@@ -77,19 +76,30 @@ export default StyleSheet.create({
     backgroundColor: colors.dwWhite,
   },
   inputPeriod: {
-    width: width - 225,
-    marginLeft: 5,
     backgroundColor: colors.dwWhite,
   },
   inputDateEnd: {
     flex: 1,
-    marginLeft: 5,
     backgroundColor: colors.dwWhite,
   },
   inputDateStart: {
     flex: 1,
-    marginLeft: 5,
     backgroundColor: colors.dwWhite,
+  },
+  menuWrapper: {
+    flex: 1,
+    height: 49,
+    borderColor: colors.dwLightGrey,
+    borderWidth: 1,
+    borderRadius: 7,
+    paddingHorizontal: 26,
+    justifyContent: 'center',
+  },
+  strip: {
+    color: colors.dwDarkGrey,
+    alignSelf: 'center',
+    flex: 0.2,
+    textAlign: 'center',
   },
   button: {
     height: 48,

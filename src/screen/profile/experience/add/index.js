@@ -5,6 +5,7 @@ import {
   Image,
   TouchableWithoutFeedback,
   ScrollView,
+  TextInput,
 } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import DropShadow from 'react-native-drop-shadow';
@@ -190,6 +191,9 @@ const AddExperienceScreen = ({route, navigation}) => {
             }
             isError={dateOneError !== null && !initial}
           />
+          <Text style={[styles.strip]} fontSize={13}>
+            {`-`}
+          </Text>
           <Input
             style={styles.inputDateEnd}
             textStyle={{color: colors.dwBlack}}
@@ -222,44 +226,43 @@ const AddExperienceScreen = ({route, navigation}) => {
           Payment (IDR)
         </Text>
         <View style={styles.textWrapper}>
-          <Input
-            style={{width: width - 225, marginRight: 5}}
-            placeholder={'0'}
-            value={fee}
-            onChangeTextValue={text => {
-              setFee(text);
-            }}
-            isError={feeError !== null && !initial}
-          />
-          <Text
-            style={[{color: colors.dwDarkGrey, alignSelf: 'center'}]}
-            fontSize={13}>
-            {` / `}
+          <View style={{flex: 1}}>
+            <Input
+              placeholder={'0'}
+              value={fee}
+              onChangeTextValue={text => {
+                setFee(text);
+              }}
+              isError={feeError !== null && !initial}
+            />
+          </View>
+          <Text style={[styles.strip, {flex: 0.15}]} fontSize={13}>
+            {`/`}
           </Text>
-          <Menu
-            ref={menu}
-            style={styles.menu}
-            button={
-              <TouchableWithoutFeedback onPress={openPeriodSelection}>
-                <Input
-                  style={styles.inputPeriod}
-                  textStyle={{color: colors.dwBlack}}
-                  value={period}
-                  placeholder={'Period'}
-                  editable={false}
-                  pointerEvents={'none'}
-                  isError={periodError !== null && !initial}
-                />
-              </TouchableWithoutFeedback>
-            }>
-            <ScrollView>
-              {sampleperiod.map((value, index) => (
-                <MenuItem key={index} onPress={() => selectPeriod(value)}>
-                  {value.name}
-                </MenuItem>
-              ))}
-            </ScrollView>
-          </Menu>
+          <View style={{flex: 1}}>
+            <Menu
+              ref={menu}
+              style={styles.menu}
+              button={
+                <TouchableWithoutFeedback onPress={openPeriodSelection}>
+                  <Input
+                    style={styles.inputPeriod}
+                    value={period}
+                    placeholder={'Period'}
+                    pointerEvents={'none'}
+                    isError={periodError !== null && !initial}
+                  />
+                </TouchableWithoutFeedback>
+              }>
+              <ScrollView>
+                {sampleperiod.map((value, index) => (
+                  <MenuItem key={index} onPress={() => selectPeriod(value)}>
+                    {value.name}
+                  </MenuItem>
+                ))}
+              </ScrollView>
+            </Menu>
+          </View>
         </View>
       </View>
 

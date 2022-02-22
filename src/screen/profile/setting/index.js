@@ -11,7 +11,7 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import Menu, {MenuItem} from 'react-native-material-menu';
 import {Container, Button, Text, Input, Header} from 'component';
 import {images, colors} from 'assets';
-import {validate, formatDate} from 'utils';
+import {validate, formatDate, formatDateSubmit} from 'utils';
 
 import styles, {setMarginTop, genderData} from './styles';
 
@@ -35,7 +35,7 @@ const SettingScreen = ({route, navigation}) => {
   const [location, setLocation] = useState({id: 0, name: ''});
 
   const nameError = validate('name', name);
-  const birthError = validate('general', birth);
+  const birthError = validate('general', String(birth));
   const genderError = validate('general', gender);
   const positionError = validate('general', position.name);
   const locationError = validate('general', location.name);
@@ -224,7 +224,7 @@ const SettingScreen = ({route, navigation}) => {
                 data.photo,
                 name,
                 gender,
-                formatDate(birth, true),
+                formatDateSubmit(birth),
                 position.id,
                 location.id,
               );
@@ -239,7 +239,7 @@ const SettingScreen = ({route, navigation}) => {
         mode="date"
         onConfirm={date => {
           setDatePickerVisible(false);
-          setBirth(formatDate(date, true));
+          setBirth(date);
         }}
         onCancel={() => setDatePickerVisible(false)}
       />

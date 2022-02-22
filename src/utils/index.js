@@ -147,6 +147,22 @@ export function formatDate(date, isDateOnly = false) {
 }
 
 /**
+ * @description Create format date for submit
+ * @author Agung Wijaya <mdc.co.id>
+ * @date 2021-11-01
+ * @export
+ * @param {date} [date=Date]
+ * @returns
+ */
+export function formatDateSubmit(date) {
+  if (!date) {
+    return '';
+  }
+
+  return moment(date).format('YYYY/MM/DD');
+}
+
+/**
  * @description Create format date interview
  * @author Agung Wijaya <mdc.co.id>
  * @date 2021-11-01
