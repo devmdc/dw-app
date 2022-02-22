@@ -42,7 +42,7 @@ export const STATUS_AGENDA = {
   UNSUITABLE: 'Unsuitable',
   APPLIED: 'Applied',
   REQUEST_INTERVIEW: 'Requested',
-  INTERVIEW_ACCEPTED: 'Accepted',
+  INTERVIEW_ACCEPTED: 'Aceppted',
   INTERVIEW_REJECTED: 'Rejected',
   UPCOMING: 'Upcoming',
   FAILED: 'Failed',

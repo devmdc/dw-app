@@ -62,7 +62,7 @@ const CardNotification = ({
           />
           {interviewDate && (
             <Text semibold style={styles.txtInterview}>
-              {`Interview Date. ${interviewDate}`}
+              {`Interview Date.\n${interviewDate}`}
             </Text>
           )}
         </View>

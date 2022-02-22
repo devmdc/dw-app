@@ -142,7 +142,7 @@ export function formatDate(date, isDateOnly = false) {
   }
 
   return isDateOnly
-    ? moment(date).format('YYYY-MM-DD')
+    ? moment(date).format('DD/MM/YYYY')
     : moment(date).format('DD MMMM YYYY HH:mm A');
 }
 
@@ -159,7 +159,7 @@ export function formatDateInterview(date) {
     return '';
   }
 
-  return moment(date).format('dddd, DD MMMM YYYY');
+  return moment(date).format('dddd, DD/MM/YYYY');
 }
 
 /**
