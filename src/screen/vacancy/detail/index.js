@@ -158,7 +158,6 @@ const DetailVacancyScreen = ({route, navigation}) => {
                   {formatDate(data.date_start, true)} -{' '}
                   {formatDate(data.date_end, true)}
                 </Text>
-                <View style={[styles.line, setMarginTop(5)]} />
               </View>
               <View style={[setMarginTop(10)]}>
                 <Text bold fontSize={11} style={[{color: colors.dwDarkGrey}]}>
@@ -170,7 +169,6 @@ const DetailVacancyScreen = ({route, navigation}) => {
                   style={[{color: colors.dwLightGrey}, setMarginTop(2)]}>
                   {data.day_off}
                 </Text>
-                <View style={[styles.line, setMarginTop(5)]} />
               </View>
               <View style={[setMarginTop(10)]}>
                 <Text bold fontSize={11} style={[{color: colors.dwDarkGrey}]}>
@@ -190,8 +188,6 @@ const DetailVacancyScreen = ({route, navigation}) => {
                     </Text>
                   )}
                 />
-
-                <View style={[styles.line, setMarginTop(5)]} />
               </View>
               <View style={[setMarginTop(10)]}>
                 <Text bold fontSize={11} style={[{color: colors.dwDarkGrey}]}>
@@ -203,7 +199,6 @@ const DetailVacancyScreen = ({route, navigation}) => {
                   style={[{color: colors.dwLightGrey}, setMarginTop(2)]}>
                   {data.location}
                 </Text>
-                <View style={[styles.line, setMarginTop(5)]} />
               </View>
             </View>
 

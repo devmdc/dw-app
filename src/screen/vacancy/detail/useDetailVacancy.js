@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useHttp, endpoint} from 'api';
-import {formatNewDate} from 'utils';
+import {formatDateInterview} from 'utils';
 import {STATUS_APPLIED} from 'constant';
 import {VacancyAction} from 'action';
 import {store} from '../../../store';
@@ -60,7 +60,7 @@ const useDetailVacancy = id => {
           <FooterInterview
             id={id}
             title={'Interview date :'}
-            subtitle={formatNewDate(date)}
+            subtitle={formatDateInterview(date)}
             btnleft={'Reject'}
             btnright={'Accept'}
           />
@@ -69,7 +69,7 @@ const useDetailVacancy = id => {
         return (
           <FooterStatus
             title={'Interview date :'}
-            subtitle={formatNewDate(date)}
+            subtitle={formatDateInterview(date)}
             btntitle={'Accepted'}
             btnDisabled={true}
           />
@@ -78,7 +78,7 @@ const useDetailVacancy = id => {
         return (
           <FooterStatus
             title={'Interview date :'}
-            subtitle={formatNewDate(date)}
+            subtitle={formatDateInterview(date)}
             btntitle={'Rejected'}
             btnDisabled={true}
           />
