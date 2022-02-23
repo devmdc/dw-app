@@ -144,7 +144,7 @@ const VacancyScreen = ({navigation}) => {
                 <Text
                   style={[{color: colors.dwDarkGrey, marginHorizontal: 8}]}
                   fontSize={11}>
-                  TO
+                  -
                 </Text>
                 <View style={{flex: 1}}>
                   <Input

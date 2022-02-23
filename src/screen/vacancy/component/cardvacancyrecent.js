@@ -22,7 +22,7 @@ const CardVacancyRecent = ({
       <View style={[styles.girdContent, style]}>
         <Image source={image} style={styles.imgProfile} resizeMode={'cover'} />
         <View style={styles.infoContainer}>
-          <Text bold maxLine={2} style={styles.txtPos}>
+          <Text bold maxLine={1} style={styles.txtPos}>
             {pos}
           </Text>
           <Text maxLine={1} style={styles.txtName}>
@@ -75,7 +75,6 @@ CardVacancyRecent.defaultProps = {
 const styles = StyleSheet.create({
   girdContent: {
     width: 145,
-    height: 200,
     alignItems: 'flex-start',
     padding: 12,
     backgroundColor: colors.dwWhite,
