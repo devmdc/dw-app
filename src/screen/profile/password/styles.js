@@ -29,7 +29,6 @@ export default StyleSheet.create({
   button: {
     width: '100%',
     height: 48,
-    alignSelf: 'flex-end',
   },
   middleWrpaper: {
     alignItems: 'center',

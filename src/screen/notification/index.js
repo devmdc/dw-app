@@ -11,7 +11,7 @@ const NotificationScreen = ({route, navigation}) => {
   return (
     <Container>
       <DropShadow style={styles.shadowNavbar}>
-        <Header isBack logo />
+        <Header logo />
       </DropShadow>
       <NotificationTopNavigator />
     </Container>
